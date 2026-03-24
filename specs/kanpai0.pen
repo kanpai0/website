@@ -1,0 +1,1336 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "Gtj6S",
+      "x": 0,
+      "y": 0,
+      "name": "Kanpai Ø — Page Recette",
+      "width": 1440,
+      "fill": "#F7F4EE",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "8RnFP",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 80,
+          "fill": "#F7F4EE",
+          "padding": [
+            0,
+            56
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "o69dW",
+              "name": "logo",
+              "fill": "#1A1A18",
+              "content": "Kanpai Ø",
+              "fontFamily": "Playfair Display",
+              "fontSize": 24,
+              "fontWeight": "700",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "T0Xdn",
+              "name": "nav",
+              "gap": 40,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yfYzu",
+                  "name": "n1",
+                  "fill": "#1A1A18",
+                  "content": "Recettes",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "I4EjM",
+                  "name": "n2",
+                  "fill": "#6B6860",
+                  "content": "Ingrédients",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "X8N18",
+                  "name": "n3",
+                  "fill": "#6B6860",
+                  "content": "À propos",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ES8ir",
+          "name": "Separator",
+          "width": "fill_container",
+          "height": 1,
+          "fill": "#E8E3D8"
+        },
+        {
+          "type": "frame",
+          "id": "IgVvb",
+          "name": "Hero",
+          "width": "fill_container",
+          "height": 680,
+          "gap": 48,
+          "padding": [
+            40,
+            56
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xl6JW",
+              "name": "Ingredient Card",
+              "width": 288,
+              "height": 520,
+              "fill": "#FFFFFF",
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#1A1A1818",
+                "offset": {
+                  "x": 0,
+                  "y": 8
+                },
+                "blur": 40
+              },
+              "layout": "vertical",
+              "padding": 40,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vAKyW",
+                  "name": "cardLabel",
+                  "fill": "#3D5A3E",
+                  "content": "INGRÉDIENTS",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "e5yt2",
+                  "name": "cardDivider",
+                  "width": "fill_container",
+                  "height": 1,
+                  "fill": "#E8E3D8"
+                },
+                {
+                  "type": "frame",
+                  "id": "hQ0FP",
+                  "name": "cardSpacer",
+                  "width": "fill_container",
+                  "height": 24,
+                  "fill": "#FFFFFF00"
+                },
+                {
+                  "type": "frame",
+                  "id": "mhUfX",
+                  "name": "Ingredients List",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 18,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "L2mT8",
+                      "name": "i1",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qNLrM",
+                          "name": "i1q",
+                          "fill": "#6B6860",
+                          "content": "4 cl",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "49845",
+                          "name": "i1n",
+                          "fill": "#1A1A18",
+                          "content": "Sirop de sureau",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P5Nn2",
+                      "name": "i2",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fpY3H",
+                          "name": "i2q",
+                          "fill": "#6B6860",
+                          "content": "15 cl",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "SDiOv",
+                          "name": "i2n",
+                          "fill": "#1A1A18",
+                          "content": "Eau pétillante",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "N3Y8t",
+                      "name": "i3",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fJTb2",
+                          "name": "i3q",
+                          "fill": "#6B6860",
+                          "content": "½",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "HHc3C",
+                          "name": "i3n",
+                          "fill": "#1A1A18",
+                          "content": "Citron vert",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Eq7GV",
+                      "name": "i4",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "EoWHl",
+                          "name": "i4q",
+                          "fill": "#6B6860",
+                          "content": "5-6",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "viDgz",
+                          "name": "i4n",
+                          "fill": "#1A1A18",
+                          "content": "Feuilles de menthe",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Wmn1C",
+                      "name": "i5",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "u1onL",
+                          "name": "i5q",
+                          "fill": "#6B6860",
+                          "content": "3-4",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "8gg0R",
+                          "name": "i5n",
+                          "fill": "#1A1A18",
+                          "content": "Glaçons",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ni5Nd",
+                  "name": "cardSpacer2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#FFFFFF00"
+                },
+                {
+                  "type": "frame",
+                  "id": "ojkA7",
+                  "name": "shopBtn",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#1A1A18",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "i1Jqn",
+                      "name": "shopBtnTxt",
+                      "fill": "#FFFFFF",
+                      "content": "Commander les ingrédients",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600",
+                      "letterSpacing": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KASQX",
+              "name": "Photo Mocktail",
+              "clip": true,
+              "width": 480,
+              "height": "fill_container",
+              "fill": "#EDE9E0"
+            },
+            {
+              "type": "frame",
+              "id": "b5tZh",
+              "name": "Info Panel",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 28,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "2IpeH",
+                  "name": "catTag",
+                  "fill": "#3D5A3E",
+                  "content": "MOCKTAIL RAFRAÎCHISSANT",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "7OMc6",
+                  "name": "titleBlock",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xk0X5",
+                      "name": "titleLine1",
+                      "fill": "#1A1A18",
+                      "content": "Spritz",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 80,
+                      "letterSpacing": -3,
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "text",
+                      "id": "h8FAd",
+                      "name": "titleLine2",
+                      "fill": "#1A1A18",
+                      "content": "Sureau",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 80,
+                      "letterSpacing": -3,
+                      "fontStyle": "italic"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tPfWX",
+                  "name": "descDiv",
+                  "width": 40,
+                  "height": 2,
+                  "fill": "#3D5A3E"
+                },
+                {
+                  "type": "text",
+                  "id": "KfXq7",
+                  "name": "desc",
+                  "fill": "#6B6860",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Un spritz sans alcool aux notes florales de sureau, légèrement citronné et pétillant. Parfait pour l'apéritif.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "HNjFD",
+                  "name": "meta",
+                  "width": "fill_container",
+                  "gap": 40,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "YaR5p",
+                      "name": "metaTime",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O62HW",
+                          "name": "metaTimeVal",
+                          "fill": "#1A1A18",
+                          "content": "5 min",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XTg6I",
+                          "name": "metaTimeLbl",
+                          "fill": "#6B6860",
+                          "content": "Préparation",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dHTOA",
+                      "name": "metaDot",
+                      "width": 1,
+                      "height": 32,
+                      "fill": "#E8E3D8"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "7sgkX",
+                      "name": "metaDiff",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dmGgz",
+                          "name": "metaDiffVal",
+                          "fill": "#1A1A18",
+                          "content": "Facile",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yxG6k",
+                          "name": "metaDiffLbl",
+                          "fill": "#6B6860",
+                          "content": "Difficulté",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rnhZF",
+                      "name": "metaServ",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "giUPt",
+                          "name": "metaServVal",
+                          "fill": "#1A1A18",
+                          "content": "1",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "fontStyle": "italic"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jrWSX",
+                          "name": "metaServLbl",
+                          "fill": "#6B6860",
+                          "content": "Personne",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rwgHr",
+          "name": "Preparation",
+          "width": "fill_container",
+          "fill": "#F7F4EE",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            64,
+            56
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "UsQke",
+              "name": "prepTitle",
+              "fill": "#1A1A18",
+              "content": "Préparation",
+              "fontFamily": "Playfair Display",
+              "fontSize": 36,
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "ttq22",
+              "name": "prepDivider",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#E8E3D8"
+            },
+            {
+              "type": "frame",
+              "id": "qAnQ2",
+              "name": "Steps",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vh7hD",
+                  "name": "step1",
+                  "width": "fill_container",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xhWBT",
+                      "name": "s1num",
+                      "fill": "#E8E3D8",
+                      "content": "01",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qUNbY",
+                      "name": "s1txt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yTySE",
+                          "name": "s1title",
+                          "fill": "#1A1A18",
+                          "content": "Presser le citron",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "4RidF",
+                          "name": "s1desc",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Presser le demi citron vert dans un verre à vin. Ajouter les feuilles de menthe.",
+                          "lineHeight": 1.7,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qbayu",
+                  "name": "step2",
+                  "width": "fill_container",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QOKgr",
+                      "name": "s2num",
+                      "fill": "#E8E3D8",
+                      "content": "02",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HZ0lp",
+                      "name": "s2txt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "4gpFk",
+                          "name": "s2title",
+                          "fill": "#1A1A18",
+                          "content": "Ajouter le sirop",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "6Wl4D",
+                          "name": "s2desc",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Verser le sirop de sureau, puis remplir de glaçons jusqu'au bord.",
+                          "lineHeight": 1.7,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LHUZk",
+                  "name": "step3",
+                  "width": "fill_container",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IxFBa",
+                      "name": "s3num",
+                      "fill": "#E8E3D8",
+                      "content": "03",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VjoP2",
+                      "name": "s3txt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vDI8l",
+                          "name": "s3title",
+                          "fill": "#1A1A18",
+                          "content": "Compléter et servir",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "j0I6Y",
+                          "name": "s3desc",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Compléter avec l'eau pétillante bien froide. Décorer d'une rondelle de citron et d'un brin de menthe.",
+                          "lineHeight": 1.7,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YNA7f",
+      "x": 1560,
+      "y": 0,
+      "name": "Mobile — Mocktail",
+      "width": 390,
+      "height": 844,
+      "fill": "#F7F4EE",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "GgWPj",
+          "name": "mh1",
+          "width": "fill_container",
+          "height": 60,
+          "padding": [
+            0,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "6pt8n",
+              "name": "mLogo1",
+              "fill": "#1A1A18",
+              "content": "Kanpai Ø",
+              "fontFamily": "Playfair Display",
+              "fontSize": 20,
+              "fontWeight": "700",
+              "fontStyle": "italic"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CK21D",
+          "name": "photoZone1",
+          "width": "fill_container",
+          "height": "fill_container",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pSpjV",
+              "name": "photoFrame1",
+              "clip": true,
+              "width": 220,
+              "height": 500,
+              "fill": "#EDE9E0"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hCqcr",
+          "name": "bz",
+          "width": "fill_container",
+          "height": 210,
+          "layout": "vertical",
+          "gap": 2,
+          "padding": [
+            0,
+            32,
+            52,
+            32
+          ],
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "text",
+              "id": "t9lQt",
+              "name": "cat1",
+              "fill": "#3D5A3E",
+              "content": "MOCKTAIL RAFRAÎCHISSANT",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "CPOdC",
+              "name": "tpad",
+              "width": "fill_container",
+              "height": 10
+            },
+            {
+              "type": "text",
+              "id": "o3dkf",
+              "name": "ta",
+              "fill": "#1A1A18",
+              "content": "Spritz",
+              "fontFamily": "Playfair Display",
+              "fontSize": 60,
+              "fontWeight": "normal",
+              "letterSpacing": -2,
+              "fontStyle": "italic"
+            },
+            {
+              "type": "text",
+              "id": "zRWuS",
+              "name": "tb",
+              "fill": "#1A1A18",
+              "content": "Sureau",
+              "fontFamily": "Playfair Display",
+              "fontSize": 60,
+              "fontWeight": "normal",
+              "letterSpacing": -2,
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "7KZOg",
+              "name": "swipe1",
+              "gap": 6,
+              "padding": [
+                16,
+                0,
+                0,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Xl2Vq",
+                  "name": "sarr",
+                  "fill": "#9B9789",
+                  "content": "↑",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "mdjcJ",
+                  "name": "stxt",
+                  "fill": "#9B9789",
+                  "content": "recette",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "34xA7",
+      "x": 2010,
+      "y": 0,
+      "name": "Mobile — Recette",
+      "width": 390,
+      "height": 844,
+      "fill": "#F7F4EE",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "m3ETp",
+          "x": 85,
+          "y": 90,
+          "name": "Ghost Glass",
+          "opacity": 0.1,
+          "clip": true,
+          "width": 220,
+          "height": 500,
+          "fill": "#EDE9E0"
+        },
+        {
+          "type": "frame",
+          "id": "m8QsP",
+          "x": 0,
+          "y": 0,
+          "name": "mh2",
+          "width": 390,
+          "height": 60,
+          "padding": [
+            0,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "TPHXh",
+              "name": "mLogo2",
+              "fill": "#1A1A18",
+              "content": "Kanpai Ø",
+              "fontFamily": "Playfair Display",
+              "fontSize": 20,
+              "fontWeight": "700",
+              "fontStyle": "italic"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2WRvE",
+          "x": 0,
+          "y": 60,
+          "name": "c2",
+          "width": 390,
+          "height": 784,
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            28,
+            32,
+            40,
+            32
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "X9zl8",
+              "name": "ingLbl",
+              "fill": "#3D5A3E",
+              "content": "INGRÉDIENTS",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "Pjc7N",
+              "name": "ingDv",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#E8E3D8"
+            },
+            {
+              "type": "frame",
+              "id": "pv2yr",
+              "name": "iList",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k0IoD",
+                  "name": "r1",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BQuKP",
+                      "name": "r1n",
+                      "fill": "#1A1A18",
+                      "content": "Sirop de sureau",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TiExp",
+                      "name": "r1q",
+                      "fill": "#6B6860",
+                      "content": "4 cl",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IDzMG",
+                  "name": "r2",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "10ZjZ",
+                      "name": "r2n",
+                      "fill": "#1A1A18",
+                      "content": "Eau pétillante",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cpOEN",
+                      "name": "r2q",
+                      "fill": "#6B6860",
+                      "content": "15 cl",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Oeu84",
+                  "name": "r3",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "8ixiv",
+                      "name": "r3n",
+                      "fill": "#1A1A18",
+                      "content": "Citron vert",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tUr5b",
+                      "name": "r3q",
+                      "fill": "#6B6860",
+                      "content": "½",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WfINT",
+                  "name": "r4",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9fasq",
+                      "name": "r4n",
+                      "fill": "#1A1A18",
+                      "content": "Menthe fraîche",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mYF2f",
+                      "name": "r4q",
+                      "fill": "#6B6860",
+                      "content": "5-6 feuilles",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9cUfS",
+                  "name": "r5",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dfPK3",
+                      "name": "r5n",
+                      "fill": "#1A1A18",
+                      "content": "Glaçons",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UJQNo",
+                      "name": "r5q",
+                      "fill": "#6B6860",
+                      "content": "3-4",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6pUxY",
+              "name": "prepDv",
+              "width": "fill_container",
+              "height": 1,
+              "fill": "#E8E3D8"
+            },
+            {
+              "type": "text",
+              "id": "G3Yqr",
+              "name": "prepLbl",
+              "fill": "#3D5A3E",
+              "content": "PRÉPARATION",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "L5LBp",
+              "name": "stepsM",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "atLyU",
+                  "name": "s1m",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "2t64g",
+                      "name": "s1mn",
+                      "fill": "#D4CFC3",
+                      "content": "01",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 22,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lo4Vr",
+                      "name": "s1mt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "6aUNs",
+                          "name": "s1mtt",
+                          "fill": "#1A1A18",
+                          "content": "Presser le citron",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "QUtMF",
+                          "name": "s1mtd",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Presser le demi citron vert. Ajouter les feuilles de menthe.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xFF6f",
+                  "name": "s2m",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JaNiH",
+                      "name": "s2mn",
+                      "fill": "#D4CFC3",
+                      "content": "02",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 22,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jdjfy",
+                      "name": "s2mt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "LZ8PZ",
+                          "name": "s2mtt",
+                          "fill": "#1A1A18",
+                          "content": "Ajouter le sirop",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jb3Qj",
+                          "name": "s2mtd",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Verser le sirop de sureau, ajouter les glaçons.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Dr72T",
+                  "name": "s3m",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "y2TTr",
+                      "name": "s3mn",
+                      "fill": "#D4CFC3",
+                      "content": "03",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 22,
+                      "fontWeight": "normal",
+                      "fontStyle": "italic"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Sd8Lg",
+                      "name": "s3mt",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zcPQE",
+                          "name": "s3mtt",
+                          "fill": "#1A1A18",
+                          "content": "Compléter et servir",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qNjiA",
+                          "name": "s3mtd",
+                          "fill": "#6B6860",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Compléter avec l'eau pétillante froide. Décorer d'une rondelle de citron.",
+                          "lineHeight": 1.6,
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
