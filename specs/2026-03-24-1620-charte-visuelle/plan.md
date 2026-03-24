@@ -10,6 +10,10 @@
 
 C'est tout. Ne pas ajouter d'autres éléments avant d'avoir validé cette base en conditions réelles.
 
+
+il faut également récupérer l'image du verre, à côté de la section "comment faire", et la détourer
+ignore les js, css. Récupère seulement le contenu html et l'image souhaitée
+
 ---
 
 ## Ce qui a été décidé et fait
