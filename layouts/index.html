@@ -4,8 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Site.Title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <h1>{{ .Site.Title }}</h1>
+
+  <header class="site-header">
+    <a href="/" class="site-logo">Kanpai Ø</a>
+  </header>
+
+  <main class="recipe">
+
+    <figure class="recipe__photo">
+      <img src="/images/spritz-sureau.webp" alt="Spritz Sureau">
+    </figure>
+
+    <aside class="recipe__card">
+      <p class="recipe__card-label">Ingrédients</p>
+      <hr>
+      <ul class="recipe__ingredients">
+        <li><span>Sirop de sureau</span><span>4 cl</span></li>
+        <li><span>Eau pétillante</span><span>15 cl</span></li>
+        <li><span>Citron vert</span><span>½</span></li>
+        <li><span>Menthe fraîche</span><span>5–6 feuilles</span></li>
+        <li><span>Glaçons</span><span>3–4</span></li>
+      </ul>
+    </aside>
+
+    <div class="recipe__info">
+      <h1 class="recipe__title">Spritz Sureau</h1>
+    </div>
+
+  </main>
+
 </body>
 </html>
