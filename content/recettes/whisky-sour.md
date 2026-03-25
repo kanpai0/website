@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Whisky Sour
+title: Whisky Sour
 slug: whisky-sour
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-64af32b6-d177-4571-a675-224af2c5a292.webp?v=83342268975700700541732309928"

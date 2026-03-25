@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Amaretto Sour
+title: Amaretto Sour
 slug: amaretto-sour
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-a526bfda-a3f8-4986-9522-a1d4ae8e9c77.webp?v=151761349102822635991732309773"

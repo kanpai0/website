@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Versailles
+title: Versailles
 slug: versailles
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-ca345d8d-8032-4493-b8cf-36b8fa9199fd.webp?v=77583752023627329331732309918"

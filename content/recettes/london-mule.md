@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober London Mule
+title: London Mule
 slug: london-mule
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-977f4b5c-2453-45f0-928a-f7a4ce90b78d.webp?v=177747718098362625921732309905"

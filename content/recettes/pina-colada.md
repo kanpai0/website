@@ -1,5 +1,5 @@
 ---
-title: Mocktail Pina Colada sans alcool
+title: Pina Colada
 slug: pina-colada
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-3813ad10-c7af-4e8d-b0d4-db2133ca242e.webp?v=108264908272608644071732309786"

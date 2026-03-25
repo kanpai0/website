@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Jamaican Mule
+title: Jamaican Mule
 slug: jamaican-mule
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-ae3bee8c-2ec8-4dea-82de-20f7121aa5ee.webp?v=72548708917837271111732309818"

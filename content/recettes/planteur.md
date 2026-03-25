@@ -1,5 +1,5 @@
 ---
-title: Mocktail Planteur sans alcool
+title: Planteur
 slug: planteur
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-560858b0-b087-4a3b-8837-7a0be3891a28.webp?v=180601614492489049051732309930"

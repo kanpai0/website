@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Bourbon Mule
+title: Bourbon Mule
 slug: bourbon-mule
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-1092aab7-6576-4794-9da8-b55efeebde33.webp?v=49081239710948260341732309845"

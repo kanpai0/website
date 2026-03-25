@@ -1,5 +1,5 @@
 ---
-title: "Mocktail Sober Dark & Stormy"
+title: "Dark & Stormy"
 slug: dark-stormy
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-794e63d6-0e19-448e-833c-99eb3185aeb4.webp?v=41555503619402728611732309854"

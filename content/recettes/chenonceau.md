@@ -1,5 +1,5 @@
 ---
-title: Mocktail Sober Chenonceau
+title: Chenonceau
 slug: chenonceau
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-f16c879e-31d8-44cd-a3d1-7449842864cc.webp?v=67405964633860746831732309906"
