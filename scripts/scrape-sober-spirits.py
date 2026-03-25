@@ -20,7 +20,7 @@ SOURCES_DIR = ROOT / "_sources" / "sober-spirits"
 OUTPUT_DIR  = ROOT / "content" / "recettes"
 
 RECIPES = [
-    ("mocktail-sober-madeleine",         "sober-madeleine"),
+    ("mocktail-sober-madeleine",         "madeleine"),
     ("mocktail-sober-italian-mule",      "italian-mule"),
     ("mocktail-sober-bourbon-mule",      "bourbon-mule"),
     ("mocktail-sober-amaretto-sour",     "amaretto-sour"),
