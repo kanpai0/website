@@ -1,3 +1,5 @@
 baseURL = "https://kanpai0.co/"
 languageCode = "fr-fr"
 title = "Kanpai Ø"
+
+disableKinds = ["taxonomy", "term"]

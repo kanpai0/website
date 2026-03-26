@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ .Title }} — {{ .Site.Title }}</title>
+  <title>{{ .Title }} — {{ .Site.Title }} - Mocktail, cocktail sans alcool</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,8 +22,6 @@
     </figure>
 
     <aside class="recipe__card">
-      <p class="recipe__card-label">Ingrédients</p>
-      <hr>
       <ul class="recipe__ingredients">
         {{ range .Params.ingredients }}
         <li><span>{{ . }}</span></li>
