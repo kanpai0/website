@@ -4,6 +4,7 @@ slug: london-mule
 spirits:
   - gin
 draft: false
+fridge: ["citron-vert", "agave", "gingembre", "menthe"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-977f4b5c-2453-45f0-928a-f7a4ce90b78d.webp?v=177747718098362625921732309905"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-london-mule"
 ingredients:

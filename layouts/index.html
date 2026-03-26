@@ -16,10 +16,156 @@
   <input type="checkbox" id="f-gin" class="filter-cb" value="gin">
   <input type="checkbox" id="f-amaretto" class="filter-cb" value="amaretto">
   <input type="checkbox" id="f-spritz" class="filter-cb" value="spritz">
+  <input type="checkbox" id="fridge-open" class="filter-cb">
 
   <header class="site-header">
     <a href="/" class="site-logo">Kanpai Ø</a>
+    <label class="fridge-btn" for="fridge-open" aria-label="Mon frigo">
+      <span class="fridge-btn__label">Mon frigo</span>
+      <span class="fridge-btn__dot" id="fridge-dot"></span>
+    </label>
   </header>
+
+  <!-- Fridge overlay -->
+  <label class="fridge-overlay" for="fridge-open" aria-hidden="true"></label>
+
+  <!-- Fridge panel -->
+  <div class="fridge-panel">
+    <div class="fridge-panel__handle"></div>
+    <div class="fridge-panel__header">
+      <span class="fridge-panel__title">Mon frigo</span>
+      <label class="fridge-panel__close" for="fridge-open" aria-label="Fermer">✕</label>
+    </div>
+
+    <div class="fridge-panel__body">
+
+      <p class="fridge-section__title">Frais</p>
+      <div class="fridge-grid">
+        <label class="fridge-item" for="fr-menthe">
+          <input type="checkbox" id="fr-menthe" class="fridge-cb" value="menthe">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Menthe</span>
+        </label>
+        <label class="fridge-item" for="fr-citron-vert">
+          <input type="checkbox" id="fr-citron-vert" class="fridge-cb" value="citron-vert">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Citron vert</span>
+        </label>
+        <label class="fridge-item" for="fr-citron-jaune">
+          <input type="checkbox" id="fr-citron-jaune" class="fridge-cb" value="citron-jaune">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Citron</span>
+        </label>
+        <label class="fridge-item" for="fr-basilic">
+          <input type="checkbox" id="fr-basilic" class="fridge-cb" value="basilic">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Basilic</span>
+        </label>
+      </div>
+
+      <p class="fridge-section__title">Jus &amp; fruits</p>
+      <div class="fridge-grid">
+        <label class="fridge-item" for="fr-ananas">
+          <input type="checkbox" id="fr-ananas" class="fridge-cb" value="ananas">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Ananas</span>
+        </label>
+        <label class="fridge-item" for="fr-framboise">
+          <input type="checkbox" id="fr-framboise" class="fridge-cb" value="framboise">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Framboise</span>
+        </label>
+        <label class="fridge-item" for="fr-mangue">
+          <input type="checkbox" id="fr-mangue" class="fridge-cb" value="mangue">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Mangue</span>
+        </label>
+        <label class="fridge-item" for="fr-passion">
+          <input type="checkbox" id="fr-passion" class="fridge-cb" value="passion">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Passion</span>
+        </label>
+        <label class="fridge-item" for="fr-pomme">
+          <input type="checkbox" id="fr-pomme" class="fridge-cb" value="pomme">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Pomme</span>
+        </label>
+      </div>
+
+      <p class="fridge-section__title">Sirops</p>
+      <div class="fridge-grid">
+        <label class="fridge-item" for="fr-agave">
+          <input type="checkbox" id="fr-agave" class="fridge-cb" value="agave">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Agave</span>
+        </label>
+        <label class="fridge-item" for="fr-orgeat">
+          <input type="checkbox" id="fr-orgeat" class="fridge-cb" value="orgeat">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Orgeat</span>
+        </label>
+        <label class="fridge-item" for="fr-hibiscus">
+          <input type="checkbox" id="fr-hibiscus" class="fridge-cb" value="hibiscus">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Hibiscus</span>
+        </label>
+        <label class="fridge-item" for="fr-vanille">
+          <input type="checkbox" id="fr-vanille" class="fridge-cb" value="vanille">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Vanille</span>
+        </label>
+        <label class="fridge-item" for="fr-miel">
+          <input type="checkbox" id="fr-miel" class="fridge-cb" value="miel">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Miel</span>
+        </label>
+      </div>
+
+      <p class="fridge-section__title">Sodas</p>
+      <div class="fridge-grid">
+        <label class="fridge-item" for="fr-cola">
+          <input type="checkbox" id="fr-cola" class="fridge-cb" value="cola">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Cola</span>
+        </label>
+        <label class="fridge-item" for="fr-gingembre">
+          <input type="checkbox" id="fr-gingembre" class="fridge-cb" value="gingembre">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Gingembre</span>
+        </label>
+        <label class="fridge-item" for="fr-tonic">
+          <input type="checkbox" id="fr-tonic" class="fridge-cb" value="tonic">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Tonic</span>
+        </label>
+        <label class="fridge-item" for="fr-petillante">
+          <input type="checkbox" id="fr-petillante" class="fridge-cb" value="petillante">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Pétillante</span>
+        </label>
+      </div>
+
+      <p class="fridge-section__title">Autres</p>
+      <div class="fridge-grid">
+        <label class="fridge-item" for="fr-oeuf">
+          <input type="checkbox" id="fr-oeuf" class="fridge-cb" value="oeuf">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Blanc d'œuf</span>
+        </label>
+        <label class="fridge-item" for="fr-creme-coco">
+          <input type="checkbox" id="fr-creme-coco" class="fridge-cb" value="creme-coco">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Crème coco</span>
+        </label>
+        <label class="fridge-item" for="fr-cannelle">
+          <input type="checkbox" id="fr-cannelle" class="fridge-cb" value="cannelle">
+          <span class="fridge-item__check">✓</span>
+          <span class="fridge-item__name">Cannelle</span>
+        </label>
+      </div>
+
+    </div>
+  </div>
 
   <nav class="filters">
     <label for="f-rhum" class="filter-pill">Rhum</label>
@@ -31,7 +177,7 @@
 
   <main class="recipes-grid">
     {{ range (where .Site.RegularPages "Section" "recettes") }}
-    <a href="{{ .RelPermalink }}" class="recipe-card" data-spirits="{{ delimit .Params.spirits " " }}">
+    <a href="{{ .RelPermalink }}" class="recipe-card" data-spirits="{{ delimit .Params.spirits " " }}" data-fridge="{{ delimit .Params.fridge " " }}">
       <figure class="recipe-card__photo">
         <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
       </figure>
@@ -41,6 +187,7 @@
   </main>
 
   <script>
+    // ── Spirit filters ──
     const CBS = ['rhum','whisky','gin','amaretto','spritz'];
     const saved = JSON.parse(localStorage.getItem('spirit-filters') || '[]');
     saved.forEach(v => {
@@ -53,6 +200,49 @@
         localStorage.setItem('spirit-filters', JSON.stringify(active));
       });
     });
+
+    // ── Fridge ──
+    const FRIDGE = [
+      'menthe','citron-vert','citron-jaune','basilic',
+      'ananas','framboise','mangue','passion','pomme',
+      'agave','orgeat','hibiscus','vanille','miel',
+      'cola','gingembre','tonic','petillante',
+      'oeuf','creme-coco','cannelle'
+    ];
+
+    // Load saved fridge (all checked by default on first visit)
+    const savedFridge = JSON.parse(localStorage.getItem('fridge') || 'null');
+    FRIDGE.forEach(id => {
+      const el = document.getElementById('fr-' + id);
+      if (el) el.checked = savedFridge === null ? true : savedFridge.includes(id);
+    });
+
+    function getAvailable() {
+      return FRIDGE.filter(id => document.getElementById('fr-' + id)?.checked);
+    }
+
+    function applyFridgeFilter() {
+      const available = getAvailable();
+      document.querySelectorAll('.recipe-card').forEach(card => {
+        const needed = (card.dataset.fridge || '').split(' ').filter(Boolean);
+        const canMake = needed.every(ing => available.includes(ing));
+        card.classList.toggle('fridge-hidden', !canMake);
+      });
+      // Show dot on button if any item is unchecked
+      const missing = FRIDGE.length - available.length;
+      document.getElementById('fridge-dot').classList.toggle('fridge-btn__dot--active', missing > 0);
+    }
+
+    function saveFridge() {
+      localStorage.setItem('fridge', JSON.stringify(getAvailable()));
+      applyFridgeFilter();
+    }
+
+    FRIDGE.forEach(id => {
+      document.getElementById('fr-' + id)?.addEventListener('change', saveFridge);
+    });
+
+    applyFridgeFilter();
   </script>
 
 </body>

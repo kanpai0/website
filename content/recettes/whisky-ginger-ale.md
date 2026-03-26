@@ -4,6 +4,7 @@ slug: whisky-ginger-ale
 spirits:
   - whisky
 draft: false
+fridge: ["gingembre", "citron-vert"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-d5b525c1-ac41-4f8d-a11b-fad8af552ff6.webp?v=127775185488748776171732309821"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-whisky-ginger-ale"
 ingredients:

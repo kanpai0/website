@@ -244,3 +244,162 @@ body.home {
   text-align: center;
   line-height: 1.2;
 }
+
+/* ── Fridge ── */
+.fridge-btn {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 6px 0;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+.fridge-btn__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.fridge-btn__dot--active {
+  opacity: 1;
+}
+
+.fridge-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(26,26,24,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.home:has(#fridge-open:checked) .fridge-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fridge-panel {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 200;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+  padding: 0 20px 48px;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+  max-height: 82vh;
+  overflow-y: auto;
+}
+
+.home:has(#fridge-open:checked) .fridge-panel {
+  transform: translateY(0);
+}
+
+.fridge-panel__handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  margin: 12px auto 0;
+}
+
+.fridge-panel__header {
+  display: flex;
+  align-items: center;
+  padding: 16px 0 12px;
+}
+
+.fridge-panel__title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.fridge-panel__close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--muted);
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.fridge-section__title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 0 8px;
+}
+
+.fridge-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.fridge-cb { display: none; }
+
+.fridge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.15s;
+  user-select: none;
+  gap: 3px;
+}
+
+.fridge-item__check {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sage);
+  opacity: 0;
+  line-height: 1;
+  transition: opacity 0.15s;
+}
+
+.fridge-item__name {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.15s;
+}
+
+.fridge-item:has(.fridge-cb:checked) {
+  border-color: var(--sage);
+}
+
+.fridge-item:has(.fridge-cb:checked) .fridge-item__check {
+  opacity: 1;
+}
+
+.fridge-item:has(.fridge-cb:checked) .fridge-item__name {
+  color: var(--ink);
+}
+
+/* Fridge-filtered recipe cards */
+.recipe-card.fridge-hidden {
+  display: none !important;
+}
