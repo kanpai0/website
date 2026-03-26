@@ -1,6 +1,8 @@
 ---
 title: Gin Tonic
 slug: gin-tonic
+spirits:
+  - gin
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-900dd744-a8bd-4a21-ad10-5d0f16aaeb36.webp?v=165892999714078927711732309836"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-gin-tonic"

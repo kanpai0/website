@@ -1,6 +1,8 @@
 ---
 title: Gin Basil Smash
 slug: gin-basil-smash
+spirits:
+  - gin
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-f7bcdbaf-eda3-4a88-9f44-58dbdef7650b.webp?v=14130287001065666961732309834"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-gin-basil-smash"

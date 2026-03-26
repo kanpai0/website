@@ -11,13 +11,27 @@
 </head>
 <body class="home">
 
+  <input type="checkbox" id="f-rhum" class="filter-cb" value="rhum">
+  <input type="checkbox" id="f-whisky" class="filter-cb" value="whisky">
+  <input type="checkbox" id="f-gin" class="filter-cb" value="gin">
+  <input type="checkbox" id="f-amaretto" class="filter-cb" value="amaretto">
+  <input type="checkbox" id="f-spritz" class="filter-cb" value="spritz">
+
   <header class="site-header">
     <a href="/" class="site-logo">Kanpai Ø</a>
   </header>
 
+  <nav class="filters">
+    <label for="f-rhum" class="filter-pill">Rhum</label>
+    <label for="f-whisky" class="filter-pill">Whisky</label>
+    <label for="f-gin" class="filter-pill">Gin</label>
+    <label for="f-amaretto" class="filter-pill">Amaretto</label>
+    <label for="f-spritz" class="filter-pill">Spritz</label>
+  </nav>
+
   <main class="recipes-grid">
     {{ range (where .Site.RegularPages "Section" "recettes") }}
-    <a href="{{ .RelPermalink }}" class="recipe-card">
+    <a href="{{ .RelPermalink }}" class="recipe-card" data-spirits="{{ delimit .Params.spirits " " }}">
       <figure class="recipe-card__photo">
         <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
       </figure>
@@ -25,6 +39,21 @@
     </a>
     {{ end }}
   </main>
+
+  <script>
+    const CBS = ['rhum','whisky','gin','amaretto','spritz'];
+    const saved = JSON.parse(localStorage.getItem('spirit-filters') || '[]');
+    saved.forEach(v => {
+      const el = document.getElementById('f-' + v);
+      if (el) el.checked = true;
+    });
+    CBS.forEach(v => {
+      document.getElementById('f-' + v).addEventListener('change', () => {
+        const active = CBS.filter(s => document.getElementById('f-' + s).checked);
+        localStorage.setItem('spirit-filters', JSON.stringify(active));
+      });
+    });
+  </script>
 
 </body>
 </html>

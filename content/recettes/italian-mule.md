@@ -1,6 +1,8 @@
 ---
 title: Italian Mule
 slug: italian-mule
+spirits:
+  - amaretto
 draft: false
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-70cf42de-3788-467a-a228-f0ffccd82357.webp?v=23557697897647958711732309720"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-italian-mule"
