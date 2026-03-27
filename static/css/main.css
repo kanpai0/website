@@ -369,13 +369,11 @@ body.home {
   gap: 3px;
 }
 
-.fridge-item__check {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--sage);
-  opacity: 0;
-  line-height: 1;
-  transition: opacity 0.15s;
+.fridge-item__icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--muted);
+  transition: stroke 0.15s;
 }
 
 .fridge-item__name {
@@ -391,8 +389,8 @@ body.home {
   border-color: var(--sage);
 }
 
-.fridge-item:has(.fridge-cb:checked) .fridge-item__check {
-  opacity: 1;
+.fridge-item:has(.fridge-cb:checked) .fridge-item__icon {
+  stroke: var(--sage);
 }
 
 .fridge-item:has(.fridge-cb:checked) .fridge-item__name {

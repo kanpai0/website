@@ -11,6 +11,8 @@
 </head>
 <body class="home">
 
+  {{ partial "fridge-icons.html" . }}
+
   <input type="checkbox" id="f-rhum" class="filter-cb" value="rhum">
   <input type="checkbox" id="f-whisky" class="filter-cb" value="whisky">
   <input type="checkbox" id="f-gin" class="filter-cb" value="gin">
@@ -43,22 +45,22 @@
       <div class="fridge-grid">
         <label class="fridge-item" for="fr-menthe">
           <input type="checkbox" id="fr-menthe" class="fridge-cb" value="menthe">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-menthe"></use></svg>
           <span class="fridge-item__name">Menthe</span>
         </label>
         <label class="fridge-item" for="fr-citron-vert">
           <input type="checkbox" id="fr-citron-vert" class="fridge-cb" value="citron-vert">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-citron-vert"></use></svg>
           <span class="fridge-item__name">Citron vert</span>
         </label>
         <label class="fridge-item" for="fr-citron-jaune">
           <input type="checkbox" id="fr-citron-jaune" class="fridge-cb" value="citron-jaune">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-citron-jaune"></use></svg>
           <span class="fridge-item__name">Citron</span>
         </label>
         <label class="fridge-item" for="fr-basilic">
           <input type="checkbox" id="fr-basilic" class="fridge-cb" value="basilic">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-basilic"></use></svg>
           <span class="fridge-item__name">Basilic</span>
         </label>
       </div>
@@ -67,27 +69,27 @@
       <div class="fridge-grid">
         <label class="fridge-item" for="fr-ananas">
           <input type="checkbox" id="fr-ananas" class="fridge-cb" value="ananas">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-ananas"></use></svg>
           <span class="fridge-item__name">Ananas</span>
         </label>
         <label class="fridge-item" for="fr-framboise">
           <input type="checkbox" id="fr-framboise" class="fridge-cb" value="framboise">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-framboise"></use></svg>
           <span class="fridge-item__name">Framboise</span>
         </label>
         <label class="fridge-item" for="fr-mangue">
           <input type="checkbox" id="fr-mangue" class="fridge-cb" value="mangue">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-mangue"></use></svg>
           <span class="fridge-item__name">Mangue</span>
         </label>
         <label class="fridge-item" for="fr-passion">
           <input type="checkbox" id="fr-passion" class="fridge-cb" value="passion">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-passion"></use></svg>
           <span class="fridge-item__name">Passion</span>
         </label>
         <label class="fridge-item" for="fr-pomme">
           <input type="checkbox" id="fr-pomme" class="fridge-cb" value="pomme">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-pomme"></use></svg>
           <span class="fridge-item__name">Pomme</span>
         </label>
       </div>
@@ -96,28 +98,23 @@
       <div class="fridge-grid">
         <label class="fridge-item" for="fr-agave">
           <input type="checkbox" id="fr-agave" class="fridge-cb" value="agave">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-agave"></use></svg>
           <span class="fridge-item__name">Agave</span>
         </label>
         <label class="fridge-item" for="fr-orgeat">
           <input type="checkbox" id="fr-orgeat" class="fridge-cb" value="orgeat">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-orgeat"></use></svg>
           <span class="fridge-item__name">Orgeat</span>
         </label>
         <label class="fridge-item" for="fr-hibiscus">
           <input type="checkbox" id="fr-hibiscus" class="fridge-cb" value="hibiscus">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-hibiscus"></use></svg>
           <span class="fridge-item__name">Hibiscus</span>
         </label>
         <label class="fridge-item" for="fr-vanille">
           <input type="checkbox" id="fr-vanille" class="fridge-cb" value="vanille">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-vanille"></use></svg>
           <span class="fridge-item__name">Vanille</span>
-        </label>
-        <label class="fridge-item" for="fr-miel">
-          <input type="checkbox" id="fr-miel" class="fridge-cb" value="miel">
-          <span class="fridge-item__check">✓</span>
-          <span class="fridge-item__name">Miel</span>
         </label>
       </div>
 
@@ -125,41 +122,46 @@
       <div class="fridge-grid">
         <label class="fridge-item" for="fr-cola">
           <input type="checkbox" id="fr-cola" class="fridge-cb" value="cola">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-cola"></use></svg>
           <span class="fridge-item__name">Cola</span>
         </label>
         <label class="fridge-item" for="fr-gingembre">
           <input type="checkbox" id="fr-gingembre" class="fridge-cb" value="gingembre">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-gingembre"></use></svg>
           <span class="fridge-item__name">Gingembre</span>
         </label>
         <label class="fridge-item" for="fr-tonic">
           <input type="checkbox" id="fr-tonic" class="fridge-cb" value="tonic">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-tonic"></use></svg>
           <span class="fridge-item__name">Tonic</span>
         </label>
         <label class="fridge-item" for="fr-petillante">
           <input type="checkbox" id="fr-petillante" class="fridge-cb" value="petillante">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-petillante"></use></svg>
           <span class="fridge-item__name">Pétillante</span>
         </label>
       </div>
 
       <p class="fridge-section__title">Autres</p>
       <div class="fridge-grid">
+        <label class="fridge-item" for="fr-miel">
+          <input type="checkbox" id="fr-miel" class="fridge-cb" value="miel">
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-miel"></use></svg>
+          <span class="fridge-item__name">Miel</span>
+        </label>
         <label class="fridge-item" for="fr-oeuf">
           <input type="checkbox" id="fr-oeuf" class="fridge-cb" value="oeuf">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-oeuf"></use></svg>
           <span class="fridge-item__name">Blanc d'œuf</span>
         </label>
         <label class="fridge-item" for="fr-creme-coco">
           <input type="checkbox" id="fr-creme-coco" class="fridge-cb" value="creme-coco">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-creme-coco"></use></svg>
           <span class="fridge-item__name">Crème coco</span>
         </label>
         <label class="fridge-item" for="fr-cannelle">
           <input type="checkbox" id="fr-cannelle" class="fridge-cb" value="cannelle">
-          <span class="fridge-item__check">✓</span>
+          <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-cannelle"></use></svg>
           <span class="fridge-item__name">Cannelle</span>
         </label>
       </div>
@@ -177,7 +179,7 @@
 
   <main class="recipes-grid">
     {{ range (where .Site.RegularPages "Section" "recettes") }}
-    <a href="{{ .RelPermalink }}" class="recipe-card" data-spirits="{{ delimit .Params.spirits " " }}" data-fridge="{{ delimit .Params.fridge " " }}">
+    <a href="{{ .RelPermalink }}" class="recipe-card" data-spirits="{{ delimit (default slice .Params.spirits) " " }}" data-fridge="{{ delimit (default slice .Params.fridge) " " }}">
       <figure class="recipe-card__photo">
         <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
       </figure>

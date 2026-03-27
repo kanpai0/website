@@ -40,11 +40,11 @@ Add a hidden "fridge" panel where the user can deselect ingredients they don't h
 | Sirops | `orgeat` | Orgeat |
 | Sirops | `hibiscus` | Hibiscus |
 | Sirops | `vanille` | Vanille |
-| Sirops | `miel` | Miel |
 | Sodas | `cola` | Cola |
 | Sodas | `gingembre` | Gingembre |
 | Sodas | `tonic` | Tonic |
 | Sodas | `petillante` | Pétillante |
+| Autres | `miel` | Miel |
 | Autres | `oeuf` | Blanc d'œuf |
 | Autres | `creme-coco` | Crème coco |
 | Autres | `cannelle` | Cannelle |
@@ -89,6 +89,12 @@ Add a hidden "fridge" panel where the user can deselect ingredients they don't h
 - `content/recettes/*.md` — added `fridge: [...]` frontmatter field to all 24 recipes
 - `layouts/index.html` — fridge panel HTML, `data-fridge` on recipe cards, fridge JS
 - `static/css/main.css` — fridge panel + tile styles
+
+---
+
+## Follow-up
+
+- `specs/2026-03-27-fridge-icons/plan.md` — replaced `✓` with inline SVG icons per ingredient
 
 ---
 
