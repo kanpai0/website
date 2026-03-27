@@ -22,7 +22,7 @@
     <a href="/" class="site-logo">Kanpai Ø</a>
     <label class="fridge-btn" for="fridge-open" aria-label="Mon frigo">
       <span class="fridge-btn__label">Mon frigo</span>
-      <span class="fridge-btn__dot" id="fridge-dot"></span>
+      <span class="fridge-btn__dot"></span>
     </label>
   </header>
 
@@ -228,9 +228,6 @@
         const canMake = needed.every(ing => available.includes(ing));
         card.classList.toggle('fridge-hidden', !canMake);
       });
-      // Show dot on button if any item is unchecked
-      const missing = FRIDGE.length - available.length;
-      document.getElementById('fridge-dot').classList.toggle('fridge-btn__dot--active', missing > 0);
     }
 
     function saveFridge() {

@@ -270,7 +270,7 @@ body.home {
   transition: opacity 0.2s;
 }
 
-.fridge-btn__dot--active {
+.home:has(.fridge-cb:not(:checked)) .fridge-btn__dot {
   opacity: 1;
 }
 
