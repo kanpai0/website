@@ -1,10 +1,8 @@
 ---
 title: Planteur
 slug: planteur
-spirits:
-  - rhum
 draft: false
-fridge: ["agave", "citron-vert", "mangue", "passion", "ananas", "cannelle", "vanille"]
+fridge: ["rhum", "agave", "citron-vert", "mangue", "passion", "ananas", "cannelle", "vanille"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-560858b0-b087-4a3b-8837-7a0be3891a28.webp?v=180601614492489049051732309930"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-planteur"
 ingredients:

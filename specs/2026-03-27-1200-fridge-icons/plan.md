@@ -102,6 +102,12 @@ All icons: 24×24 viewBox, stroke-only, `stroke-width="1.5"`, `stroke-linecap/jo
 
 ---
 
+## Follow-up
+
+- `specs/2026-03-30-1649-spirits-to-fridge/plan.md` — spirits moved into fridge panel as tiles, filter bar removed
+
+---
+
 ## Possible Next Steps
 
 - Audit each icon visually and refine paths that are ambiguous at 20px

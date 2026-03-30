@@ -1,11 +1,8 @@
 ---
 title: Parrain
 slug: godfather
-spirits:
-  - whisky
-  - amaretto
 draft: false
-fridge: []
+fridge: ["whisky", "amaretto"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-2bf34c27-82dd-4858-932b-54e1522b8ba2.webp?v=104475859137943764361732309819"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-godfather"
 ingredients:

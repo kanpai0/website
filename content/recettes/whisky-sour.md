@@ -1,10 +1,8 @@
 ---
 title: Whisky Sour
 slug: whisky-sour
-spirits:
-  - whisky
 draft: false
-fridge: ["agave", "citron-jaune", "oeuf"]
+fridge: ["whisky", "agave", "citron-jaune", "oeuf"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-64af32b6-d177-4571-a675-224af2c5a292.webp?v=83342268975700700541732309928"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-whisky-sour"
 ingredients:

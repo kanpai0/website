@@ -1,10 +1,8 @@
 ---
 title: Jamaican Mule
 slug: jamaican-mule
-spirits:
-  - rhum
 draft: false
-fridge: ["citron-vert", "agave", "gingembre", "menthe"]
+fridge: ["rhum", "citron-vert", "agave", "gingembre", "menthe"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-ae3bee8c-2ec8-4dea-82de-20f7121aa5ee.webp?v=72548708917837271111732309818"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-jamaican-mule"
 ingredients:

@@ -1,10 +1,8 @@
 ---
 title: Bourbon Mule
 slug: bourbon-mule
-spirits:
-  - whisky
 draft: false
-fridge: ["citron-vert", "agave", "gingembre", "menthe"]
+fridge: ["whisky", "citron-vert", "agave", "gingembre", "menthe"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-1092aab7-6576-4794-9da8-b55efeebde33.webp?v=49081239710948260341732309845"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-bourbon-mule"
 ingredients:

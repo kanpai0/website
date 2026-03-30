@@ -15,7 +15,6 @@
   --sans:  'Inter', system-ui, -apple-system, sans-serif;
 
   --header-h: 60px;
-  --filters-h: 58px;
 }
 
 /* ── Reset ── */
@@ -150,63 +149,14 @@ body.home {
   color: var(--ink);
 }
 
-/* ── Filtres ── */
 .filter-cb { display: none; }
-
-.filters {
-  position: fixed;
-  top: var(--header-h);
-  left: 0;
-  right: 0;
-  z-index: 50;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 12px 16px;
-  scrollbar-width: none;
-}
-.filters::-webkit-scrollbar { display: none; }
-
-.filter-pill {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--muted);
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-  user-select: none;
-}
-
-.home:has(#f-rhum:checked)     .filter-pill[for="f-rhum"],
-.home:has(#f-whisky:checked)   .filter-pill[for="f-whisky"],
-.home:has(#f-gin:checked)      .filter-pill[for="f-gin"],
-.home:has(#f-amaretto:checked) .filter-pill[for="f-amaretto"],
-.home:has(#f-spritz:checked)   .filter-pill[for="f-spritz"] {
-  background: var(--sage);
-  color: var(--white);
-  border-color: var(--sage);
-}
-
-/* CSS :has() filtering — hide all cards when any filter is active */
-.home:has(.filter-cb:checked) .recipe-card { display: none; }
-/* Show matching cards per active filter (OR logic) */
-.home:has(#f-rhum:checked)     .recipe-card[data-spirits~="rhum"]     { display: flex; }
-.home:has(#f-whisky:checked)   .recipe-card[data-spirits~="whisky"]   { display: flex; }
-.home:has(#f-gin:checked)      .recipe-card[data-spirits~="gin"]      { display: flex; }
-.home:has(#f-amaretto:checked) .recipe-card[data-spirits~="amaretto"] { display: flex; }
-.home:has(#f-spritz:checked)   .recipe-card[data-spirits~="spritz"]   { display: flex; }
 
 /* ── Grille d'accueil ── */
 .recipes-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  padding: calc(var(--header-h) + var(--filters-h) + 8px) 16px 48px;
+  padding: calc(var(--header-h) + 8px) 16px 48px;
 }
 
 .recipe-card {
