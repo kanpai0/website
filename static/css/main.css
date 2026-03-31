@@ -193,7 +193,7 @@ body.home {
 /* ── Grille d'accueil ── */
 .recipes-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(180px, 25% - 6px, 300px), 1fr));
   gap: 8px;
   padding: calc(var(--header-h) + 8px) 16px 48px;
 }
