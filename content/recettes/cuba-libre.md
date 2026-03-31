@@ -3,6 +3,7 @@ title: Cuba Libre
 slug: cuba-libre
 draft: false
 fridge: ["rhum", "citron-vert", "cola"]
+flavors: ["petillant", "sucre"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-6eb83c4e-f686-4d34-b67b-444306db1081.webp?v=164646445841431511761732309761"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-cuba-libre"
 ingredients:
