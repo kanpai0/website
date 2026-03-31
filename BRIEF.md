@@ -1,10 +1,12 @@
-# Projet 01 — Site de mocktails 
+# Projet 01 — Site de mocktails
 
 ## Vision
 
 Un site de recettes de mocktails (cocktails sans alcool), beau et rapide, avec un
 lien vers un shop pour commander les ingrédients nécessaires. L'objectif
 est de valider une audience et une monétisation simple avant de complexifier.
+
+**Version courante : 1.0.0**
 
 ---
 
@@ -13,83 +15,87 @@ est de valider une audience et une monétisation simple avant de complexifier.
 | Composant | Choix | Justification |
 |-----------|-------|---------------|
 | SSG | **Hugo** | Binaire Go, ultra rapide, zéro dépendance Node, maturité |
-| CSS | **PicoCSS** | HTML sémantique stylé nativement |
-| Recherche | **Pagefind** | Index statique, zéro serveur, quelques Ko côté client |
+| CSS | Custom | Variables CSS, mobile-first, zéro framework |
 | Hébergement | **Cloudflare Pages** | Gratuit, CDN mondial, déploiement Git |
-| Paiements | **Stripe Payment Links** | Zéro backend, lien direct vers checkout |
-| Alternative shop | **Snipcart** | Panier e-commerce sur site statique (si besoin de panier) |
 | Monétisation v1 | **Liens affiliés** | Zéro risque, valide la demande |
 
-### Niveau de JavaScript : 0 à 1
+### Niveau de JavaScript : vanilla uniquement
 
-- **Filtrage des recettes** : CSS `:has()` + checkbox si catalogue < 300 recettes, sinon petit script vanilla avec `data-*` + `hidden`.
-- **Recherche** : Pagefind (JS léger auto-généré au build).
-- **Navigation fluide** : script vanilla ~30 lignes (fetch + DOMParser + pushState) ou Turbo si les cas edge le justifient.
-- **Pas de framework JS.**
+- **Filtrage** : CSS `:has()` + `data-*` attributes, localStorage persistence
+- **Pas de framework JS**
 
 ---
 
 ## Structure du contenu (Hugo)
 
 ```
-content/
-├── recettes/
-│   ├── mojito-virgin.md
-│   ├── spritz-sans-alcool.md
-│   └── ...
-├── ingredients/
-│   ├── sirop-de-sureau.md
-│   ├── tonic-fever-tree.md
-│   └── ...
-└── pages/
-    ├── a-propos.md
-    └── contact.md
+content/recettes/   # 24 recettes markdown
+layouts/            # Templates Hugo
+static/css/main.css # Styles (~350 lignes, pas de framework)
+static/images/recettes/ # Images WebP optimisées
 ```
 
-Chaque recette en frontmatter YAML :
+Frontmatter recette :
 
 ```yaml
 ---
-title: "Mojito Virgin"
-date: 2026-03-01
-categories: ["rafraîchissant", "été"]
-difficulty: "facile"
-prep_time: "5 min"
+title: "Mojito"
+slug: mojito
+fridge: ["rhum", "citron-vert", "menthe", "petillante"]
+flavors: ["petillant", "herbace", "acidule"]
 ingredients:
-  - name: "Menthe fraîche"
-    quantity: "10 feuilles"
-    shop_link: ""
-  - name: "Sirop de sucre de canne"
-    quantity: "2 cl"
-    shop_link: "https://..."
-  - name: "Eau gazeuse"
-    quantity: "15 cl"
-    shop_link: ""
-  - name: "Citron vert"
-    quantity: "1"
-    shop_link: ""
-tags: ["menthe", "citron", "sans-sucre-ajouté"]
-image: "mojito-virgin.jpg"
+  - "50 ml de Rhum Sober Spirits 0,0 %"
 ---
 ```
 
 ---
 
-## Fonctionnalités — MVP
+## Fonctionnalités — Réalisées ✅
 
-1. **Catalogue de recettes** avec photos, filtrable par catégorie / ingrédient / difficulté.
-2. **Page recette** avec liste d'ingrédients, étapes, photo.
-3. **Liens d'achat** sur chaque ingrédient (affiliés ou Stripe Payment Links).
-4. **Recherche** via Pagefind.
-5. **SEO optimisé** : pages statiques, meta tags, structured data (Recipe schema.org).
-6. **Responsive** : PicoCSS gère ça nativement.
+- **Catalogue de recettes** : 24 recettes avec photos WebP optimisées
+- **Filtre frigo** : panel avec 25+ icônes SVG, logique AND, localStorage
+- **Filtre saveurs** : 9 flavor pills (pétillant, fruité, acidulé…), composable avec le frigo
+- **Images optimisées** : WebP ~100–150 KB, fond transparent
+
+---
+
+## Fonctionnalités — En cours / Backlog prioritaire
+
+- [ ] **Semantic versioning** : du code. 2ventuellement mettre le numéro dans les métas des pages html ou en commentaire, mais non visible par l'utilisateur.
+- [ ] **Semantic release notes** : add release notes with rebuild content from git commits history
+- [ ] **Grille responsive** : colonnes fluides 2→4 sans breakpoints (CSS Grid `auto-fill` + `minmax`)
+- [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
+- [ ] **Recipe page enrichment** : étapes de préparation
+- [ ] **Rapport qualité (Lighthouse)** : score Performance, Accessibilité, SEO, PWA — seuils minimum définis dans `budget.json`, intégré au pipeline CI
+- [ ] **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
+- [ ] **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
+- [ ] **Tests automatisés** :
+  - Framework : Playwright + Cucumber (BDD) ou Playwright seul
+  - Périmètre : filtrage frigo, filtrage saveurs, navigation recette, responsive
+  - Exécution : pre-push hook (`git hook`) + GitHub Actions pipeline
+  - Intégration Cloudflare : bloquer le déploiement si les tests échouent (preview → production gate)
+- [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
+- [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
+
+---
 
 ## Fonctionnalités — V2
 
-- Panier multi-ingrédients (Snipcart).
-- Système de favoris (localStorage ou petit backend).
-- Suggestions "si tu aimes X, essaie Y".
-- Newsletter (Buttondown ou similaire, sans base mail custom).
+- **Pagefind search** : index statique, zéro serveur
+- **SEO** : Schema.org `Recipe` structured data sur chaque recette
+- **SEO** : Open Graph + meta description sur toutes les pages
+- **Liens d'achat** : `shop_link` par ingrédient (affiliés)
+- **Panier multi-ingrédients** (Snipcart)
+
+---
+
+## Fonctionnalités — Ignorées
+
+- ~~Système de favoris~~ — complexité non justifiée à ce stade
+- ~~Suggestions "si tu aimes X, essaie Y"~~ — idem
+- ~~Newsletter~~ — pas de stratégie contenu définie
+- ~~Badge compteur de recettes filtrées~~ — UX peu prioritaire
+- ~~Recipe page enrichment : temps, difficulté~~ — rester le plus simple possible
 
 ---
 
@@ -97,27 +103,23 @@ image: "mojito-virgin.jpg"
 
 Hugo génère des pages statiques = indexation parfaite.
 Points d'attention :
-- Schema.org `Recipe` sur chaque recette.
 - `sitemap.xml` auto-généré par Hugo.
-- Open Graph et Twitter Cards pour le partage social.
-- URLs propres (`/recettes/mojito-virgin/`).
+- URLs propres (`/recettes/mojito/`).
 - Temps de chargement < 1s (pages statiques + CDN).
+- Open Graph + Schema.org `Recipe` : prévu en V2.
 
 ---
 
 ## Déploiement
 
-1. Repo Git (GitHub ou GitLab).
-2. Push → Cloudflare Pages build automatique (Hugo).
-3. Pagefind s'exécute en post-build.
-4. Domaine custom sur Cloudflare (DNS intégré).
+1. Push `main` → Cloudflare Pages build automatique (Hugo `0.158.0`).
+2. Domaine custom : kanpai0.co (301 depuis kanpai0.com).
+3. À venir : GitHub Actions gate avant promotion preview → production.
 
 ---
 
 ## Questions ouvertes
 
-- [ ] Nom de domaine / marque ?
-- [ ] Source des recettes initiales ? (Création originale, curation, les deux ?)
-- [ ] Photos : stock, générées, prises soi-même ?
 - [ ] Stratégie d'affiliation : quels partenaires cibler en premier ?
 - [ ] Faut-il un blog/magazine en plus des recettes pour le SEO longue traîne ?
+- [ ] TikTok : compte non créé (échec technique lors de l'inscription)
