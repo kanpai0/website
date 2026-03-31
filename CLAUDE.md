@@ -7,6 +7,45 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 hugo serve          # Local dev server with hot reload
 hugo build          # Generate static site to public/
+
+make serve          # alias → hugo serve
+make build          # alias → hugo build
+make release        # bump version, generate CHANGELOG, commit, tag, push
+make release-dry    # preview release without writing anything
+make doctor         # show installed versions + latest available Hugo
+```
+
+## Release workflow
+
+```bash
+bash scripts/release.sh              # auto bump (breaking→major, feat→minor, else patch)
+bash scripts/release.sh --bump minor # override bump type
+bash scripts/release.sh --dry-run    # preview only
+```
+
+Requires `git-cliff` (`brew install git-cliff`). Script requires a clean working tree.
+Updates `hugo.toml`, `CHANGELOG.md`, `BRIEF.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
+then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
+
+### Conventional commits hook (local only, not version-controlled)
+
+The hook is already installed at `.git/hooks/commit-msg`. On a fresh clone, re-install with:
+
+```bash
+cp scripts/release.sh /dev/null   # (hook is .git/hooks/commit-msg — reinstall manually)
+# or simply:
+cat > .git/hooks/commit-msg << 'EOF'
+#!/bin/sh
+pattern="^(feat|fix|docs|chore|refactor|perf|test|style|ci|build)(\(.+\))?(!)?:.+"
+msg=$(head -1 "$1")
+if ! echo "$msg" | grep -qE "$pattern"; then
+  echo "ERROR: Commit message must follow Conventional Commits format."
+  echo "  Expected: <type>[optional scope][optional !]: <description>"
+  echo "  Got: $msg"
+  exit 1
+fi
+EOF
+chmod +x .git/hooks/commit-msg
 ```
 
 ## Architecture
