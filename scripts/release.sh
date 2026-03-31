@@ -102,7 +102,33 @@ if $DRY_RUN; then
 fi
 
 # ---------------------------------------------------------------------------
-# 8. Prompt for confirmation
+# 8. Interactive README.md backlog review
+# ---------------------------------------------------------------------------
+mapfile -t backlog_lines < <(grep -n '- \[ \]' "$REPO_ROOT/README.md" || true)
+
+if [[ ${#backlog_lines[@]} -gt 0 ]]; then
+  echo "Backlog items — mark as done? (space-separated numbers, or Enter to skip)"
+  for i in "${!backlog_lines[@]}"; do
+    # Strip leading line number and "- [ ] " prefix for display
+    label=$(echo "${backlog_lines[$i]}" | sed 's/^[0-9]*:- \[ \] //')
+    printf "  %d. %s\n" $((i + 1)) "$label"
+  done
+  read -r -p "→ " picks
+  for pick in $picks; do
+    idx=$((pick - 1))
+    if [[ $idx -ge 0 && $idx -lt ${#backlog_lines[@]} ]]; then
+      lineno=$(echo "${backlog_lines[$idx]}" | cut -d: -f1)
+      # Replace [ ] with [x] on that exact line number
+      sed -i '' "${lineno}s/- \[ \]/- [x]/" "$REPO_ROOT/README.md"
+      label=$(echo "${backlog_lines[$idx]}" | sed 's/^[0-9]*:- \[ \] //')
+      echo "  ✓ Marked done: ${label}"
+    fi
+  done
+  echo ""
+fi
+
+# ---------------------------------------------------------------------------
+# 9. Prompt for confirmation
 # ---------------------------------------------------------------------------
 read -r -p "Proceed with release v${new_version}? [y/N] " answer
 [[ "$answer" =~ ^[Yy] ]] || { echo "Aborted."; exit 0; }
@@ -129,22 +155,12 @@ git-cliff --tag "v${new_version}" --unreleased --output "${specs_dir}/release-no
 sed -i '' "s/version = \"${current_version}\"/version = \"${new_version}\"/" "$REPO_ROOT/hugo.toml"
 
 # ---------------------------------------------------------------------------
-# 12. Update BRIEF.md: version line + promote backlog item
-# ---------------------------------------------------------------------------
-sed -i '' \
-  "s/\*\*Version courante : ${current_version}\*\*/\*\*Version courante : ${new_version}\*\*/" \
-  "$REPO_ROOT/BRIEF.md"
-sed -i '' \
-  "s/- \[ \] \*\*Semantic release notes\*\*.*/- [x] \*\*Semantic release notes\*\* : \`scripts\/release.sh\` + \`git-cliff\` + \`cliff.toml\`/" \
-  "$REPO_ROOT/BRIEF.md"
-
-# ---------------------------------------------------------------------------
-# 13. Commit, tag, push
+# 12. Commit, tag, push
 # ---------------------------------------------------------------------------
 git -C "$REPO_ROOT" add \
   CHANGELOG.md \
   hugo.toml \
-  BRIEF.md \
+  README.md \
   "specs/${release_date}-release-v${new_version}/release-notes.md"
 
 git -C "$REPO_ROOT" commit -m "chore: release v${new_version}"

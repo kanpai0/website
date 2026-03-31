@@ -24,7 +24,7 @@ bash scripts/release.sh --dry-run    # preview only
 ```
 
 Requires `git-cliff` (`brew install git-cliff`). Script requires a clean working tree.
-Updates `hugo.toml`, `CHANGELOG.md`, `BRIEF.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
+Updates `hugo.toml`, `CHANGELOG.md`, `README.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
 then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
 
 ### Conventional commits hook (local only, not version-controlled)
@@ -103,4 +103,4 @@ Fonts: Playfair Display (headings, italic), Inter (body). Mobile-first with `cla
 
 ## Deployment
 
-Push to `main` → Cloudflare Pages auto-builds with `HUGO_VERSION=0.158.0`. No CI/CD config needed. Domain: kanpai0.co (301 from kanpai0.com).
+Push to `main` → Cloudflare Pages auto-builds with `HUGO_VERSION=0.159.1`. No CI/CD config needed. Domain: kanpai0.co (301 from kanpai0.com).

@@ -6,8 +6,6 @@ Un site de recettes de mocktails (cocktails sans alcool), beau et rapide, avec u
 lien vers un shop pour commander les ingrédients nécessaires. L'objectif
 est de valider une audience et une monétisation simple avant de complexifier.
 
-**Version courante : 1.0.0**
-
 ---
 
 ## Stack technique
@@ -112,7 +110,7 @@ Points d'attention :
 
 ## Déploiement
 
-1. Push `main` → Cloudflare Pages build automatique (Hugo `0.158.0`).
+1. Push `main` → Cloudflare Pages build automatique (Hugo `0.159.1`).
 2. Domaine custom : kanpai0.co (301 depuis kanpai0.com).
 3. À venir : GitHub Actions gate avant promotion preview → production.
 
