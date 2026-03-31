@@ -104,7 +104,10 @@ fi
 # ---------------------------------------------------------------------------
 # 8. Interactive README.md backlog review
 # ---------------------------------------------------------------------------
-mapfile -t backlog_lines < <(grep -n '- \[ \]' "$REPO_ROOT/README.md" || true)
+backlog_lines=()
+while IFS= read -r line; do
+  backlog_lines+=("$line")
+done < <(grep -n '- \[ \]' "$REPO_ROOT/README.md" 2>/dev/null || true)
 
 if [[ ${#backlog_lines[@]} -gt 0 ]]; then
   echo "Backlog items — mark as done? (space-separated numbers, or Enter to skip)"
