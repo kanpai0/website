@@ -12,27 +12,30 @@ body = """
 {% endfor %}
 {% endfor %}
 ---
+
 """
 footer = ""
 trim = true
 # Prepend new releases on top (git cliff --prepend)
-postprocessors = []
+postprocessors = [
+  { pattern = '<!-- \d+ --> ', replace = "" },
+]
 
 [git]
 conventional_commits = true
 filter_unconventional = true
 split_commits = false
 commit_parsers = [
-  { message = "^feat",     group = "Features" },
-  { message = "^fix",      group = "Bug Fixes" },
-  { message = "^perf",     group = "Performance" },
-  { message = "^refactor", group = "Refactoring" },
-  { message = "^docs",     group = "Documentation" },
-  { message = "^style",    group = "Styling" },
-  { message = "^test",     group = "Testing" },
-  { message = "^build",    group = "Build" },
-  { message = "^ci",       group = "CI" },
-  { message = "^chore",    group = "Chores", skip = true },          # skip chore: release vX.Y.Z noise
+  { message = "^feat",     group = "<!-- 0 --> Features" },
+  { message = "^fix",      group = "<!-- 1 --> Bug Fixes" },
+  { message = "^perf",     group = "<!-- 2 --> Performance" },
+  { message = "^refactor", group = "<!-- 3 --> Refactoring" },
+  { message = "^docs",     group = "<!-- 4 --> Documentation" },
+  { message = "^style",    group = "<!-- 5 --> Styling" },
+  { message = "^test",     group = "<!-- 6 --> Testing" },
+  { message = "^build",    group = "<!-- 7 --> Build" },
+  { message = "^ci",       group = "<!-- 8 --> CI" },
+  { message = "^chore",    group = "Chores", skip = true },
 ]
 filter_commits = true
 tag_pattern = "v[0-9].*"

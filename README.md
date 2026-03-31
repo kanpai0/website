@@ -55,15 +55,13 @@ ingredients:
 - **Filtre saveurs** : 9 flavor pills (pétillant, fruité, acidulé…), composable avec le frigo
 - **Images optimisées** : WebP ~100–150 KB, fond transparent
 - **Semantic versioning** : version `1.0.0` dans `hugo.toml [params]`, exposée via `<meta name="version">` dans les pages HTML
+- **Semantic release notes** : add release notes with rebuild content from git commits history
+- **Grille responsive** : colonnes fluides 2→4 sans breakpoints (CSS Grid `auto-fill` + `minmax`)
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Semantic release notes** : add release notes with rebuild content from git commits history
-- [ ] **Grille responsive** : colonnes fluides 2→4 sans breakpoints (CSS Grid `auto-fill` + `minmax`)
-- [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
-- [ ] **Recipe page enrichment** : étapes de préparation
 - [ ] **Rapport qualité (Lighthouse)** : score Performance, Accessibilité, SEO, PWA — seuils minimum définis dans `budget.json`, intégré au pipeline CI
 - [ ] **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
 - [ ] **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
@@ -73,6 +71,8 @@ ingredients:
   - Exécution : pre-push hook (`git hook`) + GitHub Actions pipeline
   - Intégration Cloudflare : bloquer le déploiement si les tests échouent (preview → production gate)
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
+- [ ] **Recipe page enrichment** : étapes de préparation
+- [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
 
 ---
