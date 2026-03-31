@@ -102,7 +102,7 @@ if $DRY_RUN; then
 fi
 
 # ---------------------------------------------------------------------------
-# 8. Interactive README.md backlog review
+# 8. Interactive README.md backlog review — move items to Réalisées section
 # ---------------------------------------------------------------------------
 backlog_lines=()
 while IFS= read -r line; do
@@ -110,23 +110,53 @@ while IFS= read -r line; do
 done < <(grep -n '- \[ \]' "$REPO_ROOT/README.md" 2>/dev/null || true)
 
 if [[ ${#backlog_lines[@]} -gt 0 ]]; then
-  echo "Backlog items — mark as done? (space-separated numbers, or Enter to skip)"
+  echo "Backlog items — move to Réalisées? (space-separated numbers, or Enter to skip)"
   for i in "${!backlog_lines[@]}"; do
-    # Strip leading line number and "- [ ] " prefix for display
     label=$(echo "${backlog_lines[$i]}" | sed 's/^[0-9]*:- \[ \] //')
     printf "  %d. %s\n" $((i + 1)) "$label"
   done
   read -r -p "→ " picks
+
+  items_to_add=()
+  lines_to_delete=()
   for pick in $picks; do
     idx=$((pick - 1))
     if [[ $idx -ge 0 && $idx -lt ${#backlog_lines[@]} ]]; then
       lineno=$(echo "${backlog_lines[$idx]}" | cut -d: -f1)
-      # Replace [ ] with [x] on that exact line number
-      sed -i '' "${lineno}s/- \[ \]/- [x]/" "$REPO_ROOT/README.md"
-      label=$(echo "${backlog_lines[$idx]}" | sed 's/^[0-9]*:- \[ \] //')
-      echo "  ✓ Marked done: ${label}"
+      text=$(echo "${backlog_lines[$idx]}" | sed 's/^[0-9]*:- \[ \] //')
+      items_to_add+=("$text")
+      lines_to_delete+=("$lineno")
+      echo "  ✓ Moving to Réalisées: ${text}"
     fi
   done
+
+  if [[ ${#items_to_add[@]} -gt 0 ]]; then
+    # Find the --- separator just before the backlog section (= end of Réalisées)
+    backlog_header=$(grep -n "En cours" "$REPO_ROOT/README.md" | head -1 | cut -d: -f1)
+    insert_before=$(awk -v stop="$backlog_header" 'NR < stop && /^---$/ {sep=NR} END {print sep}' "$REPO_ROOT/README.md")
+
+    # Build set of line numbers to skip (1-indexed)
+    declare -A skip_lines
+    for lineno in "${lines_to_delete[@]}"; do
+      skip_lines[$lineno]=1
+    done
+
+    # Rewrite README: insert moved items just before the separator, remove originals
+    tmp_readme=$(mktemp)
+    line_num=0
+    while IFS= read -r line; do
+      line_num=$((line_num + 1))
+      if [[ $line_num -eq $insert_before ]]; then
+        for text in "${items_to_add[@]}"; do
+          printf '%s\n' "- ${text}" >> "$tmp_readme"
+        done
+      fi
+      if [[ -z "${skip_lines[$line_num]:-}" ]]; then
+        printf '%s\n' "$line" >> "$tmp_readme"
+      fi
+    done < "$REPO_ROOT/README.md"
+    mv "$tmp_readme" "$REPO_ROOT/README.md"
+  fi
   echo ""
 fi
 
@@ -146,31 +176,21 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# 10. Write specs/<date>-release-vX.Y.Z/release-notes.md
-# ---------------------------------------------------------------------------
-specs_dir="$REPO_ROOT/specs/${release_date}-release-v${new_version}"
-mkdir -p "$specs_dir"
-git-cliff --tag "v${new_version}" --unreleased --output "${specs_dir}/release-notes.md"
-
-# ---------------------------------------------------------------------------
-# 11. Update version in hugo.toml
+# 10. Update version in hugo.toml
 # ---------------------------------------------------------------------------
 sed -i '' "s/version = \"${current_version}\"/version = \"${new_version}\"/" "$REPO_ROOT/hugo.toml"
 
 # ---------------------------------------------------------------------------
-# 12. Commit, tag, push
+# 11. Commit and tag (no push — push manually)
 # ---------------------------------------------------------------------------
 git -C "$REPO_ROOT" add \
   CHANGELOG.md \
   hugo.toml \
-  README.md \
-  "specs/${release_date}-release-v${new_version}/release-notes.md"
+  README.md
 
 git -C "$REPO_ROOT" commit -m "chore: release v${new_version}"
 git -C "$REPO_ROOT" tag "v${new_version}"
 
-git -C "$REPO_ROOT" push origin main
-git -C "$REPO_ROOT" push origin "v${new_version}"
-
 echo ""
-echo "✓ Released v${new_version}"
+echo "✓ Tagged v${new_version} locally. Push with:"
+echo "    git push origin main && git push origin v${new_version}"

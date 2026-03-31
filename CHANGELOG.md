@@ -8,7 +8,9 @@
 ### Features
 - Enhance recipe grid responsiveness with dynamic column layout
 
----## [1.0.0] — 2026-03-31
+---
+
+## [1.0.0] — 2026-03-31
 
 ### Documentation
 - Add initial project plan for minimal website launch- Plan charte visuelle et fiche recette- Add CLAUDE.md with repository guidance and architecture overview- Update BRIEF.md with current version, completed features, and updated technical stack
