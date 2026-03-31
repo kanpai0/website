@@ -56,12 +56,12 @@ ingredients:
 - **Filtre frigo** : panel avec 25+ icônes SVG, logique AND, localStorage
 - **Filtre saveurs** : 9 flavor pills (pétillant, fruité, acidulé…), composable avec le frigo
 - **Images optimisées** : WebP ~100–150 KB, fond transparent
+- **Semantic versioning** : version `1.0.0` dans `hugo.toml [params]`, exposée via `<meta name="version">` dans les pages HTML
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Semantic versioning** : du code. 2ventuellement mettre le numéro dans les métas des pages html ou en commentaire, mais non visible par l'utilisateur.
 - [ ] **Semantic release notes** : add release notes with rebuild content from git commits history
 - [ ] **Grille responsive** : colonnes fluides 2→4 sans breakpoints (CSS Grid `auto-fill` + `minmax`)
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées

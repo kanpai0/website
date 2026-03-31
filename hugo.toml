@@ -3,3 +3,6 @@ languageCode = "fr-fr"
 title = "Kanpai Ø"
 
 disableKinds = ["taxonomy", "term"]
+
+[params]
+  version = "1.0.0"
