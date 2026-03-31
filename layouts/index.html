@@ -39,10 +39,41 @@
     </div>
   </div>
 
+  <nav class="flavor-pills" aria-label="Filtrer par saveur">
+    <label class="flavor-pill" for="fl-petillant">
+      <input type="checkbox" id="fl-petillant" class="flavor-cb"> Pétillant
+    </label>
+    <label class="flavor-pill" for="fl-plat">
+      <input type="checkbox" id="fl-plat" class="flavor-cb"> Sans bulles
+    </label>
+    <label class="flavor-pill" for="fl-fruite">
+      <input type="checkbox" id="fl-fruite" class="flavor-cb"> Fruité
+    </label>
+    <label class="flavor-pill" for="fl-acidule">
+      <input type="checkbox" id="fl-acidule" class="flavor-cb"> Acidulé
+    </label>
+    <label class="flavor-pill" for="fl-sucre">
+      <input type="checkbox" id="fl-sucre" class="flavor-cb"> Sucré
+    </label>
+    <label class="flavor-pill" for="fl-epice">
+      <input type="checkbox" id="fl-epice" class="flavor-cb"> Épicé
+    </label>
+    <label class="flavor-pill" for="fl-amer">
+      <input type="checkbox" id="fl-amer" class="flavor-cb"> Amer
+    </label>
+    <label class="flavor-pill" for="fl-herbace">
+      <input type="checkbox" id="fl-herbace" class="flavor-cb"> Herbacé
+    </label>
+    <label class="flavor-pill" for="fl-cremeux">
+      <input type="checkbox" id="fl-cremeux" class="flavor-cb"> Crémeux
+    </label>
+  </nav>
+
   <main class="recipes-grid">
     {{ range (where .Site.RegularPages "Section" "recettes") }}
     {{- $fridge := delimit .Params.fridge " " }}
-    <a href="{{ .RelPermalink }}" class="recipe-card" data-fridge="{{ $fridge }}">
+    {{- $flavors := delimit .Params.flavors " " }}
+    <a href="{{ .RelPermalink }}" class="recipe-card" data-fridge="{{ $fridge }}" data-flavors="{{ $flavors }}">
       <figure class="recipe-card__photo">
         <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
       </figure>
@@ -61,21 +92,31 @@
       'oeuf','creme-coco','cannelle'
     ];
 
+    const FLAVORS = ['petillant','plat','fruite','acidule','sucre','epice','amer','herbace','cremeux'];
+
     function getAvailable() {
       return FRIDGE.filter(id => document.getElementById('fr-' + id)?.checked);
     }
 
-    function applyFridgeFilter() {
+    function getActiveFlavors() {
+      return FLAVORS.filter(f => document.getElementById('fl-' + f)?.checked);
+    }
+
+    function applyFilters() {
       const available = getAvailable();
+      const active = getActiveFlavors();
       document.querySelectorAll('.recipe-card').forEach(card => {
         const needed = (card.dataset.fridge || '').split(' ').filter(Boolean);
-        card.classList.toggle('fridge-hidden', !needed.every(ing => available.includes(ing)));
+        const fridgeOk = needed.every(ing => available.includes(ing));
+        const cardFlavors = (card.dataset.flavors || '').split(' ').filter(Boolean);
+        const flavorOk = active.length === 0 || active.every(f => cardFlavors.includes(f));
+        card.classList.toggle('fridge-hidden', !(fridgeOk && flavorOk));
       });
     }
 
     function saveFridge() {
       localStorage.setItem('fridge', JSON.stringify(getAvailable()));
-      applyFridgeFilter();
+      applyFilters();
     }
 
     const savedFridge = JSON.parse(localStorage.getItem('fridge') || 'null');
@@ -87,7 +128,22 @@
       el.addEventListener('change', saveFridge);
     });
 
-    applyFridgeFilter();
+    function saveFlavors() {
+      localStorage.setItem('flavors', JSON.stringify(getActiveFlavors()));
+      applyFilters();
+    }
+
+    // Restore flavor state from localStorage
+    JSON.parse(localStorage.getItem('flavors') || '[]').forEach(f => {
+      const el = document.getElementById('fl-' + f);
+      if (el) el.checked = true;
+    });
+
+    document.querySelectorAll('.flavor-cb').forEach(cb => {
+      cb.addEventListener('change', saveFlavors);
+    });
+
+    applyFilters();
   </script>
 
 </body>

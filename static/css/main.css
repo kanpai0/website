@@ -151,6 +151,45 @@ body.home {
 
 .filter-cb { display: none; }
 
+/* ── pill bar height token ── */
+:root { --pills-h: 44px; }
+
+/* ── Flavor pill bar ── */
+.flavor-pills {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0;
+  z-index: 90;
+  display: flex; gap: 8px;
+  padding: 6px 16px;
+  height: var(--pills-h);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.flavor-pills::-webkit-scrollbar { display: none; }
+
+.flavor-cb { display: none; }
+
+.flavor-pill {
+  flex-shrink: 0; cursor: pointer;
+  display: inline-flex; align-items: center;
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--muted); font-size: 13px; font-weight: 500;
+  white-space: nowrap; user-select: none;
+  transition: background .15s, color .15s, border-color .15s;
+}
+
+.flavor-pill:has(.flavor-cb:checked) {
+  background: var(--sage); color: #fff; border-color: var(--sage);
+}
+
+.flavor-pill:not(:has(.flavor-cb:checked)):hover {
+  border-color: var(--sage); color: var(--ink);
+}
+
 /* ── Grille d'accueil ── */
 .recipes-grid {
   display: grid;
