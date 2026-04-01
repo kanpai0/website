@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0] — 2026-04-01
+
+### Features
+- Implement standalone Design System page
+
+---
 ## [1.4.1] — 2026-04-01
 
 ### Bug Fixes
