@@ -78,11 +78,11 @@
     <a href="{{ $page.RelPermalink }}" class="recipe-card" data-fridge="{{ $fridge }}" data-flavors="{{ $flavors }}">
       <figure class="recipe-card__photo">
         {{ if eq $i 0 }}
-        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" fetchpriority="high">
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" width="400" height="400" fetchpriority="high">
         {{ else if ge $i 5 }}
-        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" loading="lazy">
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" width="400" height="400" loading="lazy">
         {{ else }}
-        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}">
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" width="400" height="400">
         {{ end }}
       </figure>
       <h2 class="recipe-card__title">{{ $page.Title }}</h2>
