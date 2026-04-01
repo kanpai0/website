@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0] — 2026-04-01
+
+### Features
+- Optimize font loading and enhance recipe card image performance
+
+### CI
+- Add Lighthouse CI GitHub Actions workflow for performance audits
+
+---
 ## [1.2.0] — 2026-04-01
 
 ### Features
