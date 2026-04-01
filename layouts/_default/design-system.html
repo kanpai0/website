@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Design System — Kanpai Ø</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    /* Override body overflow for this standalone page */
+    body { overflow: auto !important; }
+
+    /* Design system scaffolding */
+    .ds-page { padding: 48px 32px; max-width: 960px; margin: auto; }
+    .ds-page h1 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+    .ds-section-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    section[data-ds] { margin-bottom: 56px; }
+
+    /* Color swatches */
+    .ds-swatches { display: flex; flex-wrap: wrap; gap: 12px; }
+    .ds-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .ds-swatch__color {
+      width: 72px;
+      height: 72px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .ds-swatch__name {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      text-align: center;
+    }
+    .ds-swatch__hex {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    /* Typography rows */
+    .ds-type-row { margin-bottom: 20px; }
+    .ds-type-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 4px;
+    }
+
+    /* Component states */
+    .ds-states { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .ds-state {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ds-state-label {
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    /* Fridge grid for DS */
+    .ds-fridge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      max-width: 480px;
+    }
+
+    /* Recipe card container */
+    .ds-card-wrap { max-width: 220px; }
+
+    /* Buttons row */
+    .ds-btn-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .ds-btn-wrap { display: flex; flex-direction: column; gap: 6px; }
+  </style>
+</head>
+<body>
+
+  {{ partial "fridge-icons.html" . }}
+
+  <main class="ds-page">
+    <h1>Design System</h1>
+
+    <!-- ── Colors ── -->
+    <section data-ds="colors">
+      <p class="ds-section-title">Color Tokens</p>
+      <div class="ds-swatches">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #F7F4EE;"></div>
+          <span class="ds-swatch__name">--bg</span>
+          <span class="ds-swatch__hex">#F7F4EE</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #1A1A18;"></div>
+          <span class="ds-swatch__name">--ink</span>
+          <span class="ds-swatch__hex">#1A1A18</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #6B6860;"></div>
+          <span class="ds-swatch__name">--muted</span>
+          <span class="ds-swatch__hex">#6B6860</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #3D5A3E;"></div>
+          <span class="ds-swatch__name">--sage</span>
+          <span class="ds-swatch__hex">#3D5A3E</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #FFFFFF;"></div>
+          <span class="ds-swatch__name">--white</span>
+          <span class="ds-swatch__hex">#FFFFFF</span>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color" style="background: #E8E3D8;"></div>
+          <span class="ds-swatch__name">--border</span>
+          <span class="ds-swatch__hex">#E8E3D8</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Typography ── -->
+    <section data-ds="typography">
+      <p class="ds-section-title">Typography</p>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">site-logo</div>
+        <a href="#" class="site-logo" style="text-decoration:none;">Kanpai Ø</a>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">recipe__title</div>
+        <h1 class="recipe__title" style="position:static; font-size:clamp(48px,15vw,60px);">Mojito</h1>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">recipe-card__title</div>
+        <p class="recipe-card__title">Mojito sans alcool</p>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">Section label — muted</div>
+        <p class="fridge-section__title" style="margin:0;">Spiritueux sans alcool</p>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">Section label — sage (recipe__card-label)</div>
+        <p class="recipe__card-label" style="position:static;">Ingrédients</p>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">Body — weight 300</div>
+        <p style="font-size:1rem; font-weight:300; color:var(--muted);">50 ml de Rhum Sober Spirits 0,0 %</p>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">Body — weight 400</div>
+        <p style="font-size:1rem; font-weight:400; color:var(--ink);">Mocktails et cocktails sans alcool</p>
+      </div>
+
+      <div class="ds-type-row">
+        <div class="ds-type-label">Body — weight 500</div>
+        <p style="font-size:1rem; font-weight:500; color:var(--ink);">Mon frigo</p>
+      </div>
+    </section>
+
+    <!-- ── Flavor Pills ── -->
+    <section data-ds="flavor-pills">
+      <p class="ds-section-title">Flavor Pills</p>
+      <div class="ds-states">
+        <div class="ds-state">
+          <span class="ds-state-label">Default (unchecked)</span>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <label class="flavor-pill" for="ds-fl-petillant">
+              <input type="checkbox" id="ds-fl-petillant" class="flavor-cb"> Pétillant
+            </label>
+            <label class="flavor-pill" for="ds-fl-plat">
+              <input type="checkbox" id="ds-fl-plat" class="flavor-cb"> Sans bulles
+            </label>
+            <label class="flavor-pill" for="ds-fl-fruite">
+              <input type="checkbox" id="ds-fl-fruite" class="flavor-cb"> Fruité
+            </label>
+            <label class="flavor-pill" for="ds-fl-acidule">
+              <input type="checkbox" id="ds-fl-acidule" class="flavor-cb"> Acidulé
+            </label>
+            <label class="flavor-pill" for="ds-fl-sucre">
+              <input type="checkbox" id="ds-fl-sucre" class="flavor-cb"> Sucré
+            </label>
+            <label class="flavor-pill" for="ds-fl-epice">
+              <input type="checkbox" id="ds-fl-epice" class="flavor-cb"> Épicé
+            </label>
+            <label class="flavor-pill" for="ds-fl-amer">
+              <input type="checkbox" id="ds-fl-amer" class="flavor-cb"> Amer
+            </label>
+            <label class="flavor-pill" for="ds-fl-herbace">
+              <input type="checkbox" id="ds-fl-herbace" class="flavor-cb"> Herbacé
+            </label>
+            <label class="flavor-pill" for="ds-fl-cremeux">
+              <input type="checkbox" id="ds-fl-cremeux" class="flavor-cb"> Crémeux
+            </label>
+          </div>
+        </div>
+
+        <div class="ds-state">
+          <span class="ds-state-label">Checked</span>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <label class="flavor-pill" for="ds-fl-petillant-on">
+              <input type="checkbox" id="ds-fl-petillant-on" class="flavor-cb" checked> Pétillant
+            </label>
+            <label class="flavor-pill" for="ds-fl-fruite-on">
+              <input type="checkbox" id="ds-fl-fruite-on" class="flavor-cb" checked> Fruité
+            </label>
+            <label class="flavor-pill" for="ds-fl-sucre-on">
+              <input type="checkbox" id="ds-fl-sucre-on" class="flavor-cb" checked> Sucré
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Fridge Items ── -->
+    <section data-ds="fridge-items">
+      <p class="ds-section-title">Fridge Items</p>
+      <div class="ds-states" style="flex-direction:column;">
+
+        <div class="ds-state">
+          <span class="ds-state-label">Default (unchecked)</span>
+          <div class="ds-fridge-grid">
+            <label class="fridge-item" for="ds-fr-rhum">
+              <input type="checkbox" id="ds-fr-rhum" class="fridge-cb" value="rhum">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-rhum"></use></svg>
+              <span class="fridge-item__name">Sober Rhum 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-whisky">
+              <input type="checkbox" id="ds-fr-whisky" class="fridge-cb" value="whisky">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-whisky"></use></svg>
+              <span class="fridge-item__name">Sober Whisky 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-gin">
+              <input type="checkbox" id="ds-fr-gin" class="fridge-cb" value="gin">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-gin"></use></svg>
+              <span class="fridge-item__name">Sober Gin 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-amaretto">
+              <input type="checkbox" id="ds-fr-amaretto" class="fridge-cb" value="amaretto">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-amaretto"></use></svg>
+              <span class="fridge-item__name">Sober Amaretto 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-spritz">
+              <input type="checkbox" id="ds-fr-spritz" class="fridge-cb" value="spritz">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-spritz"></use></svg>
+              <span class="fridge-item__name">Sober Spritz 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-menthe">
+              <input type="checkbox" id="ds-fr-menthe" class="fridge-cb" value="menthe">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-menthe"></use></svg>
+              <span class="fridge-item__name">Menthe</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-citron-vert">
+              <input type="checkbox" id="ds-fr-citron-vert" class="fridge-cb" value="citron-vert">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-citron-vert"></use></svg>
+              <span class="fridge-item__name">Citron vert</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-citron-jaune">
+              <input type="checkbox" id="ds-fr-citron-jaune" class="fridge-cb" value="citron-jaune">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-citron-jaune"></use></svg>
+              <span class="fridge-item__name">Citron</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-basilic">
+              <input type="checkbox" id="ds-fr-basilic" class="fridge-cb" value="basilic">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-basilic"></use></svg>
+              <span class="fridge-item__name">Basilic</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-ananas">
+              <input type="checkbox" id="ds-fr-ananas" class="fridge-cb" value="ananas">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-ananas"></use></svg>
+              <span class="fridge-item__name">Ananas</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-framboise">
+              <input type="checkbox" id="ds-fr-framboise" class="fridge-cb" value="framboise">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-framboise"></use></svg>
+              <span class="fridge-item__name">Framboise</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-mangue">
+              <input type="checkbox" id="ds-fr-mangue" class="fridge-cb" value="mangue">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-mangue"></use></svg>
+              <span class="fridge-item__name">Mangue</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-passion">
+              <input type="checkbox" id="ds-fr-passion" class="fridge-cb" value="passion">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-passion"></use></svg>
+              <span class="fridge-item__name">Passion</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-pomme">
+              <input type="checkbox" id="ds-fr-pomme" class="fridge-cb" value="pomme">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-pomme"></use></svg>
+              <span class="fridge-item__name">Pomme</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-agave">
+              <input type="checkbox" id="ds-fr-agave" class="fridge-cb" value="agave">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-agave"></use></svg>
+              <span class="fridge-item__name">Agave</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-orgeat">
+              <input type="checkbox" id="ds-fr-orgeat" class="fridge-cb" value="orgeat">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-orgeat"></use></svg>
+              <span class="fridge-item__name">Orgeat</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-hibiscus">
+              <input type="checkbox" id="ds-fr-hibiscus" class="fridge-cb" value="hibiscus">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-hibiscus"></use></svg>
+              <span class="fridge-item__name">Hibiscus</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-vanille">
+              <input type="checkbox" id="ds-fr-vanille" class="fridge-cb" value="vanille">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-vanille"></use></svg>
+              <span class="fridge-item__name">Vanille</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-cola">
+              <input type="checkbox" id="ds-fr-cola" class="fridge-cb" value="cola">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-cola"></use></svg>
+              <span class="fridge-item__name">Cola</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-gingembre">
+              <input type="checkbox" id="ds-fr-gingembre" class="fridge-cb" value="gingembre">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-gingembre"></use></svg>
+              <span class="fridge-item__name">Gingembre</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-tonic">
+              <input type="checkbox" id="ds-fr-tonic" class="fridge-cb" value="tonic">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-tonic"></use></svg>
+              <span class="fridge-item__name">Tonic</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-petillante">
+              <input type="checkbox" id="ds-fr-petillante" class="fridge-cb" value="petillante">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-petillante"></use></svg>
+              <span class="fridge-item__name">Pétillante</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-miel">
+              <input type="checkbox" id="ds-fr-miel" class="fridge-cb" value="miel">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-miel"></use></svg>
+              <span class="fridge-item__name">Miel</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-oeuf">
+              <input type="checkbox" id="ds-fr-oeuf" class="fridge-cb" value="oeuf">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-oeuf"></use></svg>
+              <span class="fridge-item__name">Blanc d'œuf</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-creme-coco">
+              <input type="checkbox" id="ds-fr-creme-coco" class="fridge-cb" value="creme-coco">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-creme-coco"></use></svg>
+              <span class="fridge-item__name">Crème coco</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-cannelle">
+              <input type="checkbox" id="ds-fr-cannelle" class="fridge-cb" value="cannelle">
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-cannelle"></use></svg>
+              <span class="fridge-item__name">Cannelle</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="ds-state">
+          <span class="ds-state-label">Checked</span>
+          <div class="ds-fridge-grid">
+            <label class="fridge-item" for="ds-fr-rhum-on">
+              <input type="checkbox" id="ds-fr-rhum-on" class="fridge-cb" value="rhum" checked>
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-rhum"></use></svg>
+              <span class="fridge-item__name">Sober Rhum 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-gin-on">
+              <input type="checkbox" id="ds-fr-gin-on" class="fridge-cb" value="gin" checked>
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-gin"></use></svg>
+              <span class="fridge-item__name">Sober Gin 0.0%</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-menthe-on">
+              <input type="checkbox" id="ds-fr-menthe-on" class="fridge-cb" value="menthe" checked>
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-menthe"></use></svg>
+              <span class="fridge-item__name">Menthe</span>
+            </label>
+            <label class="fridge-item" for="ds-fr-citron-vert-on">
+              <input type="checkbox" id="ds-fr-citron-vert-on" class="fridge-cb" value="citron-vert" checked>
+              <svg class="fridge-item__icon" aria-hidden="true"><use href="#fi-citron-vert"></use></svg>
+              <span class="fridge-item__name">Citron vert</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Buttons ── -->
+    <section data-ds="buttons">
+      <p class="ds-section-title">Buttons</p>
+      <div class="ds-btn-row">
+        <div class="ds-btn-wrap">
+          <span class="ds-state-label">fridge-btn (dot hidden)</span>
+          <span class="fridge-btn" style="margin-left:0; pointer-events:none;">
+            <span class="fridge-btn__label">Mon frigo</span>
+            <span class="fridge-btn__dot" style="opacity:0;" aria-hidden="true"></span>
+          </span>
+        </div>
+        <div class="ds-btn-wrap">
+          <span class="ds-state-label">fridge-btn (dot visible)</span>
+          <span class="fridge-btn" style="margin-left:0; pointer-events:none;">
+            <span class="fridge-btn__label">Mon frigo</span>
+            <span class="fridge-btn__dot" style="opacity:1;" aria-hidden="true"></span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Recipe Card ── -->
+    <section data-ds="recipe-card">
+      <p class="ds-section-title">Recipe Card</p>
+      <div class="ds-card-wrap">
+        <a href="/recettes/mojito/" class="recipe-card" data-fridge="rhum citron-vert agave menthe petillante">
+          <figure class="recipe-card__photo">
+            <img
+              src="/images/recettes/mojito.webp"
+              alt="Mojito sans alcool"
+              width="400"
+              height="400"
+              loading="lazy"
+            >
+          </figure>
+          <h2 class="recipe-card__title">Mojito</h2>
+        </a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
