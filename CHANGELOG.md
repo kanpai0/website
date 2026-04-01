@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.1] — 2026-04-01
+
+### Bug Fixes
+- Preload recipe images and enhance image dimensions for improved performance
+
+---
 ## [1.4.0] — 2026-04-01
 
 ### Features
