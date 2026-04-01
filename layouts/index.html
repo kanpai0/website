@@ -6,7 +6,8 @@
   <title>{{ .Site.Title }} - Mocktails, cocktails sans alcool</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/css/main.css">
   <meta name="version" content="{{ .Site.Params.version }}">
 </head>
@@ -71,14 +72,20 @@
   </nav>
 
   <main class="recipes-grid">
-    {{ range (where .Site.RegularPages "Section" "recettes") }}
-    {{- $fridge := delimit .Params.fridge " " }}
-    {{- $flavors := delimit .Params.flavors " " }}
-    <a href="{{ .RelPermalink }}" class="recipe-card" data-fridge="{{ $fridge }}" data-flavors="{{ $flavors }}">
+    {{ range $i, $page := (where .Site.RegularPages "Section" "recettes") }}
+    {{- $fridge := delimit $page.Params.fridge " " }}
+    {{- $flavors := delimit $page.Params.flavors " " }}
+    <a href="{{ $page.RelPermalink }}" class="recipe-card" data-fridge="{{ $fridge }}" data-flavors="{{ $flavors }}">
       <figure class="recipe-card__photo">
-        <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
+        {{ if eq $i 0 }}
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" fetchpriority="high">
+        {{ else if ge $i 5 }}
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}" loading="lazy">
+        {{ else }}
+        <img src="/images/recettes/thumbs/{{ $page.Params.slug }}.webp" alt="{{ $page.Title }}">
+        {{ end }}
       </figure>
-      <h2 class="recipe-card__title">{{ .Title }}</h2>
+      <h2 class="recipe-card__title">{{ $page.Title }}</h2>
     </a>
     {{ end }}
   </main>
