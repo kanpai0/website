@@ -15,6 +15,8 @@
   --sans:  'Inter', system-ui, -apple-system, sans-serif;
 
   --header-h: 60px;
+  --max-w: 1440px;
+  --inset: max(0px, calc((100vw - var(--max-w)) / 2));
 }
 
 /* ── Reset ── */
@@ -39,7 +41,7 @@ body.home {
   height: var(--header-h);
   display: flex;
   align-items: center;
-  padding: 0 24px;
+  padding-inline: calc(var(--inset) + 24px);
   z-index: 100;
 }
 
@@ -132,6 +134,8 @@ body.home {
   bottom: 0;
   left: 0;
   right: 0;
+  max-width: var(--max-w);
+  margin-inline: auto;
   height: 180px;
   padding: 0 32px 48px;
   display: flex;
@@ -161,7 +165,7 @@ body.home {
   left: 0; right: 0;
   z-index: 90;
   display: flex; gap: 8px;
-  padding: 6px 16px;
+  padding: 6px calc(var(--inset) + 16px);
   height: var(--pills-h);
   overflow-x: auto; -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -193,9 +197,11 @@ body.home {
 /* ── Grille d'accueil ── */
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(180px, 25% - 6px, 300px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(180px, 20% - 6px, 275px), 1fr));
   gap: 8px;
-  padding: calc(var(--header-h) + 8px) 16px 48px;
+  padding: calc(var(--header-h) + 36px) 16px 48px;
+  max-width: var(--max-w);
+  margin-inline: auto;
 }
 
 .recipe-card {
@@ -280,7 +286,11 @@ body.home {
 
 .fridge-panel {
   position: fixed;
-  inset: auto 0 0 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--max-w);
+  margin-inline: auto;
   z-index: 200;
   background: var(--bg);
   border-top: 1px solid var(--border);
