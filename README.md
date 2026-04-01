@@ -58,12 +58,12 @@ ingredients:
 - **Semantic release notes** : add release notes with rebuild content from git commits history
 - **Grille responsive** : colonnes fluides 2→4 sans breakpoints (CSS Grid `auto-fill` + `minmax`)
 - **Rapport qualité (Lighthouse)** : score Performance, Accessibilité, SEO, PWA — seuils minimum définis dans `budget.json`, intégré au pipeline CI
+- **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
 - [ ] **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
 - [ ] **Tests automatisés** :
   - Framework : Playwright + Cucumber (BDD) ou Playwright seul
