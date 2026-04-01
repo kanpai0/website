@@ -23,7 +23,7 @@
       <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}">
     </figure>
 
-    <aside class="recipe__card">
+    <aside class="recipe__card" aria-label="Ingrédients">
       <ul class="recipe__ingredients">
         {{ range .Params.ingredients }}
         <li><span>{{ . }}</span></li>

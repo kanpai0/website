@@ -15,13 +15,13 @@
 
   {{ partial "fridge-icons.html" . }}
 
-  <input type="checkbox" id="fridge-open" class="filter-cb">
+  <input type="checkbox" id="fridge-open" class="filter-cb" aria-hidden="true" tabindex="-1">
 
   <header class="site-header">
     <a href="/" class="site-logo">Kanpai Ø</a>
-    <label class="fridge-btn" for="fridge-open" aria-label="Mon frigo">
+    <label class="fridge-btn" for="fridge-open" id="fridge-btn" role="button" aria-expanded="false" aria-controls="fridge-panel" aria-label="Mon frigo">
       <span class="fridge-btn__label">Mon frigo</span>
-      <span class="fridge-btn__dot"></span>
+      <span class="fridge-btn__dot" aria-hidden="true"></span>
     </label>
   </header>
 
@@ -29,11 +29,11 @@
   <label class="fridge-overlay" for="fridge-open" aria-hidden="true"></label>
 
   <!-- Fridge panel -->
-  <div class="fridge-panel">
-    <div class="fridge-panel__handle"></div>
+  <div class="fridge-panel" id="fridge-panel" role="dialog" aria-modal="true" aria-labelledby="fridge-panel-title" aria-hidden="true">
+    <div class="fridge-panel__handle" aria-hidden="true"></div>
     <div class="fridge-panel__header">
-      <span class="fridge-panel__title">Mon frigo</span>
-      <label class="fridge-panel__close" for="fridge-open" aria-label="Fermer">✕</label>
+      <span class="fridge-panel__title" id="fridge-panel-title">Mon frigo</span>
+      <label class="fridge-panel__close" for="fridge-open" role="button" aria-label="Fermer">✕</label>
     </div>
 
     <div class="fridge-panel__body">
@@ -71,7 +71,7 @@
     </label>
   </nav>
 
-  <main class="recipes-grid">
+  <main class="recipes-grid" aria-label="Recettes">
     {{ range $i, $page := (where .Site.RegularPages "Section" "recettes") }}
     {{- $fridge := delimit $page.Params.fridge " " }}
     {{- $flavors := delimit $page.Params.flavors " " }}
@@ -118,7 +118,9 @@
         const fridgeOk = needed.every(ing => available.includes(ing));
         const cardFlavors = (card.dataset.flavors || '').split(' ').filter(Boolean);
         const flavorOk = active.length === 0 || active.every(f => cardFlavors.includes(f));
-        card.classList.toggle('fridge-hidden', !(fridgeOk && flavorOk));
+        const visible = fridgeOk && flavorOk;
+        card.classList.toggle('fridge-hidden', !visible);
+        card.setAttribute('aria-hidden', String(!visible));
       });
     }
 
@@ -152,6 +154,25 @@
     });
 
     applyFilters();
+
+    // ARIA sync for fridge dialog
+    const fridgeCb = document.getElementById('fridge-open');
+    const fridgePanel = document.getElementById('fridge-panel');
+    const fridgeBtn = document.getElementById('fridge-btn');
+
+    function syncFridgeAria() {
+      const open = fridgeCb.checked;
+      fridgePanel.setAttribute('aria-hidden', String(!open));
+      fridgeBtn.setAttribute('aria-expanded', String(open));
+      if (open) {
+        const first = fridgePanel.querySelector('input:not([tabindex="-1"]), button, [href]');
+        if (first) first.focus();
+      } else {
+        fridgeBtn.focus();
+      }
+    }
+
+    fridgeCb.addEventListener('change', syncFridgeAria);
   </script>
 
 </body>
