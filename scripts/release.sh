@@ -107,7 +107,7 @@ fi
 backlog_lines=()
 while IFS= read -r line; do
   backlog_lines+=("$line")
-done < <(grep -n '- \[ \]' "$REPO_ROOT/README.md" 2>/dev/null || true)
+done < <(grep -n '\- \[ \]' "$REPO_ROOT/README.md" 2>/dev/null || true)
 
 if [[ ${#backlog_lines[@]} -gt 0 ]]; then
   echo "Backlog items — move to Réalisées? (space-separated numbers, or Enter to skip)"
@@ -133,13 +133,10 @@ if [[ ${#backlog_lines[@]} -gt 0 ]]; then
   if [[ ${#items_to_add[@]} -gt 0 ]]; then
     # Find the --- separator just before the backlog section (= end of Réalisées)
     backlog_header=$(grep -n "En cours" "$REPO_ROOT/README.md" | head -1 | cut -d: -f1)
-    insert_before=$(awk -v stop="$backlog_header" 'NR < stop && /^---$/ {sep=NR} END {print sep}' "$REPO_ROOT/README.md")
+    insert_before=$(awk -v stop="$backlog_header" 'NR < stop && /^---$/ {sep=NR} END {print sep-1}' "$REPO_ROOT/README.md")
 
-    # Build set of line numbers to skip (1-indexed)
-    declare -A skip_lines
-    for lineno in "${lines_to_delete[@]}"; do
-      skip_lines[$lineno]=1
-    done
+    # Build space-delimited set of line numbers to skip (bash 3.2 compatible)
+    skip_lines=" ${lines_to_delete[*]} "
 
     # Rewrite README: insert moved items just before the separator, remove originals
     tmp_readme=$(mktemp)
@@ -151,7 +148,7 @@ if [[ ${#backlog_lines[@]} -gt 0 ]]; then
           printf '%s\n' "- ${text}" >> "$tmp_readme"
         done
       fi
-      if [[ -z "${skip_lines[$line_num]:-}" ]]; then
+      if [[ "$skip_lines" != *" $line_num "* ]]; then
         printf '%s\n' "$line" >> "$tmp_readme"
       fi
     done < "$REPO_ROOT/README.md"
