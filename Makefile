@@ -1,10 +1,13 @@
-.PHONY: serve build release release-dry doctor
+.PHONY: serve build test release release-dry doctor
 
 serve:
 	hugo serve
 
 build:
 	hugo build
+
+test:
+	npm test
 
 release:
 	bash scripts/release.sh
