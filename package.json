@@ -3,10 +3,15 @@
   "private": true,
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "playwright-bdd": "^8.5.0"
   },
   "scripts": {
-    "test": "hugo build && docker run --rm --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.59.1-jammy npx playwright test",
-    "test:update": "hugo build && docker run --rm --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.59.1-jammy npx playwright test --update-snapshots"
+    "build":       "hugo build",
+    "pw":          "docker run --rm --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.59.1-jammy",
+    "test":        "npm run build && npm run pw -- sh -c 'npx bddgen && npx playwright test'",
+    "test:visual": "npm run build && npm run pw -- npx playwright test --project=visual",
+    "test:bdd":    "npm run build && npm run pw -- sh -c 'npx bddgen && npx playwright test --project=bdd-mobile --project=bdd-desktop'",
+    "test:update": "npm run build && npm run pw -- npx playwright test --update-snapshots --project=visual"
   }
 }
