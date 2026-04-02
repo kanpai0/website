@@ -118,6 +118,6 @@ Points d'attention :
 
 ## Questions ouvertes
 
-- [ ] Stratégie d'affiliation : quels partenaires cibler en premier ?
-- [ ] Faut-il un blog/magazine en plus des recettes pour le SEO longue traîne ?
-- [ ] TikTok : compte non créé (échec technique lors de l'inscription)
+- Stratégie d'affiliation : quels partenaires cibler en premier ?
+- Faut-il un blog/magazine en plus des recettes pour le SEO longue traîne ?
+- TikTok : compte non créé (échec technique lors de l'inscription)
