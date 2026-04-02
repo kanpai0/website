@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.2] — 2026-04-02
+
+### CI
+- Add deploy workflow to GitHub Actions pipeline
+
+---
 ## [1.5.1] — 2026-04-02
 
 ### CI
