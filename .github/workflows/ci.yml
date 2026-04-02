@@ -22,6 +22,25 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
 
+  deploy:
+    needs: [lighthouse, visual-regression]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.159.1'
+
+      - run: hugo build
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=kanpai0
+
   visual-regression:
     runs-on: ubuntu-latest
     steps:

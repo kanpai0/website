@@ -60,20 +60,20 @@ ingredients:
 - **Rapport qualité (Lighthouse)** : score Performance, Accessibilité, SEO, PWA — seuils minimum définis dans `budget.json`, intégré au pipeline CI
 - **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
 - **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
-- **Tests automatisés** :
+- **Tests automatisés** : anti régression visuelle sur le design system ; déploiement bloqué si les tests échouent
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-  - Framework : Playwright + Cucumber (BDD) ou Playwright seul
-  - Périmètre : filtrage frigo, filtrage saveurs, navigation recette, responsive
-  - Exécution : pre-push hook (`git hook`) + GitHub Actions pipeline
-  - Intégration Cloudflare : bloquer le déploiement si les tests échouent (preview → production gate)
+- [ ] **Tests automatisés** : tests fonctionnels pour filtrage frigo, filtrage saveurs, navigation recette, responsive
+- [ ] **Checklist de commit** : vérifier que tout a été fait (légal, ARIA, design system, tests auto, etc.)
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recipe page enrichment** : étapes de préparation
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
+- [ ] **Obligations légales** 
+- [ ] **Icones réseaux sociaux**
 
 ---
 
