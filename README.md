@@ -60,12 +60,12 @@ ingredients:
 - **Rapport qualité (Lighthouse)** : score Performance, Accessibilité, SEO, PWA — seuils minimum définis dans `budget.json`, intégré au pipeline CI
 - **ARIA** : accessibilité complète (rôles, labels, live regions pour les filtres)
 - **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
+- **Tests automatisés** :
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Tests automatisés** :
   - Framework : Playwright + Cucumber (BDD) ou Playwright seul
   - Périmètre : filtrage frigo, filtrage saveurs, navigation recette, responsive
   - Exécution : pre-push hook (`git hook`) + GitHub Actions pipeline

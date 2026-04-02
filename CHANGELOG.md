@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.1] — 2026-04-02
+
+### CI
+- Add Visual Regression Testing setup to Lighthouse CI
+
+---
 ## [1.5.0] — 2026-04-01
 
 ### Features
