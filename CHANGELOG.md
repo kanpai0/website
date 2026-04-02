@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.4] — 2026-04-02
+
+### Bug Fixes
+- Ensure font readiness in design system test
+
+---
 ## [1.5.3] — 2026-04-02
 
 ### Bug Fixes
