@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.3] — 2026-04-02
+
+### Bug Fixes
+- Improve font loading in design system test
+
+---
 ## [1.5.2] — 2026-04-02
 
 ### CI
