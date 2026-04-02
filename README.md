@@ -74,6 +74,8 @@ ingredients:
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
 - [ ] **Obligations légales** 
 - [ ] **Icones réseaux sociaux**
+- [ ] **Cocktail 404 pour page 404** : trouver une recette originale pour ce cocktail. Faut-il le garder caché comme un easter egg?
+- [ ] **Bouton retour** à la liste à partir d'une recette
 
 ---
 
