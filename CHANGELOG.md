@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.5] — 2026-04-02
+
+### CI
+- Streamline visual regression workflow and simplify design system tests
+
+---
 ## [1.5.4] — 2026-04-02
 
 ### Bug Fixes
