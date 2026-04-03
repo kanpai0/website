@@ -3,7 +3,8 @@
 ## [1.5.6] — 2026-04-02
 
 ### Documentation
-- Update README to remove task list formatting in open questions section- Update README with new tasks for 404 cocktail and back button ideas
+- Update README to remove task list formatting in open questions section
+- Update README with new tasks for 404 cocktail and back button ideas
 
 ### Testing
 - Add BDD tests for fridge filters and navigation handling
