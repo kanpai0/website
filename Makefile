@@ -1,4 +1,4 @@
-.PHONY: serve build test release release-dry doctor
+.PHONY: serve build test release release-dry doctor preflight
 
 serve:
 	hugo serve
@@ -14,6 +14,9 @@ release:
 
 release-dry:
 	bash scripts/release.sh --dry-run
+
+preflight:
+	bash scripts/preflight.sh
 
 doctor:
 	@echo "=== Installed ==="

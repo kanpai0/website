@@ -102,6 +102,18 @@ if $DRY_RUN; then
 fi
 
 # ---------------------------------------------------------------------------
+# 7b. Quality gate
+# ---------------------------------------------------------------------------
+echo ""
+read -r -p "Run preflight checks (npm test + manual checklist)? [Y/n] " _run_preflight
+if [[ ! "$_run_preflight" =~ ^[Nn] ]]; then
+  bash "$REPO_ROOT/scripts/preflight.sh" || { echo "Aborted: fix preflight failures first."; exit 1; }
+  read -r -p "Manual checklist complete? [Y/n] " _quality_ok
+  [[ ! "$_quality_ok" =~ ^[Nn] ]] || { echo "Aborted."; exit 0; }
+fi
+echo ""
+
+# ---------------------------------------------------------------------------
 # 8. Interactive README.md backlog review — move items to Réalisées section
 # ---------------------------------------------------------------------------
 backlog_lines=()
@@ -160,8 +172,8 @@ fi
 # ---------------------------------------------------------------------------
 # 9. Prompt for confirmation
 # ---------------------------------------------------------------------------
-read -r -p "Proceed with release v${new_version}? [y/N] " answer
-[[ "$answer" =~ ^[Yy] ]] || { echo "Aborted."; exit 0; }
+read -r -p "Proceed with release v${new_version}? [Y/n] " answer
+[[ ! "$answer" =~ ^[Nn] ]] || { echo "Aborted."; exit 0; }
 
 # ---------------------------------------------------------------------------
 # 9. Generate / prepend CHANGELOG.md

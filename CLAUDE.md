@@ -104,3 +104,25 @@ Fonts: Playfair Display (headings, italic), Inter (body). Mobile-first with `cla
 ## Deployment
 
 Push to `main` → Cloudflare Pages auto-builds with `HUGO_VERSION=0.159.1`. No CI/CD config needed. Domain: kanpai0.co (301 from kanpai0.com).
+
+## Quality Gates
+
+After completing any modification, check the relevant sections of `QUALITY_CHECKLIST.md`:
+
+| Change type                       | Checklist sections |
+|-----------------------------------|--------------------|
+| Add/modify recipe frontmatter     | A, G               |
+| Add new fridge ingredient/icon    | A, C, D, E         |
+| Add/modify CSS token or component | C, D, E            |
+| Add new JS behavior               | C, E               |
+| Add new page/layout               | B, C, F            |
+| Any modification                  | B                  |
+
+Run `make preflight` before pushing — validates schema, build, and all tests.
+Run `npm run test:update` when visual baselines need updating after intentional design changes.
+
+**Pre-commit hook** — runs `hugo build` + fridge schema check on every commit.
+Reinstall after fresh clone: `cp scripts/pre-commit.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
+
+**Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`.
+Adding a new ingredient requires 3 steps: (1) `<symbol>` in `fridge-icons.html`, (2) `<label>` in `fridge-panel-body.html`, (3) update recipes using it.
