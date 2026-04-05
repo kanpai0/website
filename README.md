@@ -62,12 +62,12 @@ ingredients:
 - **Page composants** : page dédiée listant tous les composants UI pour détecter les régressions visuelles
 - **Tests automatisés** : anti régression visuelle sur le design system ; déploiement bloqué si les tests échouent
 - **Tests automatisés** : tests fonctionnels pour filtrage frigo, filtrage saveurs, navigation recette, responsive
+- **Checklist de commit** : vérifier que tout a été fait (légal, ARIA, design system, tests auto, etc.)
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Checklist de commit** : vérifier que tout a été fait (légal, ARIA, design system, tests auto, etc.)
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recipe page enrichment** : étapes de préparation
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées

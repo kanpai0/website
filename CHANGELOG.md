@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.7] — 2026-04-05
+
+### Documentation
+- Fix CHANGELOG formatting for README updates
+
+---
 ## [1.5.6] — 2026-04-02
 
 ### Documentation
