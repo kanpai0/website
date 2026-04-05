@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.0] — 2026-04-05
+
+### Features
+- Add footer, mentions légales page, and new typography styles
+
+### Testing
+- Add footer section to visual design system tests
+
+---
 ## [1.5.7] — 2026-04-05
 
 ### Documentation

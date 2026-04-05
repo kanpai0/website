@@ -63,6 +63,7 @@ ingredients:
 - **Tests automatisés** : anti régression visuelle sur le design system ; déploiement bloqué si les tests échouent
 - **Tests automatisés** : tests fonctionnels pour filtrage frigo, filtrage saveurs, navigation recette, responsive
 - **Checklist de commit** : vérifier que tout a été fait (légal, ARIA, design system, tests auto, etc.)
+- **Obligations légales** 
 
 ---
 
@@ -72,7 +73,6 @@ ingredients:
 - [ ] **Recipe page enrichment** : étapes de préparation
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
-- [ ] **Obligations légales** 
 - [ ] **Icones réseaux sociaux**
 - [ ] **Cocktail 404 pour page 404** : trouver une recette originale pour ce cocktail. Faut-il le garder caché comme un easter egg?
 - [ ] **Bouton retour** à la liste à partir d'une recette
