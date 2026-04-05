@@ -400,3 +400,57 @@ body.home {
 .recipe-card.fridge-hidden {
   display: none !important;
 }
+
+/* Footer */
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer a:hover {
+  color: var(--ink);
+}
+
+/* Prose page (mentions légales, etc.) */
+.page .prose {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.page .prose h1 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 2rem;
+}
+
+.page .prose p,
+.page .prose li {
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.page .prose strong {
+  font-weight: 600;
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.page .prose a {
+  color: var(--sage);
+  text-underline-offset: 2px;
+}
