@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
   await page.waitForLoadState('networkidle');
 });
 
-const sections = ['colors', 'typography', 'flavor-pills', 'fridge-items', 'buttons', 'recipe-card'];
+const sections = ['colors', 'typography', 'flavor-pills', 'fridge-items', 'buttons', 'recipe-card', 'footer'];
 
 for (const section of sections) {
   test(section, async ({ page }) => {

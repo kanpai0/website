@@ -22,6 +22,13 @@
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
+
+/* ── Focus ── */
+:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 body {
   background: linear-gradient(160deg, #FDFBF7 0%, var(--bg) 40%, #EDE8DC 100%) fixed;
   color: var(--ink);
@@ -413,13 +420,13 @@ body.home {
 }
 
 .site-footer a {
-  color: var(--muted);
+  color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .site-footer a:hover {
-  color: var(--ink);
+  color: var(--sage);
 }
 
 /* Prose page (mentions légales, etc.) */
