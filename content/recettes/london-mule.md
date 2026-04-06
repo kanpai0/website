@@ -13,4 +13,13 @@ ingredients:
   - 100 ml de bière au gingembre
   - Une branche de menthe fraîche
   - Glace
+subtitle: "Épicé et frais"
+glass: "mule-mug"
+steps:
+  - "Versez directement le jus d'un demi-citron vert dans le verre en cuivre, coupez le demi-citron vert pressé en quatre morceaux et ajoutez-les dans le verre."
+  - "Ajoutez ensuite 50 ml de Sober Spirits 0,0 % et 10 ml de sirop d'agave."
+  - "Ajoutez des glaçons et versez environ 100 ml de bière au gingembre."
+  - "Bien mélanger au fond du verre et garnir d'une rondelle de citron vert déshydratée et d'un brin de menthe fraîche."
+  - "Option : vous pouvez saupoudrer de gingembre frais en poudre et ajouter un morceau de gingembre frais au cocktail pour encore plus de plaisir."
+tips: "À l'origine, nous utilisons des verres en cuivre non seulement pour leur esthétique, mais aussi parce que le cuivre possède une conductivité thermique très élevée. Cela signifie que dès que vous y mettez des glaçons, le froid se propage très rapidement dans tout le verre, rendant le cocktail prêt à être dégusté instantanément."
 ---

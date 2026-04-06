@@ -11,4 +11,13 @@ ingredients:
   - "50 ml de jus d'ananas,"
   - 25 ml de crème de coco
   - Glace
+subtitle: "Onctueux et fruité"
+glass: "highball"
+steps:
+  - "Dans le shaker, versez 50 ml de Sober Spirits 0,0 %, 50 ml de jus d'ananas et 25 ml de crème de coco."
+  - "Ajoutez des glaçons et secouez vigoureusement pendant au moins 10 secondes. Le but est de créer une mousse légère et crémeuse grâce à l'agitation."
+  - "Versez le tout directement dans le verre."
+  - "Garnissez d'une tranche d'ananas et de sa feuille, et c'est prêt à déguster !"
+  - "Si vous préférez une touche de fraîcheur acidulée, ajoutez le jus d'un quart de citron vert."
+tips: "Si vous n'avez pas de shaker, utilisez un pot de confiture vide ou un récipient similaire pour agiter et obtenir le même résultat."
 ---

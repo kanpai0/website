@@ -16,4 +16,12 @@ ingredients:
   - 1 gousse de vanille
   - Bâton de cannelle
   - Glace
+subtitle: "Exotique et onctueux"
+glass: "rocks"
+steps:
+  - "Ajoutez tous les ingrédients directement dans le bol pour préparer votre cocktail sans alcool."
+  - "Fendre la gousse de vanille, en gratter les graines et les ajouter dans le bol (avec la gousse)."
+  - "Ajoutez de la cannelle selon votre goût (entre 2 et 4 bâtons pour cette recette). Si vous souhaitez boire votre boisson immédiatement, pensez à utiliser de la cannelle en poudre."
+  - "Mélangez et laissez macérer pendant 2 heures au réfrigérateur. Au moment de servir, ajoutez des glaçons et décorez votre verre."
+tips: "Si vous souhaitez améliorer l'expérience, préférez utiliser un extracteur de jus plutôt que des jus de fruits industriels."
 ---

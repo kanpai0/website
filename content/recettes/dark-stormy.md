@@ -12,4 +12,12 @@ ingredients:
   - "10 ml de sirop d'agave"
   - 100 ml de bière au gingembre
   - Glace
+subtitle: "Aphrodisiaque et épicé"
+glass: "rocks"
+steps:
+  - "Versez le jus d'un demi-citron vert directement dans le verre, coupez-le en quartiers après l'avoir pressé et ajoutez les morceaux dans le verre. Ajoutez ensuite 10 ml de sirop d'agave et 50 ml de Sober-Rum 0,0 %."
+  - "Remplissez de glaçons ou de glace pilée et complétez avec de la bière au gingembre jusqu'au bord (environ 10 cl)."
+  - "Mélangez bien au fond et décorez avec une tranche de citron, c'est prêt !"
+  - "Option : Fumer le cocktail."
+tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."
 ---

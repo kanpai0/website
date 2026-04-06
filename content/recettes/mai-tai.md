@@ -11,4 +11,11 @@ ingredients:
   - 1 demi-citron vert pressé
   - "10 ml de sirop d'orgeat"
   - Glace
+subtitle: "Doux et frais"
+glass: "rocks"
+steps:
+  - "Versez le jus d'un demi-citron vert directement dans le verre, coupez le demi-citron en quartiers après l'avoir pressé et ajoutez les morceaux dans le verre à short drink."
+  - "Ajoutez ensuite 10 ml de sirop d'orgeat, remplissez votre verre de glaçons et ajoutez 60 ml de Sober-Rum 0,0 %."
+  - "Bien mélanger au fond et garnir d'un zeste de citron, d'une amande grillée (entière ou effilée) ou d'une fleur comestible."
+tips: "Prenez un zeste de citron (de préférence jaune) que vous venez de couper. Dans une main, tenez le zeste entre votre index et votre pouce et prenez un briquet dans l'autre main. Simultanément, pressez l'écorce entre vos doigts pour libérer l'huile essentielle vers le briquet allumé et le verre. Les étincelles de l'huile essentielle de citron brûlée parfumeront le cocktail et créeront un effet de surprise."
 ---

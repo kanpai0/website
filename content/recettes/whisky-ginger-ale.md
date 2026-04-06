@@ -12,4 +12,13 @@ ingredients:
   - 20 ml de jus de citron vert
   - Glace
   - Tranche de citron vert ou de pomme déshydratée (facultatif)
+subtitle: "Épicé et onctueux"
+glass: "highball"
+steps:
+  - "Remplissez un verre de glaçons."
+  - "Versez 50 ml de Sober Spirits bourbon Sober Spirits 0,0 %. Ajoutez 20 ml de jus de citron vert."
+  - "Ajoutez environ 100 ml de ginger ale."
+  - "Mélangez délicatement à l'aide d'une cuillère à cocktail afin d'incorporer tous les ingrédients sans faire disparaître les bulles du Ginger Ale."
+  - "Garnissez d'une tranche de citron vert déshydratée ou d'une tranche de pomme pour une présentation élégante et un contraste de saveurs."
+tips: "Optez pour un ginger ale de qualité, idéalement avec un vrai goût de gingembre, afin de compléter les notes boisées du whisky sans alcool."
 ---

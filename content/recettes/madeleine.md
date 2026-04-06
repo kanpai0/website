@@ -12,4 +12,11 @@ ingredients:
   - 1 demi-citron vert, pressé
   - "10 ml de sirop d'agave"
   - Glace
+subtitle: "Crémeux et fruité"
+glass: "highball"
+steps:
+  - "Versez le jus d'un demi-citron vert pressé directement dans le verre.Ajoutez ensuite 50 ml de Sober Spirits 0,0 % et 10 ml de sirop d'agave."
+  - "Ajoutez des glaçons et environ 100 ml de jus d'ananas."
+  - "Bien mélanger au fond et décorer avec une tranche de citron vert déshydraté, un brin de menthe fraîche et des morceaux d'ananas."
+tips: "Si vous souhaitez améliorer votre expérience, préférez utiliser un extracteur de jus plutôt que des jus de fruits industriels."
 ---

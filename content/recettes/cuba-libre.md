@@ -11,4 +11,13 @@ ingredients:
   - 1 demi-citron vert pressé
   - 150 ml de Coca Cola
   - Glace
+subtitle: "Pétillant et acidulé"
+glass: "rocks"
+steps:
+  - "Versez le jus d'un demi-citron vert pressé directement dans le verre, coupez le demi-citron en quatre après l'avoir pressé et ajoutez les morceaux dans le verre."
+  - "Ajoutez ensuite 50 ml de Sober-Rum 0,0 %."
+  - "Remplissez votre verre de glaçons ou de glace pilée et versez-y du Coca Cola jusqu'à ras bord (environ 150 ml)."
+  - "Mélangez et garnissez d'une tranche de citron, c'est prêt à être dégusté !"
+  - "Option : Fumer le cocktail."
+tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."
 ---

@@ -13,4 +13,13 @@ ingredients:
   - "Le jus d'un demi-citron"
   - 1 bâton de cannelle
   - Glace
+subtitle: "Épicé et boisé"
+glass: "rocks"
+steps:
+  - "Fumez votre verre avec un bâton de cannelle (voir conseil du barman)."
+  - "Remplissez le verre de glaçons."
+  - "Versez 50 ml de Sober Spirits bourbon Sober Spirits 0,0 %, 80 ml de jus de pomme et 10 ml de sirop de miel. Ajoutez le jus d'un demi-citron pressé."
+  - "Bien mélanger."
+  - "Garnir d'une pincée de cannelle et d'une tranche de pomme déshydratée."
+tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."
 ---

@@ -12,4 +12,13 @@ ingredients:
   - "Le jus d'un demi-citron vert"
   - 60 ml de jus de framboise
   - "1 blanc d'œuf"
+subtitle: "Crémeux et fruité"
+glass: "coupette"
+steps:
+  - "Dans le shaker, versez le jus d'un demi-citron vert pressé."
+  - "Ajoutez 50 ml de Sober Spirits 0,0 %, 15 ml de sirop d'hibiscus, 60 ml de jus de framboise et 1 blanc d'œuf."
+  - "Agitez vigoureusement pendant environ 10 à 15 secondes pour bien mélanger les ingrédients et refroidir le mélange."
+  - "Filtrez et versez le cocktail dans un verre à pied."
+  - "Garnir d'une framboise ou d'une fleur comestible."
+tips: "Pour obtenir un cocktail encore plus aromatique, effectuez un Dry Shake."
 ---

@@ -11,4 +11,12 @@ ingredients:
   - 1 demi-citron vert pressé
   - "10 ml de sirop d'agave"
   - Glace
+subtitle: "Exotique et sain"
+glass: "coupette"
+steps:
+  - "Dans le shaker, versez 50 ml de Sober Spirits 0,0 %, le jus d'un demi-citron vert et 15 ml de sirop d'agave."
+  - "Ajoutez des glaçons et secouez vigoureusement pendant au moins 10 secondes."
+  - "Versez le tout directement dans le verre."
+  - "Garnissez d'un zeste de citron vert, et c'est prêt à déguster !"
+tips: "Pour créer une décoration qui surprendra tous vos invités à l'apéritif, prenez un citron vert entier et un éplucheur. Utilisez l'éplucheur pour râper une fine et longue bande d'écorce. Coupez les bords pour former un parallélogramme. Placez-le sur votre verre à l'aide d'une petite pince."
 ---

@@ -11,4 +11,12 @@ ingredients:
   - 100 ml de tonic indien
   - "Tranche d'orange"
   - Glaçons
+subtitle: "Gourmand & Healthy"
+glass: "vin"
+steps:
+  - "Dans un verre, mélanger le Sober Spritz 0.0% et le Tonic"
+  - "Remuez délicatement pour mélanger les ingrédients, afin que les saveurs se marient harmonieusement."
+  - "Ajoutez une poignée de glaçons dans le verre pour que votre spritz soit parfaitement frais et rafraîchissant."
+  - "Décorez avec une tranche d'orange, pour ajouter un arôme vif et citronné et une touche d'élégance à votre cocktail."
+  - "Prenez un moment pour apprécier la couleur vive et les bulles effervescentes qui remontent à la surface."
 ---
