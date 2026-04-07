@@ -2,4 +2,8 @@
   <span>© {{ now.Year }} Kanpai Ø</span>
   <span aria-hidden="true">·</span>
   <a href="/mentions-legales/">Mentions légales</a>
+  {{ with .Params.source_url }}
+  <span aria-hidden="true">·</span>
+  <span>Recette <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Sober Spirits</a></span>
+  {{ end }}
 </footer>

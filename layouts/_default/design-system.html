@@ -100,6 +100,14 @@
     /* Buttons row */
     .ds-btn-row { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
     .ds-btn-wrap { display: flex; flex-direction: column; gap: 6px; }
+
+    /* Glass icons grid */
+    .ds-glass-grid { display: flex; flex-wrap: wrap; gap: 24px; }
+    .ds-glass-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .ds-glass-label { font-size: 10px; color: var(--muted); font-weight: 500; font-family: monospace; }
+
+    /* Recipe section wrapper */
+    .ds-recipe-wrap { max-width: 420px; }
   </style>
 </head>
 <body>
@@ -458,8 +466,140 @@
     <!-- ── Footer ── -->
     <section data-ds="footer">
       <p class="ds-section-title">Footer</p>
-      <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
-        {{ partial "footer.html" . }}
+      <div class="ds-states" style="flex-direction: column; gap: 16px;">
+        <div class="ds-state">
+          <span class="ds-state-label">Default (homepage / prose page)</span>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <footer class="site-footer">
+              <span>© {{ now.Year }} Kanpai Ø</span>
+              <span aria-hidden="true">·</span>
+              <a href="/mentions-legales/">Mentions légales</a>
+            </footer>
+          </div>
+        </div>
+        <div class="ds-state">
+          <span class="ds-state-label">Recipe page (with source credit)</span>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+            <footer class="site-footer">
+              <span>© {{ now.Year }} Kanpai Ø</span>
+              <span aria-hidden="true">·</span>
+              <a href="/mentions-legales/">Mentions légales</a>
+              <span aria-hidden="true">·</span>
+              <span>Recette <a href="#" target="_blank" rel="noopener noreferrer">Sober Spirits</a></span>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Glass Icons ── -->
+    <section data-ds="glass-icons">
+      <p class="ds-section-title">Glass Icons</p>
+      <div class="ds-glass-grid">
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "rocks" }}
+          <span class="ds-glass-label">rocks</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "highball" }}
+          <span class="ds-glass-label">highball</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "collins" }}
+          <span class="ds-glass-label">collins</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "mule-mug" }}
+          <span class="ds-glass-label">mule-mug</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "coupette" }}
+          <span class="ds-glass-label">coupette</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "martini" }}
+          <span class="ds-glass-label">martini</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "margarita" }}
+          <span class="ds-glass-label">margarita</span>
+        </div>
+        <div class="ds-glass-item">
+          {{ partial "glass-icon.html" "vin" }}
+          <span class="ds-glass-label">vin</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Recipe Ingredients ── -->
+    <section data-ds="recipe-ingredients">
+      <p class="ds-section-title">Recipe — Ingredients</p>
+      <div class="ds-recipe-wrap">
+        <h2 class="recipe__section-label">Ingrédients</h2>
+        <hr class="recipe__rule">
+        <ul class="recipe__ingredients" aria-label="Liste des ingrédients">
+          <li>
+            <span class="recipe__ing-name">Rhum Sober Spirits 0,0 %</span>
+            <span class="recipe__ing-qty">50 ml</span>
+          </li>
+          <li>
+            <span class="recipe__ing-name">Citron vert pressé</span>
+            <span class="recipe__ing-qty">½</span>
+          </li>
+          <li>
+            <span class="recipe__ing-name">Sirop d'agave</span>
+            <span class="recipe__ing-qty">10 ml</span>
+          </li>
+          <li>
+            <span class="recipe__ing-name">Menthe fraîche</span>
+            <span class="recipe__ing-qty"></span>
+          </li>
+          <li>
+            <span class="recipe__ing-name">Eau pétillante</span>
+            <span class="recipe__ing-qty">100 ml</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Recipe Steps ── -->
+    <section data-ds="recipe-steps">
+      <p class="ds-section-title">Recipe — Steps</p>
+      <div class="ds-recipe-wrap">
+        <h2 class="recipe__section-label">Préparation</h2>
+        <hr class="recipe__rule">
+        <ol class="recipe__steps" aria-label="Étapes de préparation">
+          <li class="recipe__step">
+            <span class="recipe__step-num" aria-hidden="true">01</span>
+            <div class="recipe__step-body">
+              <strong class="recipe__step-title">Versez le jus de citron dans le verre</strong>
+              <p class="recipe__step-desc">Pressez le demi-citron directement au-dessus du verre.</p>
+            </div>
+          </li>
+          <li class="recipe__step">
+            <span class="recipe__step-num" aria-hidden="true">02</span>
+            <div class="recipe__step-body">
+              <strong class="recipe__step-title">Ajoutez le sirop d'agave et les feuilles de menthe</strong>
+            </div>
+          </li>
+          <li class="recipe__step">
+            <span class="recipe__step-num" aria-hidden="true">03</span>
+            <div class="recipe__step-body">
+              <strong class="recipe__step-title">Complétez avec l'eau pétillante et mélangez délicatement</strong>
+              <p class="recipe__step-desc">Ajoutez de la glace pilée et décorez d'une feuille de menthe.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Recipe Tips ── -->
+    <section data-ds="recipe-tips">
+      <p class="ds-section-title">Recipe — Tips</p>
+      <div class="ds-recipe-wrap recipe__section--tips">
+        <h2 class="recipe__section-label">Conseils</h2>
+        <hr class="recipe__rule">
+        <p class="recipe__tips">Pour un mojito plus intense, laissez infuser les feuilles de menthe quelques minutes avant d'ajouter les glaçons. Évitez d'écraser la menthe pour ne pas libérer d'amertume.</p>
       </div>
     </section>
 
