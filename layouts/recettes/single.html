@@ -12,28 +12,84 @@
   <link rel="preload" as="image" href="/images/recettes/{{ .Params.slug }}.webp" fetchpriority="high">
   <meta name="version" content="{{ .Site.Params.version }}">
 </head>
-<body>
+<body class="recipe-page">
 
   <header class="site-header">
+    <a href="/" class="site-back" aria-label="Retour à la liste des recettes">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </a>
     <a href="/" class="site-logo">Kanpai Ø</a>
   </header>
 
-  <main class="recipe">
+  <main class="recipe" aria-labelledby="recipe-title">
 
-    <figure class="recipe__photo">
-      <img src="/images/recettes/{{ .Params.slug }}.webp" alt="{{ .Title }}" width="800" height="800" fetchpriority="high">
+    <figure class="recipe__photo" aria-hidden="true">
+      <img src="/images/recettes/{{ .Params.slug }}.webp" alt="" width="800" height="800" fetchpriority="high">
     </figure>
 
-    <aside class="recipe__card" aria-label="Ingrédients">
-      <ul class="recipe__ingredients">
-        {{ range .Params.ingredients }}
-        <li><span>{{ . }}</span></li>
-        {{ end }}
-      </ul>
-    </aside>
+    <div class="recipe__body">
 
-    <div class="recipe__info">
-      <h1 class="recipe__title">{{ .Title }}</h1>
+      <div class="recipe__head">
+        {{ with .Params.subtitle }}<p class="recipe__subtitle">{{ . }}</p>{{ end }}
+        <h1 class="recipe__title" id="recipe-title">{{ .Title }}</h1>
+      </div>
+
+      {{/* ── Ingrédients ── */}}
+      <section class="recipe__section" aria-labelledby="ing-heading">
+        <h2 class="recipe__section-label" id="ing-heading">Ingrédients</h2>
+        <hr class="recipe__rule">
+        <ul class="recipe__ingredients" aria-label="Liste des ingrédients">
+          {{ range .Params.ingredients }}
+          <li>
+            <span class="recipe__ing-name">{{ .name }}</span>
+            {{ if .qty }}<span class="recipe__ing-qty">{{ .qty }}</span>{{ end }}
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+
+      {{/* ── Ustensiles / verre ── */}}
+      {{ with .Params.glass }}
+      <section class="recipe__section" aria-labelledby="tools-heading">
+        <h2 class="recipe__section-label" id="tools-heading">Ustensiles</h2>
+        <hr class="recipe__rule">
+        <div class="recipe__glass">
+          {{ partial "glass-icon.html" . }}
+          <span>{{ . | humanize }}</span>
+        </div>
+      </section>
+      {{ end }}
+
+      {{/* ── Préparation ── */}}
+      {{ if .Params.steps }}
+      <section class="recipe__section" aria-labelledby="steps-heading">
+        <h2 class="recipe__section-label" id="steps-heading">Préparation</h2>
+        <hr class="recipe__rule">
+        <ol class="recipe__steps" aria-label="Étapes de préparation">
+          {{ range $i, $step := .Params.steps }}
+          <li class="recipe__step">
+            <span class="recipe__step-num" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+            <div class="recipe__step-body">
+              <strong class="recipe__step-title">{{ $step.title }}</strong>
+              {{ if $step.text }}<p class="recipe__step-desc">{{ $step.text }}</p>{{ end }}
+            </div>
+          </li>
+          {{ end }}
+        </ol>
+      </section>
+      {{ end }}
+
+      {{/* ── Conseils ── */}}
+      {{ with .Params.tips }}
+      <section class="recipe__section recipe__section--tips" aria-labelledby="tips-heading">
+        <h2 class="recipe__section-label" id="tips-heading">Conseils</h2>
+        <hr class="recipe__rule">
+        <p class="recipe__tips">{{ . }}</p>
+      </section>
+      {{ end }}
+
     </div>
 
   </main>
