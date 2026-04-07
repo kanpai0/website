@@ -11,6 +11,8 @@ const sections = [
   'flavor-pills',
   'fridge-items',
   'buttons',
+  'site-back',
+  'recipe-glass',
   'recipe-card',
   'footer',
   'glass-icons',

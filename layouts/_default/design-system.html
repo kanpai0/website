@@ -169,18 +169,26 @@
       </div>
 
       <div class="ds-type-row">
+        <div class="ds-type-label">recipe__subtitle</div>
+        <p class="recipe__subtitle" style="margin:0;">Tropical et sain</p>
+      </div>
+
+      <div class="ds-type-row">
         <div class="ds-type-label">recipe-card__title</div>
         <p class="recipe-card__title">Mojito sans alcool</p>
       </div>
 
       <div class="ds-type-row">
-        <div class="ds-type-label">Section label — muted</div>
-        <p class="fridge-section__title" style="margin:0;">Spiritueux sans alcool</p>
+        <div class="ds-type-label">recipe__section-label + recipe__rule</div>
+        <div style="width: 320px;">
+          <p class="recipe__section-label" style="margin-bottom: 12px;">Ingrédients</p>
+          <hr class="recipe__rule" style="margin-bottom: 0;">
+        </div>
       </div>
 
       <div class="ds-type-row">
-        <div class="ds-type-label">Section label — sage (recipe__card-label)</div>
-        <p class="recipe__card-label" style="position:static;">Ingrédients</p>
+        <div class="ds-type-label">Section label — muted (fridge-section__title)</div>
+        <p class="fridge-section__title" style="margin:0;">Spiritueux sans alcool</p>
       </div>
 
       <div class="ds-type-row">
@@ -440,6 +448,56 @@
             <span class="fridge-btn__label">Mon frigo</span>
             <span class="fridge-btn__dot" style="opacity:1;" aria-hidden="true"></span>
           </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Back Button ── -->
+    <section data-ds="site-back">
+      <p class="ds-section-title">Back Button</p>
+      <div class="ds-states">
+        <div class="ds-state">
+          <span class="ds-state-label">Default</span>
+          <div style="position: relative; width: 48px; height: 48px;">
+            <a href="#" class="site-back" style="position: static; display: inline-flex;" aria-label="Retour à la liste des recettes">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="ds-state">
+          <span class="ds-state-label">Hover</span>
+          <div style="position: relative; width: 48px; height: 48px;">
+            <a href="#" class="site-back" style="position: static; display: inline-flex; background: var(--border);" aria-label="Retour à la liste des recettes">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Recipe Glass (Ustensiles) ── -->
+    <section data-ds="recipe-glass">
+      <p class="ds-section-title">Recipe — Ustensiles</p>
+      <div class="ds-recipe-wrap">
+        <h2 class="recipe__section-label">Ustensiles</h2>
+        <hr class="recipe__rule">
+        <div class="ds-states" style="flex-direction: column; gap: 8px;">
+          <div class="recipe__glass">
+            {{ partial "glass-icon.html" "rocks" }}
+            <span>Rocks glass</span>
+          </div>
+          <div class="recipe__glass">
+            {{ partial "glass-icon.html" "highball" }}
+            <span>Highball</span>
+          </div>
+          <div class="recipe__glass">
+            {{ partial "glass-icon.html" "mule-mug" }}
+            <span>Mule mug</span>
+          </div>
         </div>
       </div>
     </section>
