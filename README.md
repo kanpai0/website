@@ -64,13 +64,13 @@ ingredients:
 - **Tests automatisés** : tests fonctionnels pour filtrage frigo, filtrage saveurs, navigation recette, responsive
 - **Checklist de commit** : vérifier que tout a été fait (légal, ARIA, design system, tests auto, etc.)
 - **Obligations légales** 
+- **Bouton retour** à la liste à partir d'une recette
+- **Recipe page enrichment** : étapes de préparation
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Bouton retour** à la liste à partir d'une recette
-- [ ] **Recipe page enrichment** : étapes de préparation
 - [ ] **Icone d'app** pour PWA
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0] — 2026-04-07
+
+### Features
+- Add extraction script and enrich recipes with structured metadata- Add glass icon partial, migrate recipes to structured format, and update recipe page styles- Extend design system and tests with recipes and glass icons
+
+### Documentation
+- Add generated images for Pencil layouts- Add recipe page redesign spec
+
+### Testing
+- Extend design system with back button and recipe glass sections
+
+---
 ## [1.6.0] — 2026-04-05
 
 ### Features
