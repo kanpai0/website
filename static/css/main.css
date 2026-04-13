@@ -8,6 +8,7 @@
   --ink:    #1A1A18;
   --muted:  #6B6860;
   --sage:   #3D5A3E;
+  --subtitle: #C9865B;
   --white:  #FFFFFF;
   --border: #E8E3D8;
 
@@ -120,7 +121,7 @@ body.recipe-page {
   font-family: var(--serif);
   font-style: italic;
   font-size: 15px;
-  color: #c9865b;
+  color: var(--subtitle);
   margin-bottom: 4px;
 }
 
@@ -285,7 +286,9 @@ body.recipe-page {
 }
 
 .flavor-pill:has(.flavor-cb:checked) {
-  background: var(--sage); color: #fff; border-color: var(--sage);
+  background: var(--sage);
+  color: var(--white)fff;
+  border-color: var(--sage);
 }
 
 .flavor-pill:not(:has(.flavor-cb:checked)):hover {
