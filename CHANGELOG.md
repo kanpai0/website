@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0] — 2026-04-13
+
+### Features
+- Add favicon, apple-touch-icon, and theme-color meta tag
+
+
+---
 ## [1.8.0] — 2026-04-13
 
 ### Features

@@ -66,12 +66,12 @@ ingredients:
 - **Obligations légales** 
 - **Bouton retour** à la liste à partir d'une recette
 - **Recipe page enrichment** : étapes de préparation
+- **Icone d'app** pour PWA et site favicon
 
 ---
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
-- [ ] **Icone d'app** pour PWA et site favicon
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
