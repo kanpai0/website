@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.10.0] — 2026-04-14
+
+### Features
+- Add color property to recipes and integrate accent colors in UI
+
+### Bug Fixes
+- Correct whitespace control in `cliff.toml` template
+
+### Refactoring
+- Migrate layouts to `baseof.html` structure with Hugo blocks
+- Rename `--subtitle` to `--accent` for consistent color token usage
+
+### Documentation
+- Add favicon and apple-touch-icon with theme-color meta tag
+
+---
 ## [1.9.0] — 2026-04-13
 
 ### Features
