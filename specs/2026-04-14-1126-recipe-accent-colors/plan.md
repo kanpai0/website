@@ -26,7 +26,7 @@ The design request was to give each recipe a color linked to the most visually d
 --color-rose:   #D01860;
 --color-or:     #CF7C00;
 --color-orange: #E04810;
---accent: var(--subtitle);   /* default: no class = falls back to --subtitle */
+--accent:       #C9865B;   /* default warm terracotta, formerly --subtitle */
 ```
 
 4 body class rules override `--accent` for recipe pages:
@@ -77,8 +77,8 @@ A _Recipe Accent Colors_ subsection was added after the existing Color Tokens sw
 
 **More vivid than the photos.** The raw dominant colors from the photos (muted greens, washed ambers) were too close to the existing `--subtitle` token. The final palette is intentionally more saturated to create contrast and energy on the page.
 
-**`--accent` default in `:root`, not inline fallback.** Initially the selectors used `var(--accent, var(--subtitle))`. This was replaced by declaring `--accent: var(--subtitle)` in `:root` — a single source of truth, and the selectors stay simple with just `var(--accent)`.
+**`--accent` default in `:root`, not inline fallback.** Initially the selectors used `var(--accent, var(--subtitle))`. This was replaced by declaring `--accent` directly in `:root` — a single source of truth, and the selectors stay simple with just `var(--accent)`.
 
 **Body classes instead of inline `style`.** The first version injected `style="--accent: var(--color-vert)"` on `<body>`. Replaced with `class="recipe-page vert"` — no inline styles, classes are semantic, inspectable in devtools, and the mapping lives entirely in CSS.
 
-**`--subtitle` kept unchanged.** The fallback token stays in `:root` so the design system preview and any future non-recipe pages that reference `--subtitle` are unaffected.
+**`--subtitle` renamed to `--accent`.** The old `--subtitle` token (`#C9865B`) was the only consumer of the warm terracotta default. Renaming it `--accent` removes the indirection (`--accent: var(--subtitle)`) and makes the token name consistent with its role throughout the system.

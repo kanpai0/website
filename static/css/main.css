@@ -8,7 +8,7 @@
   --ink:    #1A1A18;
   --muted:  #6B6860;
   --sage:   #3D5A3E;
-  --subtitle: #C9865B;
+  --accent: #C9865B;
   --white:  #FFFFFF;
   --border: #E8E3D8;
 
@@ -17,7 +17,6 @@
   --color-rose:   #D01860;
   --color-or:     #CF7C00;
   --color-orange: #E04810;
-  --accent: var(--subtitle);
 
   --serif: 'Playfair Display', Georgia, serif;
   --sans:  'Inter', system-ui, -apple-system, sans-serif;
@@ -28,7 +27,11 @@
 }
 
 /* ── Reset ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 html, body { height: 100%; }
 
 /* ── Focus ── */
@@ -38,7 +41,7 @@ html, body { height: 100%; }
   border-radius: 2px;
 }
 body {
-  background: linear-gradient(160deg, #FDFBF7 0%, var(--bg) 40%, #EDE8DC 100%) fixed;
+  background: linear-gradient(160deg, #FDFBF7 0%, var(--bg) 40%, var(--border) 100%) fixed;
   color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
@@ -273,12 +276,15 @@ body.orange { --accent: var(--color-orange); }
 .flavor-pills {
   position: fixed;
   top: var(--header-h);
-  left: 0; right: 0;
+  left: 0;
+  right: 0;
   z-index: 90;
-  display: flex; gap: 8px;
+  display: flex;
+  gap: 8px;
   padding: 6px calc(var(--inset) + 16px);
   height: var(--pills-h);
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .flavor-pills::-webkit-scrollbar { display: none; }
@@ -286,25 +292,33 @@ body.orange { --accent: var(--color-orange); }
 .flavor-cb { display: none; }
 
 .flavor-pill {
-  flex-shrink: 0; cursor: pointer;
-  display: inline-flex; align-items: center;
-  padding: 6px 14px; border-radius: 999px;
-  border: 1px solid var(--border); background: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: var(--muted); font-size: 13px; font-weight: 500;
-  white-space: nowrap; user-select: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
   transition: background .15s, color .15s, border-color .15s;
 }
 
 .flavor-pill:has(.flavor-cb:checked) {
   background: var(--sage);
-  color: var(--white)fff;
+  color: var(--white);
   border-color: var(--sage);
 }
 
 .flavor-pill:not(:has(.flavor-cb:checked)):hover {
-  border-color: var(--sage); color: var(--ink);
+  border-color: var(--sage);
+  color: var(--ink);
 }
 
 /* ── Grille d'accueil ── */

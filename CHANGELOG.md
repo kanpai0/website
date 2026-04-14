@@ -5,7 +5,6 @@
 ### Features
 - Add favicon, apple-touch-icon, and theme-color meta tag
 
-
 ---
 ## [1.8.0] — 2026-04-13
 
@@ -13,15 +12,12 @@
 - Update recipe layout with tools, advice, and hero sections
 - Introduce `--subtitle` variable and improve design system consistency
 
-
 ### Bug Fixes
 - CHANGELOG
 - Format commit messages in `cliff.toml` template
 
-
 ### Documentation
 - Add retrospective on project gaps LinkedIn content outline, detailed inventory of methods, tools, and techniques
-
 
 ---
 ## [1.7.0] — 2026-04-07
