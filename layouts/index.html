@@ -20,10 +20,13 @@
 
   <!-- Fridge panel -->
   <div class="fridge-panel" id="fridge-panel" role="dialog" aria-modal="true" aria-labelledby="fridge-panel-title" aria-hidden="true">
-    <div class="fridge-panel__handle" aria-hidden="true"></div>
     <div class="fridge-panel__header">
       <span class="fridge-panel__title" id="fridge-panel-title">Mon frigo</span>
-      <label class="fridge-panel__close" for="fridge-open" role="button" aria-label="Fermer">✕</label>
+      <label class="fridge-panel__close" for="fridge-open" role="button" aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </label>
     </div>
 
     <div class="fridge-panel__body">

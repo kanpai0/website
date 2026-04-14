@@ -433,15 +433,11 @@ body.orange { --accent: var(--color-orange); }
   transform: translateY(0);
 }
 
-.fridge-panel__handle {
-  width: 36px;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--border);
-  margin: 12px auto 0;
-}
-
 .fridge-panel__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
   display: flex;
   align-items: center;
   padding: 16px 0 12px;
@@ -456,14 +452,19 @@ body.orange { --accent: var(--color-orange); }
 
 .fridge-panel__close {
   margin-left: auto;
+  display: flex;
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  color: var(--muted);
-  padding: 4px 8px;
+  color: var(--ink);
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.15s;
   line-height: 1;
 }
+
+.fridge-panel__close:hover { background: var(--border); }
 
 .fridge-section__title {
   font-size: 10px;
