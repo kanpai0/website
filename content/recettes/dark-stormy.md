@@ -6,6 +6,7 @@ fridge: ["rhum", "citron-vert", "agave", "gingembre"]
 flavors: ["petillant", "epice"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-794e63d6-0e19-448e-833c-99eb3185aeb4.webp?v=41555503619402728611732309854"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-dark-stormy"
+color: "orange"
 subtitle: "Aphrodisiaque et épicé"
 glass: "rocks"
 tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."

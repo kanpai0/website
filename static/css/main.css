@@ -12,6 +12,13 @@
   --white:  #FFFFFF;
   --border: #E8E3D8;
 
+  /* Recipe accent colors */
+  --color-vert:   #0A9A4A;
+  --color-rose:   #D01860;
+  --color-or:     #CF7C00;
+  --color-orange: #E04810;
+  --accent: var(--subtitle);
+
   --serif: 'Playfair Display', Georgia, serif;
   --sans:  'Inter', system-ui, -apple-system, sans-serif;
 
@@ -42,6 +49,11 @@ body.home,
 body.recipe-page {
   overflow: auto;
 }
+
+body.vert   { --accent: var(--color-vert); }
+body.rose   { --accent: var(--color-rose); }
+body.or     { --accent: var(--color-or); }
+body.orange { --accent: var(--color-orange); }
 
 /* ── Header ── */
 .site-header {
@@ -121,7 +133,7 @@ body.recipe-page {
   font-family: var(--serif);
   font-style: italic;
   font-size: 15px;
-  color: var(--subtitle);
+  color: var(--accent);
   margin-bottom: 4px;
 }
 
@@ -218,7 +230,7 @@ body.recipe-page {
   font-style: italic;
   font-size: 22px;
   font-weight: 400;
-  color: var(--border);
+  color: var(--accent);
   line-height: 1.2;
   flex-shrink: 0;
   min-width: 32px;

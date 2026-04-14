@@ -6,6 +6,7 @@ fridge: ["whisky", "agave", "citron-jaune", "oeuf"]
 flavors: ["plat", "acidule", "cremeux"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-64af32b6-d177-4571-a675-224af2c5a292.webp?v=83342268975700700541732309928"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-whisky-sour"
+color: "or"
 subtitle: "Crémeux et gourmand"
 glass: "rocks"
 tips: "Vous n'aimez pas le blanc d'œuf ? Remplacez-le par de l'aquafaba (eau de cuisson des pois chiches)."

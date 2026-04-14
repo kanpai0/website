@@ -6,6 +6,7 @@ fridge: ["gin", "citron-vert", "agave", "gingembre", "menthe"]
 flavors: ["petillant", "epice"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-977f4b5c-2453-45f0-928a-f7a4ce90b78d.webp?v=177747718098362625921732309905"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-london-mule"
+color: "orange"
 subtitle: "Épicé et frais"
 glass: "mule-mug"
 tips: "À l'origine, nous utilisons des verres en cuivre non seulement pour leur esthétique, mais aussi parce que le cuivre possède une conductivité thermique très élevée. Cela signifie que dès que vous y mettez des glaçons, le froid se propage très rapidement dans tout le verre, rendant le cocktail prêt à être dégusté instantanément."

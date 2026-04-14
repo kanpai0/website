@@ -6,6 +6,7 @@ fridge: ["rhum", "citron-vert", "agave", "menthe", "petillante"]
 flavors: ["petillant", "herbace", "acidule"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-87e98cef-d5b8-445a-bec6-127ce7d8f6a2.webp?v=87570367079512153151732309937"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-mojito"
+color: "vert"
 subtitle: "Gourmet et sain"
 glass: "rocks"
 tips: "En frottant la menthe fraîche, vous libérez toute sa saveur, sans l'amertume de sa sève. Avant de l'ajouter à votre verre, frottez légèrement le bord de celui-ci pour encore plus de saveur !"

@@ -12,7 +12,7 @@
   <link rel="preload" as="image" href="/images/recettes/{{ .Params.slug }}.webp" fetchpriority="high">
   <meta name="version" content="{{ .Site.Params.version }}">
 </head>
-<body class="recipe-page">
+<body class="recipe-page{{ with .Params.color }} {{ . }}{{ end }}">
 
   <header class="site-header">
     <a href="/" class="site-back" aria-label="Retour à la liste des recettes">

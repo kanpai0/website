@@ -6,6 +6,7 @@ fridge: ["rhum", "agave", "citron-vert", "mangue", "passion", "ananas", "cannell
 flavors: ["plat", "fruite"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-560858b0-b087-4a3b-8837-7a0be3891a28.webp?v=180601614492489049051732309930"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-planteur"
+color: "orange"
 subtitle: "Exotique et onctueux"
 glass: "rocks"
 tips: "Si vous souhaitez améliorer l'expérience, préférez utiliser un extracteur de jus plutôt que des jus de fruits industriels."

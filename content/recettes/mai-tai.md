@@ -6,6 +6,7 @@ fridge: ["rhum", "citron-vert", "orgeat"]
 flavors: ["plat", "fruite", "acidule", "sucre"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-97568522-0904-43ef-8490-73b566a65b16.webp?v=165395594471846485631732309939"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-mai-tai"
+color: "or"
 subtitle: "Doux et frais"
 glass: "rocks"
 tips: "Prenez un zeste de citron (de préférence jaune) que vous venez de couper. Dans une main, tenez le zeste entre votre index et votre pouce et prenez un briquet dans l'autre main. Simultanément, pressez l'écorce entre vos doigts pour libérer l'huile essentielle vers le briquet allumé et le verre. Les étincelles de l'huile essentielle de citron brûlée parfumeront le cocktail et créeront un effet de surprise."

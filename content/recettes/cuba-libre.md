@@ -6,6 +6,7 @@ fridge: ["rhum", "citron-vert", "cola"]
 flavors: ["petillant", "sucre"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-6eb83c4e-f686-4d34-b67b-444306db1081.webp?v=164646445841431511761732309761"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-cuba-libre"
+color: "orange"
 subtitle: "Pétillant et acidulé"
 glass: "rocks"
 tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."

@@ -72,6 +72,7 @@ ingredients:
 
 ## Fonctionnalités — En cours / Backlog prioritaire
 
+- [ ] **Ajout d'une couleur** par cocktail à utiliser sur chaque recette sur le sous-titre et les chiffres
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients

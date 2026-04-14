@@ -6,6 +6,7 @@ fridge: ["amaretto", "ananas", "citron-vert", "agave"]
 flavors: ["plat", "fruite", "sucre", "acidule"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-7a17fb69-d767-4806-8cf9-8736b8ce12d1.webp?v=172646967657265057361732309866"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-madeleine"
+color: "or"
 subtitle: "Crémeux et fruité"
 glass: "highball"
 tips: "Si vous souhaitez améliorer votre expérience, préférez utiliser un extracteur de jus plutôt que des jus de fruits industriels."

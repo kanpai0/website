@@ -6,6 +6,7 @@ fridge: ["whisky", "pomme", "vanille", "citron-jaune", "cannelle"]
 flavors: ["plat", "fruite", "acidule", "epice"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-f16c879e-31d8-44cd-a3d1-7449842864cc.webp?v=67405964633860746831732309906"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-chenonceau"
+color: "or"
 subtitle: "Doux et onctueux"
 glass: "highball"
 tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."

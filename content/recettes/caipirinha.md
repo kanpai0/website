@@ -6,6 +6,7 @@ fridge: ["rhum", "citron-vert", "agave"]
 flavors: ["plat", "acidule", "sucre"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-7a5560f9-6c63-418c-b3e4-b865f8191682.webp?v=154553000070058040081732309800"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-caipirinha"
+color: "vert"
 subtitle: "Tropical et sain"
 glass: "rocks"
 tips: "Presser le citron vert permet d'utiliser uniquement le bon jus du citron vert. Le broyage libère le zeste du citron vert, qui contient de l'amertume ainsi que de l'huile essentielle de citron. Pour équilibrer les saveurs, il est donc préférable de presser le citron vert plutôt que de le broyer."
