@@ -480,17 +480,13 @@
           <div class="ds-btn-wrap">
             <span class="ds-state-label">close (default)</span>
             <label class="fridge-panel__close" style="pointer-events:none;" aria-label="Fermer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12"/>
-              </svg>
+              {{ partial "icon-ui.html" "close" }}
             </label>
           </div>
           <div class="ds-btn-wrap">
             <span class="ds-state-label">close (hover)</span>
             <label class="fridge-panel__close" style="pointer-events:none; background: var(--border);" aria-label="Fermer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 6L6 18M6 6l12 12"/>
-              </svg>
+              {{ partial "icon-ui.html" "close" }}
             </label>
           </div>
         </div>
@@ -500,9 +496,7 @@
             <span class="ds-state-label">back (default)</span>
             <div style="position: relative; width: 48px; height: 48px;">
               <a href="#" class="site-back" style="position:static; display: inline-flex;" aria-label="Retour à la liste des recettes">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
+                {{ partial "icon-ui.html" "back" }}
               </a>
             </div>
           </div>
@@ -510,9 +504,7 @@
             <span class="ds-state-label">back (hover)</span>
             <div style="position: relative; width: 48px; height: 48px;">
               <a href="#" class="site-back" style="position:static; display: inline-flex; background: var(--border);" aria-label="Retour à la liste des recettes">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
+                {{ partial "icon-ui.html" "back" }}
               </a>
             </div>
           </div>
@@ -570,24 +562,37 @@
         <div class="ds-state">
           <span class="ds-state-label">Default (homepage / prose page)</span>
           <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
-            <footer class="site-footer">
-              <span>© {{ now.Year }} Kanpai Ø</span>
-              <span aria-hidden="true">·</span>
-              <a href="/mentions-legales/">Mentions légales</a>
-            </footer>
+            {{ partial "footer.html" . }}
           </div>
         </div>
         <div class="ds-state">
           <span class="ds-state-label">Recipe page (with source credit)</span>
           <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
-            <footer class="site-footer">
-              <span>© {{ now.Year }} Kanpai Ø</span>
-              <span aria-hidden="true">·</span>
-              <a href="/mentions-legales/">Mentions légales</a>
-              <span aria-hidden="true">·</span>
-              <span>Recette <a href="#" target="_blank" rel="noopener noreferrer">Sober Spirits</a></span>
-            </footer>
+            {{ partial "footer.html" (dict "Params" (dict "source_url" "#")) }}
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Social Links ── -->
+    <section data-ds="social-links">
+      <p class="ds-section-title">Social Links</p>
+      <div class="ds-states" style="flex-direction: column; gap: 24px;">
+        <div class="ds-state">
+          <span class="ds-state-label">Default</span>
+          <nav class="social-links" aria-label="Réseaux sociaux">
+            <a href="#" aria-label="Instagram">{{ partial "icon-social.html" "instagram" }}</a>
+            <a href="#" aria-label="Pinterest">{{ partial "icon-social.html" "pinterest" }}</a>
+            <a href="#" aria-label="YouTube">{{ partial "icon-social.html" "youtube" }}</a>
+            <a href="#" aria-label="Threads">{{ partial "icon-social.html" "threads" }}</a>
+            <a href="#" aria-label="Bluesky">{{ partial "icon-social.html" "bluesky" }}</a>
+          </nav>
+        </div>
+        <div class="ds-state">
+          <span class="ds-state-label">Hover (sage)</span>
+          <nav class="social-links" aria-label="Réseaux sociaux">
+            <a href="#" aria-label="Instagram" style="color: var(--sage);">{{ partial "icon-social.html" "instagram" }}</a>
+          </nav>
         </div>
       </div>
     </section>

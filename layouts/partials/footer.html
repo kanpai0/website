@@ -1,9 +1,28 @@
 <footer class="site-footer">
-  <span>© {{ now.Year }} Kanpai Ø</span>
-  <span aria-hidden="true">·</span>
-  <a href="/mentions-legales/">Mentions légales</a>
-  {{ with .Params.source_url }}
-  <span aria-hidden="true">·</span>
-  <span>Recette <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Sober Spirits</a></span>
-  {{ end }}
+  <nav class="social-links" aria-label="Réseaux sociaux">
+    <a href="https://www.instagram.com/kanpai0" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      {{ partial "icon-social.html" "instagram" }}
+    </a>
+    <a href="https://www.pinterest.com/kanpai0" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+      {{ partial "icon-social.html" "pinterest" }}
+    </a>
+    <a href="https://www.youtube.com/@kanpaizero" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      {{ partial "icon-social.html" "youtube" }}
+    </a>
+    <a href="https://www.threads.net/@kanpai0" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+      {{ partial "icon-social.html" "threads" }}
+    </a>
+    <a href="https://bsky.app/profile/kanpai0.bsky.social" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+      {{ partial "icon-social.html" "bluesky" }}
+    </a>
+  </nav>
+  <div class="site-footer__meta">
+    <span>© {{ now.Year }} Kanpai Ø</span>
+    <span aria-hidden="true">·</span>
+    <a href="/mentions-legales/">Mentions légales</a>
+    {{ with .Params.source_url }}
+    <span aria-hidden="true">·</span>
+    <span>Recette <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Sober Spirits</a></span>
+    {{ end }}
+  </div>
 </footer>

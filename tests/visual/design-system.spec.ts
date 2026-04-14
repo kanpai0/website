@@ -14,6 +14,7 @@ const sections = [
   'recipe-glass',
   'recipe-card',
   'footer',
+  'social-links',
   'glass-icons',
   'recipe-ingredients',
   'recipe-steps',
