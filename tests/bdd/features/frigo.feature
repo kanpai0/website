@@ -20,9 +20,9 @@ Feature: Fridge filter (Mon frigo)
     Then recipes requiring "rhum" are hidden
 
   Scenario: Fridge and flavor filters combine with AND logic
-    When I select the flavor "petillant"
+    When I select the flavor "sparkling"
     And I open the fridge panel
     And I uncheck the ingredient "rhum"
     And I close the fridge panel
     Then no visible recipe requires "rhum"
-    And no visible recipe lacks the flavor "petillant"
+    And no visible recipe lacks the flavor "sparkling"

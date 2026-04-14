@@ -13,9 +13,9 @@
   --border: #E8E3D8;
 
   /* Recipe accent colors */
-  --color-vert:   #0A9A4A;
-  --color-rose:   #D01860;
-  --color-or:     #CF7C00;
+  --color-green:  #0A9A4A;
+  --color-pink:   #D01860;
+  --color-gold:   #CF7C00;
   --color-orange: #E04810;
 
   --serif: 'Playfair Display', Georgia, serif;
@@ -53,9 +53,9 @@ body.recipe-page {
   overflow: auto;
 }
 
-body.vert   { --accent: var(--color-vert); }
-body.rose   { --accent: var(--color-rose); }
-body.or     { --accent: var(--color-or); }
+body.green  { --accent: var(--color-green); }
+body.pink   { --accent: var(--color-pink); }
+body.gold   { --accent: var(--color-gold); }
 body.orange { --accent: var(--color-orange); }
 
 /* ── Header ── */

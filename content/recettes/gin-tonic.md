@@ -3,10 +3,10 @@ title: Gin Tonic
 slug: gin-tonic
 draft: false
 fridge: ["gin", "tonic"]
-flavors: ["petillant", "amer"]
+flavors: ["sparkling", "bitter"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-900dd744-a8bd-4a21-ad10-5d0f16aaeb36.webp?v=165892999714078927711732309836"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-gin-tonic"
-color: "vert"
+color: "green"
 subtitle: "Frais et à base de plantes"
 glass: "coupette"
 tips: "Pour créer une décoration qui surprendra tous vos invités à l'apéritif, prenez un concombre entier et un éplucheur. Utilisez l'éplucheur pour râper une fine et longue lamelle de concombre et placez-la sur les bords intérieurs de votre verre. Inclinez-la pour obtenir un cocktail visuellement saisissant infusé au concombre de Sober."

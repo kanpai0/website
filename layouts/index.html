@@ -33,32 +33,32 @@
   </div>
 
   <nav class="flavor-pills" aria-label="Filtrer par saveur">
-    <label class="flavor-pill" for="fl-petillant">
-      <input type="checkbox" id="fl-petillant" class="flavor-cb"> Pétillant
+    <label class="flavor-pill" for="fl-sparkling">
+      <input type="checkbox" id="fl-sparkling" class="flavor-cb"> Pétillant
     </label>
-    <label class="flavor-pill" for="fl-plat">
-      <input type="checkbox" id="fl-plat" class="flavor-cb"> Sans bulles
+    <label class="flavor-pill" for="fl-still">
+      <input type="checkbox" id="fl-still" class="flavor-cb"> Sans bulles
     </label>
-    <label class="flavor-pill" for="fl-fruite">
-      <input type="checkbox" id="fl-fruite" class="flavor-cb"> Fruité
+    <label class="flavor-pill" for="fl-fruity">
+      <input type="checkbox" id="fl-fruity" class="flavor-cb"> Fruité
     </label>
-    <label class="flavor-pill" for="fl-acidule">
-      <input type="checkbox" id="fl-acidule" class="flavor-cb"> Acidulé
+    <label class="flavor-pill" for="fl-tart">
+      <input type="checkbox" id="fl-tart" class="flavor-cb"> Acidulé
     </label>
-    <label class="flavor-pill" for="fl-sucre">
-      <input type="checkbox" id="fl-sucre" class="flavor-cb"> Sucré
+    <label class="flavor-pill" for="fl-sweet">
+      <input type="checkbox" id="fl-sweet" class="flavor-cb"> Sucré
     </label>
-    <label class="flavor-pill" for="fl-epice">
-      <input type="checkbox" id="fl-epice" class="flavor-cb"> Épicé
+    <label class="flavor-pill" for="fl-spicy">
+      <input type="checkbox" id="fl-spicy" class="flavor-cb"> Épicé
     </label>
-    <label class="flavor-pill" for="fl-amer">
-      <input type="checkbox" id="fl-amer" class="flavor-cb"> Amer
+    <label class="flavor-pill" for="fl-bitter">
+      <input type="checkbox" id="fl-bitter" class="flavor-cb"> Amer
     </label>
-    <label class="flavor-pill" for="fl-herbace">
-      <input type="checkbox" id="fl-herbace" class="flavor-cb"> Herbacé
+    <label class="flavor-pill" for="fl-herbaceous">
+      <input type="checkbox" id="fl-herbaceous" class="flavor-cb"> Herbacé
     </label>
-    <label class="flavor-pill" for="fl-cremeux">
-      <input type="checkbox" id="fl-cremeux" class="flavor-cb"> Crémeux
+    <label class="flavor-pill" for="fl-creamy">
+      <input type="checkbox" id="fl-creamy" class="flavor-cb"> Crémeux
     </label>
   </nav>
 
@@ -93,7 +93,7 @@
       'oeuf','creme-coco','cannelle'
     ];
 
-    const FLAVORS = ['petillant','plat','fruite','acidule','sucre','epice','amer','herbace','cremeux'];
+    const FLAVORS = ['sparkling','still','fruity','tart','sweet','spicy','bitter','herbaceous','creamy'];
 
     function getAvailable() {
       return FRIDGE.filter(id => document.getElementById('fr-' + id)?.checked);

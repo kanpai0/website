@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-RECETTES = ROOT / "content" / "recettes"
+RECIPES = ROOT / "content" / "recettes"
 DRY_RUN = "--write" not in sys.argv
 
 # ── Ingredient parsing ────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ def patch_frontmatter(md_text: str) -> tuple[str, bool]:
 def main():
     print(f"Mode: {'DRY-RUN (pass --write to apply)' if DRY_RUN else 'WRITING'}\n")
     changed = 0
-    for md_path in sorted(RECETTES.glob("*.md")):
+    for md_path in sorted(RECIPES.glob("*.md")):
         text = md_path.read_text(encoding='utf-8')
         patched, did_change = patch_frontmatter(text)
         status = "CHANGE" if did_change else "skip  "

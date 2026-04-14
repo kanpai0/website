@@ -3,10 +3,10 @@ title: Gin Basil Smash
 slug: gin-basil-smash
 draft: false
 fridge: ["gin", "basilic", "agave", "citron-vert"]
-flavors: ["plat", "acidule", "herbace"]
+flavors: ["still", "tart", "herbaceous"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-f7bcdbaf-eda3-4a88-9f44-58dbdef7650b.webp?v=14130287001065666961732309834"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-gin-basil-smash"
-color: "vert"
+color: "green"
 subtitle: "Gourmand & Healthy"
 glass: "coupette"
 tips: "Ce cocktail doit avoir une couleur verte translucide. Plus la couleur est intense, plus les délicieuses notes de basilic seront présentes."

@@ -3,17 +3,17 @@ title: Chenonceau
 slug: chenonceau
 draft: false
 fridge: ["whisky", "pomme", "vanille", "citron-jaune", "cannelle"]
-flavors: ["plat", "fruite", "acidule", "epice"]
+flavors: ["still", "fruity", "tart", "spicy"]
 source_image: "https://www.soberspirits.com/cdn/shop/t/5/assets/478010293029438714-f16c879e-31d8-44cd-a3d1-7449842864cc.webp?v=67405964633860746831732309906"
 source_url: "https://www.soberspirits.com/fr/pages/mocktail-sober-chenonceau"
-color: "or"
+color: "gold"
 subtitle: "Doux et onctueux"
 glass: "highball"
 tips: "Pour fumer votre verre, prenez un bâton de cannelle et maintenez-le au-dessus d'une flamme (briquet ou chalumeau) jusqu'à ce qu'il commence à fumer."
 ingredients:
   - name: "Whisky Sober Spirits 0,0 %"
     qty: "50 ml"
-  - name: "jus de pomme"
+  - name: "Jus de pomme"
     qty: "100 ml"
   - name: "Sirop de vanille"
     qty: "20 ml"

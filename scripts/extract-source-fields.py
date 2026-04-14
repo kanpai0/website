@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 SOURCES = ROOT / "_sources" / "sober-spirits"
-RECETTES = ROOT / "content" / "recettes"
+RECIPES = ROOT / "content" / "recettes"
 
 DRY_RUN = "--write" not in sys.argv
 
@@ -141,7 +141,7 @@ def process_file(html_path: Path) -> bool:
     # Derive markdown slug from HTML filename
     stem = html_path.stem.removeprefix("mocktail-sober-")
     slug = SLUG_MAP.get(stem, stem)
-    md_path = RECETTES / f"{slug}.md"
+    md_path = RECIPES / f"{slug}.md"
 
     if not md_path.exists():
         print(f"  SKIP  {html_path.name} → {md_path.name} not found")
