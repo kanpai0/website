@@ -90,6 +90,46 @@ Le signal fort : **pratiques d'ingénierie professionnelle (ADR, design system, 
 
 ---
 
+### J — "L'IA m'a aidé à nommer ce que je sais déjà faire"
+
+**Angle :** En analysant rétrospectivement tout ce qui a été mis en place sur ce projet, des noms ont émergé pour des pratiques que j'appliquais intuitivement : "checkbox state machine", "ETL pipeline", "body class theming", "ADR pattern". Ces techniques étaient là — bien utilisées — mais sans étiquette. L'IA comme outil de formalisation de compétences implicites.
+
+**Signal pour recruteur :** Compétences réelles sous-documentées / syndrome de l'expert qui ne sait pas nommer ce qu'il fait — et comment y remédier avec introspection.
+
+---
+
+### K — "8263 fichiers pour une release : j'ai dit non"
+
+**Angle :** `semantic-release` est l'outil "standard" pour les releases automatisées. J'ai créé la branch, installé le package — et découvert 8263 fichiers dans `node_modules` dans un repo Hugo qui n'a pas de `package.json`. 157 lignes de bash + `git-cliff` font exactement la même chose, s'adaptent à la stack, et n'introduisent aucune dépendance Node. Le build vs buy n'est pas une question de capabilité — c'est une question de philosophie de stack.
+
+**Signal pour recruteur :** Décision d'architecture raisonnée, résistance aux defaults de l'industrie, cohérence philosophique.
+
+---
+
+### L — "Créer une icône pour mon app — le problème c'était le vocabulaire"
+
+**Angle :** L'objectif : une icône représentant un cocktail sans alcool. Simple en apparence. En pratique : j'ai testé method.ac, lovable.dev, artlist toolkit, recraft.ai, Gemini (meilleurs résultats), Claude + Pencil. Le blocage n'était pas l'outil — c'était l'incapacité à décrire précisément l'esthétique souhaitée avec le bon vocabulaire artistique. "Mélanger un cocktail et le 0%" sont des concepts visuellement contradictoires. J'ai un bon œil pour évaluer un résultat. Pas encore le vocabulaire pour le commander précisément.
+
+**Signal pour recruteur :** Honnêteté sur ses limites, itération outillée sur un problème mal défini, appétence UX/design sans prétendre être designer.
+
+---
+
+### M — "Ce que je pense de ceux qui délèguent tout"
+
+**Angle :** Deux convictions forgées sur ce projet. La première : si vous déléguez tout à l'IA sans comprendre ce qu'elle produit, vous ne faites rien en réalité — c'est de la paresse intellectuelle et du désintérêt du métier. La validation humaine systématique n'est pas un détail : 8 images corrigées sur 24, edge cases de parsing documentés, review de chaque output de migration. L'IA démultiplie ce que vous savez faire — elle ne remplace pas le fait de savoir. La seconde : confondre vitesse et précipitation. Des sessions bornées, une spec avant de toucher un fichier, un `--dry-run` avant tout script destructif. Livrer vite ne veut pas dire livrer sans méthode.
+
+**Signal pour recruteur :** Exigence professionnelle, culture engineering, positionnement sur le rôle de l'IA en équipe.
+
+---
+
+### N — "Je cherche un projet à la hauteur — accès au repo sur demande"
+
+**Angle :** Ce projet est public dans ses méthodes, privé dans ses sources. Si vous êtes curieux de voir le code réel — les templates Hugo, les tests Playwright, la CI/CD, les specs ADR — envoyez-moi un message. Je partage le repo aux personnes qui veulent aller au-delà du résumé LinkedIn.
+
+**Signal pour recruteur :** Transparence, confiance, invitation à la vérification.
+
+---
+
 ## Format recommandé pour chaque post
 
 - Ouvrir sur le problème / la décision, pas sur la solution
@@ -98,3 +138,23 @@ Le signal fort : **pratiques d'ingénierie professionnelle (ADR, design system, 
 - Clore sur le principe général applicable ailleurs
 
 **Longueur :** 150–300 mots. Éviter les listes à puces sur LinkedIn — les paragraphes courts performent mieux.
+
+**CTA de fin (à adapter par post) :**
+> Vous travaillez sur des défis similaires ? Je suis disponible pour en parler — un message suffit.
+
+ou pour les posts techniques :
+> Le repo est privé mais accessible sur demande — si vous voulez voir le code réel derrière ces choix.
+
+ou pour les posts convictions :
+> Pour ceux qui ne valident pas, je pense sincèrement qu'il vaut mieux changer de métier. Je suis preneur de vos arguments contraires.
+
+---
+
+## Note de ton — ce que ces posts doivent refléter
+
+- **Façon de procéder** : spec avant code, `/plan` avant toute opération importante, validation humaine de chaque output IA
+- **Structuration de la pensée** : tableaux de comparaison, arbres de décision, ADR datés
+- **Qualités de code** : DRY, sémantique, zero-dependency par défaut, nommage orienté métier
+- **Convictions** : simplicité délibérée > complexité accidentelle ; OSS léger > framework lourd ; CSS d'abord > JS ensuite
+- **Introspection** : nommer ses limites (vocabulaire artistique, reflex /plan tardif) avec la même précision que ses réussites
+- **Invitation** : accès repo privé sur demande — signal de confiance et de transparence

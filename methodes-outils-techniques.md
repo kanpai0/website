@@ -1,7 +1,7 @@
 # Méthodes, outils et techniques — Kanpai Ø
 
 Inventaire exhaustif et commenté de tout ce qui a été mis en œuvre sur ce projet.  
-Dernière mise à jour : 2026-04-10
+Dernière mise à jour : 2026-04-14 (v1.11.0)
 
 ---
 
@@ -30,6 +30,24 @@ Dernière mise à jour : 2026-04-10
 - **Scraping IA-assisté, parsing humain** — l'extraction HTML est vérifiée et les edge cases sont documentés (deux `<span>` concaténés, recette pour 6 personnes, virgule finale)
 - **Validation output Python** — les scripts de migration frontmatter sont idempotents et jouent sur un subset avant d'être appliqués aux 24 fichiers
 - **CLAUDE.md comme contrat de session** — le contexte fourni à l'IA à chaque session (architecture, invariants, design tokens, commandes) garantit la cohérence des outputs sans redécouverte
+
+### IA comme miroir de compétences implicites
+
+Un effet inattendu et précieux du travail assisté par IA : l'analyse rétrospective du projet a produit des noms pour des pratiques appliquées intuitivement.
+
+- "checkbox state machine" — pattern utilisé depuis le début, nommé en session d'analyse
+- "ETL pipeline" — le scraping → YAML → Hugo était évident fonctionnellement, pas conceptuellement formalisé
+- "body class theming" — décision CSS qui a un nom dans la littérature
+- "ADR pattern" — format de spec utilisé sans connaître l'acronyme "Architecture Decision Record"
+
+**Ce que ça révèle :** Connaître une technique et pouvoir la nommer sont deux compétences distinctes. L'IA agit ici comme un dictionnaire de vocabulaire professionnel appliqué au code existant — utile pour la communication avec une équipe ou un recruteur.
+
+### Optimisation des tokens — rtk
+
+- **rtk** (Rust Token Killer) — proxy CLI qui filtre les outputs verbeux avant qu'ils ne consomment du contexte Claude
+- Toutes les commandes git, hugo, bash passent automatiquement par rtk via un hook Claude Code
+- Analytics `rtk gain` pour mesurer les économies effectives
+- Économies estimées : 60–90% sur les opérations de dev courantes (git log, build output, test output)
 
 ### Gestion de la qualité
 
@@ -87,6 +105,7 @@ Ce pattern est utilisé 3 fois : panneau frigo (ouverture/fermeture), pills save
 | **`.flavor-pill:not(:has(...)):hover`** | État hover uniquement sur pills non actives |
 | **`display: none` sur les checkboxes** | `.filter-cb`, `.flavor-cb`, `.fridge-cb` — invisibles, accessibles via `<label>` |
 | **`transition` sur `transform`** | Animation du bottom sheet : `cubic-bezier(0.32, 0.72, 0, 1)` — easing spring-like |
+| **`position: sticky`** | Header du panneau frigo reste visible pendant le scroll de la liste d'ingrédients |
 | **`:focus-visible`** | Focus ring visible uniquement au clavier, jamais à la souris |
 
 ### CSS Grid moderne
@@ -107,6 +126,26 @@ Ce pattern est utilisé 3 fois : panneau frigo (ouverture/fermeture), pills save
 - `padding-block` — au lieu de `padding-top/bottom`
 - `inset: 0 0 auto 0` — au lieu de `top/right/bottom/left`
 - `margin-inline: auto` pour le centrage horizontal
+
+### Theming par body class + CSS custom property override (JS-free)
+
+```css
+/* `:root` définit le défaut */
+:root { --accent: #C9865B; }
+
+/* La class sur `<body>` override la variable */
+body.vert   { --accent: var(--color-vert); }
+body.rose   { --accent: var(--color-rose); }
+
+/* Les composants consomment sans rien savoir du thème */
+.recipe__subtitle { color: var(--accent); }
+.recipe__step-num { color: var(--accent); }
+```
+
+Le frontmatter (`color: "vert"`) devient une classe sémantique sur `<body>` via Hugo (`{{ with .Params.color }} {{ . }}{{ end }}`). Zéro inline style, zéro JS — le theming par recette est entièrement déclaratif. Les classes sont inspectables en devtools, le mapping vit dans CSS.
+
+**Décision documentée :** 24 hex uniques (extraits photo par photo) abandonnés en faveur de 4 catégories sémantiques. Plus cohérent visuellement, maintenable sur la durée.  
+**Renommage de token :** `--subtitle` → `--accent` — le nom reflète le rôle dans tout le système, plus seulement l'élément d'origine.
 
 ### Autres techniques CSS modernes
 
@@ -195,6 +234,22 @@ L'accessibilité est construite dès la structure, pas ajoutée en fin de projet
 
 ## VI. Architecture Hugo & templates
 
+### Héritage de templates (`baseof.html`)
+
+Hugo `block` / `define` — un template de base unique, surchargé par chaque layout :
+
+```
+layouts/_default/baseof.html      ← head, fonts, meta communs
+  ├── layouts/index.html           ← {{ define "body" }}
+  ├── layouts/recettes/single.html
+  └── layouts/_default/design-system.html
+```
+
+- Zéro duplication du `<head>` entre les layouts (avant : copie identique dans 3 fichiers)
+- `{{ block "head-meta" . }}{{ end }}` — slot surchargeable par page (preload image hero uniquement sur les recettes)
+- `{{ block "fonts" . }}{{ end }}` — polices déclarées une seule fois dans la base
+- DRY appliqué aux templates avec la même discipline qu'au code métier
+
 ### Principes de templating
 
 - **Templates sans logique** — toute la logique de transformation (qty/name, title/text) est dans le frontmatter YAML, jamais dans les templates Go. Les templates itèrent, ils ne transforment pas.
@@ -235,6 +290,28 @@ Migration automatisée par Python sur 24 fichiers, regex adaptée aux deux patte
 ---
 
 ## VII. SVG custom & icônographie
+
+### Partials d'icônes consolidés (v1.11.0)
+
+- **`icon-social.html`** — Instagram, Pinterest, YouTube, Threads, Bluesky : toutes les icônes réseaux dans un seul partial
+- **`icon-ui.html`** — icônes d'interface (back, close, etc.) extraites des templates où elles étaient inline
+- Remplacement des SVG inline éparpillés dans footer et header par des appels `{{ partial "icon-social.html" "instagram" }}`
+- Un seul endroit à modifier si un tracé change — maintenabilité garantie
+
+### Actifs PWA (v1.8.0)
+
+- **`favicon.svg`** — favicon vectoriel (zéro pixelisation à toute résolution, taille ~1 KB)
+- **`apple-touch-icon.png`** — icône 180×180 pour "Ajouter à l'écran d'accueil" iOS
+- **`<meta name="theme-color">`** — couleur de la barre de navigation mobile (chrome du navigateur)
+- Fondations PWA posées sans Service Worker ni manifest.json pour l'instant — ajouts progressifs
+
+### Liens sociaux dans le footer
+
+- Composant `social-links` dans `footer.html` — Instagram, Pinterest, YouTube, Threads, Bluesky
+- Documenté dans le design system avec baseline visuelle mise à jour
+- Cohérence avec la stratégie de présence réseaux (handles réservés dès le début)
+
+### Autres techniques SVG
 
 - **SVG sprite `<symbol>` + `<use>`** — 25+ icônes frigo définies une fois dans `fridge-icons.html` (inséré en `display:none` dans le DOM), référencées partout via `<use href="#fi-rhum">`
 - **SVG inline pour les icônes de verre** — `glass-icon.html` : 8 types canoniques (`rocks`, `highball`, `collins`, `mule-mug`, `coupette`, `martini`, `margarita`, `vin`) + fallback générique
@@ -324,6 +401,21 @@ push to main
 - **Fallback automatique** vers `dall-e-3` si `gpt-image-1` échoue
 - **Validation humaine** : 24 images vérifiées visuellement (fond en damier = transparent ✓), 8 cas corrigés manuellement
 
+### Création de l'icône de l'application — cas difficile
+
+L'objectif : une icône représentant un cocktail sans alcool. Visuellement, deux concepts contradictoires. Parcours complet d'outils testés :
+
+| Outil | Résultat | Verdict |
+|---|---|---|
+| method.ac (éditeur SVG) | Contrôle total mais création manuelle | Trop long pour une icône complexe |
+| lovable.dev | Génération IA générique | Trop générique, peu adaptatble |
+| toolkit.artlist.io | Assets premium prêts à l'emploi | Pas d'icône cocktail 0% dans le catalogue |
+| recraft.ai | Rendu correct | Pas assez de contrôle sur les détails |
+| Gemini | **Meilleurs résultats** | Bonne compréhension des contraintes visuelles |
+| Claude + Pencil | En cours d'exploration | Workflow intégré mais résultat partiel |
+
+**Blocage identifié :** Le problème n'était pas l'outil — c'était l'absence de vocabulaire artistique précis pour décrire l'esthétique souhaitée. "Cocktail sans alcool" ne suffit pas pour un prompt de génération d'image. Les termes techniques (style graphique, traitement de couleur, référence artistique, niveau de stylisation) manquaient. **Leçon symétrique au vocabulaire technique** : on peut avoir l'œil pour évaluer un résultat sans avoir le vocabulaire pour le commander précisément.
+
 ---
 
 ## XII. Design avec Pencil (outil de maquette)
@@ -358,6 +450,9 @@ push to main
 ## XV. Modélisation du contenu & taxonomie
 
 Compétence souvent invisible mais structurante : concevoir les données avant de coder.
+
+- **Refactoring de vocabulaire sur 32 fichiers** (v1.11.0) — les clés de saveurs migrent du français vers l'anglais (`petillant` → `sparkling`, `plat` → `still`, etc.) pour cohérence avec le code, les scripts Python, les tests BDD, et les attributs HTML. Migration atomique : 24 fichiers markdown + layouts + CSS + tests + scripts en un seul commit.
+- **Renommage de token sémantique** — `--subtitle` → `--accent` : le nom du token reflète son rôle dans le système entier, pas l'élément qui l'a introduit. Décision documentée dans la spec.
 
 - **Taxonomie des ingrédients** — 26 slugs répartis en 6 groupes (Spiritueux, Frais, Jus & fruits, Sirops, Sodas, Autres) ; vocabulaire contrôlé, identifiants stables
 - **8 types de verres canoniques** — `rocks`, `highball`, `collins`, `mule-mug`, `coupette`, `martini`, `margarita`, `vin` ; mapping depuis le texte libre des sources HTML vers une ontologie propre
@@ -443,16 +538,48 @@ Estimation équivalente sans assistance IA pour un résultat identique : 150–3
 
 | Dimension | Ce qui est fait | Niveau |
 |---|---|---|
-| Architecture | Deploy-first, spec avant code, ADR documentés | Staff engineer |
-| CSS | `:has()` + checkbox state machine, zero JS pour les interactions visuelles | Avancé |
-| HTML5 | Sémantique complète, hiérarchie de titres, éléments structurels | Solide |
-| Performance | `fetchpriority`, `loading=lazy`, preload, WebP, zéro CLS | Avancé |
+| Architecture | Deploy-first, spec avant code, ADR documentés, `baseof.html` DRY | Staff engineer |
+| CSS | `:has()` + checkbox state machine, theming par body class, zéro JS pour les interactions visuelles | Avancé |
+| HTML5 | Sémantique complète, hiérarchie de titres, éléments structurels, PWA assets | Solide |
+| Performance | `fetchpriority`, `loading=lazy`, preload, WebP, zéro CLS, favicon SVG | Avancé |
 | Accessibilité | ARIA complet, gestion du focus, live regions, Lighthouse CI | Avancé |
-| Tests | 3 niveaux (visuel, BDD, smoke), Docker pour parité, mobile-first | Avancé |
+| Tests | 3 niveaux (visuel, BDD, smoke), Docker pour parité, mobile-first, baselines mises à jour | Avancé |
 | CI/CD | Jobs parallèles, gate avant deploy, artifacts de failure | Professionnel |
 | Release | SemVer, conventional commits, CHANGELOG auto, release script interactif | Professionnel |
 | IA | Génération d'images, prompt engineering, validation humaine systématique, levier ×3–6 | Maîtrisé |
 | Produit | Itération sur usage réel, scope arbitré, renoncements documentés | Pragmatique |
-| Modélisation | Taxonomie ingrédients/verres/saveurs, ETL complet, vocabulaire contrôlé | Solide |
+| Modélisation | Taxonomie ingrédients/verres/saveurs, ETL complet, vocabulaire standardisé (EN) | Solide |
 | Budget | Infrastructure 0$ by design, build vs buy documenté, coût IA contrôlé | Maîtrisé |
 | Temps | 45h → projet production-ready, spec avant code, sessions bornées, levier IA ×3–6 | Maîtrisé |
+| Refactoring | Renommage atomique 32 fichiers, tokens sémantiques, partials consolidés | Discipliné |
+| IA outillage | rtk token proxy, sessions en anglais, IA comme miroir de compétences implicites | Maîtrisé |
+
+---
+
+## XVII. Questions ouvertes & décisions en suspens
+
+### Lighthouse CI — couverture suffisante ?
+
+Le job `lighthouse` dans la CI audite la homepage en post-deploy. Questions non tranchées :
+
+- **Alternatives a11y** : axe-core ou pa11y pour un audit d'accessibilité plus exhaustif que Lighthouse seul ?
+- **Couverture** : auditer également les pages recettes, pas seulement la homepage ?
+- **PR vs post-deploy** : Lighthouse sur preview PR (détecte les regressions avant merge) vs sur site live (audite la réalité). Seul le post-deploy est implémenté — le PR preview n'est pas encore couvert.
+
+**Piste :** Ajouter `@axe-core/playwright` dans les tests BDD comme assertion a11y automatique — coût faible, gain en couverture.
+
+### Langue des sessions Claude — English ou français ?
+
+Les sessions sont maintenant conduites en anglais (+ rtk pour l'optimisation des tokens). Gain réel difficile à mesurer :
+
+- **Code et CLI** : la langue de session ne change probablement rien — le code est language-agnostic
+- **Recherche et nuances techniques** : la documentation anglophone est statistiquement plus dense → légère amélioration possible
+- **Contenu et UX du site** : le projet est francophone, les templates et CSS restent en français — l'anglais crée une friction de traduction mentale
+
+**Hypothèse actuelle :** Gain marginal et contextuel. Continuer en anglais pour les sessions techniques pures, revenir au français pour les décisions de contenu ou d'UX.
+
+### CLAUDE.md global machine
+
+Un `CLAUDE.md` local (`01-mocktails/CLAUDE.md`) est en place et bien rempli. Manque : un `~/.claude/CLAUDE.md` global avec les convictions et conventions transverses à tous les projets (stack philosophy, naming conventions, reflex `/plan`, préférences de réponse).
+
+**À faire :** Extraire les principes généraux du `CLAUDE.md` local et les élever au niveau global.
