@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#F7F4EE">
-  {{ if .Params.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
-  <title>{{ .Title }} — {{ .Site.Title }}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap"></noscript>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-<body class="page">
+{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
+{{ define "head-meta" }}{{ if .Params.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}{{ end }}
+{{ define "body-attrs" }} class="page"{{ end }}
+{{ define "body" }}
 
   <header class="site-header">
     <a href="/" class="site-logo">Kanpai Ø</a>
@@ -27,5 +14,4 @@
 
   {{ partial "footer.html" . }}
 
-</body>
-</html>
+{{ end }}

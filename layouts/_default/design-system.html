@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#F7F4EE">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Design System — Kanpai Ø</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ define "title" }}Design System — Kanpai Ø{{ end }}
+{{ define "head-meta" }}<meta name="robots" content="noindex, nofollow">{{ end }}
+{{ define "fonts" }}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Inter:wght@300;400;500;600&display=swap">
-  <link rel="stylesheet" href="/css/main.css">
+{{ end }}
+{{ define "head-extra" }}
   <style>
     /* Override body overflow for this standalone page */
     body { overflow: auto !important; }
@@ -112,8 +104,8 @@
     /* Recipe section wrapper */
     .ds-recipe-wrap { max-width: 420px; }
   </style>
-</head>
-<body>
+{{ end }}
+{{ define "body" }}
 
   {{ partial "fridge-icons.html" . }}
 
@@ -670,5 +662,4 @@
     </section>
 
   </main>
-</body>
-</html>
+{{ end }}
