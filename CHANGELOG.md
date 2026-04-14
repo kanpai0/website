@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.11.0] — 2026-04-14
+
+### Features
+- Add social links and consolidate icon rendering in footers and headers
+
+---
 ## [1.10.1] — 2026-04-14
 
 ### Refactoring

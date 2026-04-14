@@ -68,6 +68,7 @@ ingredients:
 - **Recipe page enrichment** : étapes de préparation
 - **Icone d'app** pour PWA et site favicon
 - **Ajout d'une couleur** par cocktail à utiliser sur chaque recette sur le sous-titre et les chiffres
+- **Icones réseaux sociaux**
 
 ---
 
@@ -76,7 +77,6 @@ ingredients:
 - [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" sur iOS/Android
 - [ ] **Recettes grisées** si ingrédient manquant : cards en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : rework every recipe to integrate independent pictures of ingredients
-- [ ] **Icones réseaux sociaux**
 - [ ] **Cocktail 404 pour page 404** : trouver une recette originale pour ce cocktail. Faut-il le garder caché comme un easter egg?
 - [ ] **Page de storytelling** sur le logo et l'icone de Kanpai 0
 
