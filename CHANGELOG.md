@@ -172,7 +172,8 @@
 ## [0.8.0] — 2026-03-31
 
 ### Features
-- Add `flavors` frontmatter to all recipes- Add flavor filter pills to homepage
+- Add `flavors` frontmatter to all recipes
+- Add flavor filter pills to homepage
 
 ### Documentation
 - Add CLAUDE.md with repository guidance and architecture overview
@@ -190,7 +191,7 @@
 - Add fridge ingredient filter to homepage
 
 ### Refactoring
-- Simplify fridge dot logic and update styles- Simplify fridge dot logic and update styles
+- Simplify fridge dot logic and update styles
 
 ---
 ## [0.5.0] — 2026-03-26
@@ -202,13 +203,16 @@
 ## [0.4.0] — 2026-03-26
 
 ### Features
-- Redesign homepage with recipe grid and update content structure- Update styles and SEO titles
+- Redesign homepage with recipe grid and update content structure
+- Update styles and SEO titles
 
 ---
 ## [0.3.0] — 2026-03-25
 
 ### Features
-- Import 24 recettes Sober Spirits en contenu Hugo- Add script to download recipe images from Sober Spirits CDN- Generate transparent PNGs for recipes via AI
+- Import 24 recettes Sober Spirits en contenu Hugo
+- Add script to download recipe images from Sober Spirits CDN
+- Generate transparent PNGs for recipes via AI
 
 ### Refactoring
 - Simplify recipe titles and switch images to `.webp`
@@ -220,7 +224,8 @@
 - Première page recette — charte visuelle Kanpai Ø
 
 ### Documentation
-- Add initial project plan for minimal website launch- Plan charte visuelle et fiche recette
+- Add initial project plan for minimal website launch
+- Plan charte visuelle et fiche recette
 
 ---
 ## [0.1.0] — 2026-03-23
