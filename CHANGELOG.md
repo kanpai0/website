@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.1] — 2026-04-14
+
+### Refactoring
+- Remove unused styles and improve fridge panel UI
+
+---
 ## [1.10.0] — 2026-04-14
 
 ### Features
