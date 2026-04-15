@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Extract subtitle, glass type, steps and tips from _sources/sober-spirits/ HTML files
+Extract subtitle, glass type, steps and tips from sources/sober-spirits/ HTML files
 and patch the corresponding content/recettes/*.md frontmatter.
 
 Usage:
@@ -15,7 +15,7 @@ import html as html_module
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-SOURCES = ROOT / "_sources" / "sober-spirits"
+SOURCES = ROOT / "sources" / "sober-spirits"
 RECIPES = ROOT / "content" / "recettes"
 
 DRY_RUN = "--write" not in sys.argv

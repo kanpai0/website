@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Parse les HTML Sober Spirits (dans _sources/sober-spirits/) → fichiers Hugo markdown.
+Parse les HTML Sober Spirits (dans sources/sober-spirits/) → fichiers Hugo markdown.
 
 Usage:
     python scripts/scrape-sober-spirits.py           # génère tous les content/recettes/*.md
@@ -16,7 +16,7 @@ import html as html_lib
 from pathlib import Path
 
 ROOT        = Path(__file__).parent.parent
-SOURCES_DIR = ROOT / "_sources" / "sober-spirits"
+SOURCES_DIR = ROOT / "sources" / "sober-spirits"
 OUTPUT_DIR  = ROOT / "content" / "recettes"
 
 RECIPES = [

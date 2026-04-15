@@ -64,8 +64,9 @@ layouts/             # Hugo templates
 static/css/main.css  # All styles (~350 lines, no framework)
 static/images/recettes/  # WebP cocktail images
 scripts/             # Python/bash utilities for content & image generation
-_sources/            # Raw HTML from Sober Spirits (not served)
-specs/               # Timestamped planning docs
+specs/               # Timestamped planning docs (ADRs)
+design/              # Design file (kanpai0.pen) + mockups
+docs/                # Reference docs, quality checklist, marketing
 ```
 
 ## Recipe Content Structure
@@ -107,7 +108,7 @@ Push to `main` → Cloudflare Pages auto-builds with `HUGO_VERSION=0.159.1`. No 
 
 ## Quality Gates
 
-After completing any modification, check the relevant sections of `QUALITY_CHECKLIST.md`:
+After completing any modification, check the relevant sections of `docs/QUALITY_CHECKLIST.md`:
 
 | Change type                       | Checklist sections |
 |-----------------------------------|--------------------|

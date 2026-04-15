@@ -5,12 +5,12 @@
 # Usage:
 #   bash scripts/download-recipe-images.sh
 #
-# Output: _sources/imgs/<html-filename>.webp  (24 files)
+# Output: sources/imgs/<html-filename>.webp  (24 files)
 
 set -euo pipefail
 
-SOURCES_DIR="$(cd "$(dirname "$0")/.." && pwd)/_sources/sober-spirits"
-OUTPUT_DIR="$(cd "$(dirname "$0")/.." && pwd)/_sources/imgs"
+SOURCES_DIR="$(cd "$(dirname "$0")/.." && pwd)/sources/sober-spirits"
+OUTPUT_DIR="$(cd "$(dirname "$0")/.." && pwd)/sources/imgs"
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 mkdir -p "$OUTPUT_DIR"
