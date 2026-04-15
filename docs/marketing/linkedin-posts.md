@@ -1,160 +1,108 @@
-# Sujets et posts LinkedIn — Kanpai Ø
+# Posts LinkedIn — Kanpai Ø
 
-Basé sur l'analyse du projet, de l'historique git, et des specs.
+## Sélection (7 posts retenus)
 
----
-
-## Angle général
-
-Le signal fort : **pratiques d'ingénierie professionnelle (ADR, design system, visual regression, BDD, release automation) appliquées à un side project à stack minimale et volontairement sobre.** La sophistication est dans le *comment*, pas dans la complexité de la stack.
-
----
-
-## Posts à écrire
-
-### A — "J'ai mis un site en prod en une journée — sans écrire une seule feature"
-
-**Angle :** Deploy first, build second. Le premier commit ne fait que valider l'architecture — Hugo installé, Cloudflare Pages branché, domaine avec 301, build en 11ms. Aucune feature. L'objectif n'est pas d'avoir un produit, c'est de supprimer le risque d'infrastructure avant d'investir dans le contenu.
-
-**Signal pour recruteur :** pensée produit, distinction entre hypothèse technique et hypothèse produit, gestion du risque.
+| # | Angle | Date de publication |
+|---|-------|---------------------|
+| 1 | Deploy first — pensée produit + gestion du risque | Mercredi 15 avril, soir |
+| 2 | Design system embarqué + régression visuelle | Lundi 20 avril, soir |
+| 3 | ADR sur un projet perso — culture de la décision | Jeudi 23 avril, midi |
+| 4 | Release automation sans npm — philosophie de stack | Lundi 27 avril, soir |
+| 5 | CI/CD + quality gates — chaîne de gardes fous | Jeudi 30 avril, midi |
+| 6 | Feedback terrain — je suis mon propre utilisateur | Lundi 4 mai, soir |
+| 7 | CTA missions + teasing prochain projet | Jeudi 7 mai, midi |
 
 ---
 
-### B — "Écrire des ADR sur un projet perso"
+## Post 1 — "Mettre en prod avant d'écrire la première feature"
 
-**Angle :** `specs/2026-03-31-1627-release-tooling-adr/plan.md` compare git-cliff vs semantic-release avec tableau de décision, rationale explicite, branch `feat/semantic-release` créée pour comparaison puis abandonnée. Chaque spec a une date, un statut, une liste de décisions explicitement justifiées.
+Le premier commit d'un projet n'a pas à contenir de code métier. Sur Kanpai Ø — un site de recettes de cocktails sans alcool — le premier commit installe Hugo, branche Cloudflare Pages, configure le domaine avec un 301. Build en 11 ms. Aucune recette, aucune interface. L'objectif n'était pas d'avoir un produit fonctionnel, c'était de valider l'infrastructure avant d'y investir du contenu.
 
-**Signal pour recruteur :** culture de la décision documentée, pensée staff engineer, trace écrite des trade-offs.
+Cette séparation entre hypothèse technique et hypothèse produit est quelque chose que j'applique systématiquement. Résoudre les deux en même temps, c'est accepter de mélanger les risques. Si le déploiement posait un problème — pipeline, domaine, CORS, configuration Hugo — je voulais le découvrir sans 24 recettes à réécrire. Ce n'est pas de la prudence excessive : c'est de la gestion de risque élémentaire.
 
----
+Ce réflexe vient de projets où le pipeline a été configuré trop tard, quand le coût du changement était déjà élevé. Deploy first reste l'une des décisions les plus simples à prendre et les plus difficiles à transmettre en équipe.
 
-### C — "Design system avant les features — même sur un projet solo"
-
-**Angle :** Page `/design-system/` standalone créée tôt dans le projet, avec `data-ds` attributes ciblés pour les tests, visual regression Playwright section par section, Docker pour la parité Linux/macOS en local. Un design system n'est pas réservé aux grandes équipes — c'est un contrat sur l'intention visuelle.
-
-**Signal pour recruteur :** engineering discipline, refus de la dette visuelle, testing.
+Le repo est privé mais accessible sur demande si vous voulez voir la structure réelle. Et si vous cherchez quelqu'un avec ce type de réflexes sur un projet — je suis disponible pour des missions freelance.
 
 ---
 
-### D — "Visual regression testing sur un site statique — sans Cypress, sans budget"
+## Post 2 — "Un design system embarqué dans le site — pas dans un Storybook"
 
-**Angle :** Playwright `toHaveScreenshot()` built-in, Docker pour la parité de rendu (les fonts rendent différemment sur macOS vs Linux CI), 6 tests par section plutôt qu'un full-page (plus actionable en cas d'échec). Les snapshots sont toujours générés en local, jamais en CI — la CI compare, elle ne génère pas.
+Sur Kanpai Ø, la page `/design-system/` est une vraie page du site, servie par Hugo, accessible publiquement. Elle liste les 13 composants du site — palette, typographie, pills de saveurs, icônes d'ingrédients, types de verres, carte de recette, footer — chacun annoté avec un attribut `data-ds` qui sert de cible aux tests Playwright.
 
-**Décision notable :** Cypress nécessite un plugin payant pour le screenshot testing. Playwright l'a nativement. BackstopJS est trop lourd pour ce besoin. La décision de dépendance est explicite.
+L'idée de départ était simple : si le design system est séparé du site, il va dériver. Si les composants vivent dans le site lui-même et sont testés visuellement par section (et non en full-page, plus difficile à déboguer), chaque régression est localisable immédiatement. Les snapshots sont générés localement dans un conteneur Docker officiel Playwright — même version que la CI — pour garantir que les polices rendent de façon identique sur macOS et sur Linux. La CI compare, elle ne génère jamais.
 
-**Signal pour recruteur :** pragmatisme outil, CI/CD, quality gates.
+Ce n'est pas une approche courante sur un site statique solo. Mais la question n'était pas « est-ce que c'est nécessaire ? » — c'était « est-ce que je veux découvrir une régression visuelle deux semaines après l'avoir introduite ? ». La réponse était non. 13 sections testées, seuil à 1 % de diff pixels, bloque les merges.
 
----
-
-### E — "BDD + Gherkin pour valider un système de filtres vanilla JS"
-
-**Angle :** Scénarios Gherkin pour le frigo (panel open/close, uncheck ingredient, combinaison fridge+flavor) et les saveurs (AND logic, deselect restores). Le problème concret résolu : les checkboxes sont `display:none` en CSS, Playwright refuse de les interagir même avec `force:true`. Solution : `page.evaluate` + dispatch `change` event.
-
-**Décision notable :** `playwright-bdd` (12 dépendances directes) choisi sur `@cucumber/cucumber` (~414 dépendances transitives) pour garder Playwright comme runner.
-
-**Signal pour recruteur :** BDD, test design, résolution de problèmes concrets, choix de dépendances raisonné.
+Le repo est privé mais partageable sur demande. Je suis disponible pour des missions freelance.
 
 ---
 
-### F — "Release automation sans npm dans un projet Hugo"
+## Post 3 — "Écrire des ADR sur un projet perso"
 
-**Angle :** `make release` / `make release-dry` / `make doctor`. git-cliff + bash, pas de package-lock.json dans un repo Hugo par philosophie. Preview interactif avant tout écrit, `--bump` override quand les commits ne reflètent pas l'intent réel.
+Les ADR — Architecture Decision Records — sont souvent réservés aux grandes équipes, aux projets avec plusieurs contributeurs, aux contextes où les décisions doivent être auditables. Sur Kanpai Ø, il n'y a qu'un seul développeur. J'ai quand même 22 ADR datés.
 
-**Angle complémentaire :** conventional commits hook local, cliff.toml template Tera pour le format CHANGELOG — les outils sont adaptés à la stack, pas l'inverse.
+Le format est simple : un dossier horodaté dans `specs/`, un fichier `plan.md` avec le contexte, les alternatives considérées, la décision retenue, et le rationale explicite. L'ADR sur le release tooling compare git-cliff et semantic-release avec un tableau de décision. L'ADR sur les tests visuels documente pourquoi Cypress est écarté (plugin screenshot payant), pourquoi BackstopJS est trop lourd, pourquoi Playwright est retenu. La branch `feat/semantic-release` a été créée, testée, et abandonnée — la trace reste dans le git.
 
-**Signal pour recruteur :** tooling ownership, cohérence philosophique de stack, release engineering.
+La valeur d'un ADR n'est pas dans la documentation pour les autres. Elle est dans la discipline qu'il impose à soi-même : formuler un problème clairement, nommer les alternatives, expliciter pourquoi on ne les a pas choisies. Cela prend 20 minutes. Cela évite de répéter les mêmes erreurs six mois plus tard.
 
----
-
-### G — "Structured frontmatter : rendre les templates stupides"
-
-**Angle :** Migration de `"50 ml de Rhum Sober Spirits"` (string opaque) vers `{name: "Rhum Sober Spirits", qty: "50 ml"}` dans le markdown, via scripts Python sur 24 fichiers. La décision documentée : "templates stay dumb, content is self-describing." Les templates Hugo n'ont plus de `replaceRE` ni de `split`.
-
-**Signal pour recruteur :** separation of concerns, pensée long terme sur la maintenabilité du contenu, scripting d'automatisation.
+Le repo est privé mais accessible sur demande. Ces pratiques prennent encore plus de sens en équipe — je cherche des missions freelance en ingénierie, architecture, ou lead technique.
 
 ---
 
-### H — "Je suis mon propre premier utilisateur — et c'est délibéré"
+## Post 4 — "Release automation sans npm dans un repo Hugo"
 
-**Angle :** Kanpai Ø est d'abord un outil pour moi (barman de mes soirées) et mes invités. Pas d'analytics, pas de SEO intentionnel — ce n'est pas un oubli, c'est une hypothèse. Le feedback loop est personnel et immédiat. Le déplacement des spiritueux vers le frigo et la mise en avant des saveurs vient d'une observation directe : mes invités cherchent une humeur ("quelque chose de fruité") pas un type d'alcool. C'est du jobs-to-be-done sans framework.
+Hugo n'a pas de `package.json`. Ajouter semantic-release pour automatiser les releases aurait introduit 329 packages npm et un `package-lock.json` de 6122 lignes dans un projet qui n'en a délibérément aucun. J'ai créé la branch, installé le package, et observé le résultat. Puis j'ai supprimé la branch.
 
-**Signal pour recruteur :** clarté sur le scope d'un projet, décision produit ancrée dans une observation réelle, honnêteté sur les objectifs.
+À la place : git-cliff (binaire Go, installé via Homebrew) et 157 lignes de bash. `make release-dry` affiche le prochain numéro de version et le changelog prévu. `make release` demande une confirmation interactive avant d'écrire quoi que ce soit. La commande bumpe la version dans `hugo.toml`, génère le CHANGELOG, crée le commit et le tag. L'override `--bump minor` est disponible quand les commits ne reflètent pas l'intention réelle.
 
----
+La décision n'était pas de fuir la complexité — c'était de refuser d'introduire un outil dont la philosophie de stack est orthogonale au projet. Un bon outil s'adapte à la stack existante. Un outil qui redéfinit la stack pour exister n'est pas le bon outil.
 
-### I — "ARIA sur un site de recettes — pourquoi c'est non-négociable"
-
-**Angle :** Skip links, `role="main"`, `aria-labelledby`, live regions sur les filtres dynamiques. Pas une case à cocher — un engagement dès le début du projet. Lighthouse CI qui audite à chaque push.
-
-**Signal pour recruteur :** accessibilité comme discipline, pas comme afterthought.
+Repo accessible sur demande. Je suis ouvert à des missions freelance — ingénierie logicielle, architecture, outillage de delivery.
 
 ---
 
-### J — "L'IA m'a aidé à nommer ce que je sais déjà faire"
+## Post 5 — "Le deploy ne se déclenche pas sans que les tests aient passé"
 
-**Angle :** En analysant rétrospectivement tout ce qui a été mis en place sur ce projet, des noms ont émergé pour des pratiques que j'appliquais intuitivement : "checkbox state machine", "ETL pipeline", "body class theming", "ADR pattern". Ces techniques étaient là — bien utilisées — mais sans étiquette. L'IA comme outil de formalisation de compétences implicites.
+Sur Kanpai Ø, la ligne `needs: [lighthouse, visual-regression]` dans le workflow GitHub Actions dit une chose simple : le deploy ne se déclenche pas sans que les tests de régression visuelle et l'audit Lighthouse aient passé. Pas une convention — une contrainte mécanique.
 
-**Signal pour recruteur :** Compétences réelles sous-documentées / syndrome de l'expert qui ne sait pas nommer ce qu'il fait — et comment y remédier avec introspection.
+La couche locale est en dessous : un hook pre-commit exécute `hugo build` et valide le schéma des données frontmatter à chaque commit. `make preflight` joue le rôle d'un second avis avant push — build complet, validation de schéma, tests Playwright dans le même conteneur Docker que la CI. L'idée était simple : une régression détectée en commit local coûte 30 secondes. Détectée en prod, elle coûte un rollback et une investigation.
 
----
+Sur un projet solo, il n'y a pas de code review humaine pour absorber les erreurs. La CI est la seule paire d'yeux extérieure. La réponse n'était pas d'accepter ce risque — c'était de le compenser par une chaîne de gardes fous qui s'activent en couches successives : hook local, tests visuels sur PR, Lighthouse sur push, deploy conditionnel. Chaque couche rattrape ce que la précédente peut rater.
 
-### K — "8263 fichiers pour une release : j'ai dit non"
-
-**Angle :** `semantic-release` est l'outil "standard" pour les releases automatisées. J'ai créé la branch, installé le package — et découvert 8263 fichiers dans `node_modules` dans un repo Hugo qui n'a pas de `package.json`. 157 lignes de bash + `git-cliff` font exactement la même chose, s'adaptent à la stack, et n'introduisent aucune dépendance Node. Le build vs buy n'est pas une question de capabilité — c'est une question de philosophie de stack.
-
-**Signal pour recruteur :** Décision d'architecture raisonnée, résistance aux defaults de l'industrie, cohérence philosophique.
+Le repo est privé mais accessible sur demande. Je cherche des missions où cette rigueur est partagée — ingénieur senior, architecte, ou lead technique selon le contexte.
 
 ---
 
-### L — "Créer une icône pour mon app — le problème c'était le vocabulaire"
+## Post 6 — "Je suis mon propre utilisateur — et mes amis m'ont changé le produit"
 
-**Angle :** L'objectif : une icône représentant un cocktail sans alcool. Simple en apparence. En pratique : j'ai testé method.ac, lovable.dev, artlist toolkit, recraft.ai, Gemini (meilleurs résultats), Claude + Pencil. Le blocage n'était pas l'outil — c'était l'incapacité à décrire précisément l'esthétique souhaitée avec le bon vocabulaire artistique. "Mélanger un cocktail et le 0%" sont des concepts visuellement contradictoires. J'ai un bon œil pour évaluer un résultat. Pas encore le vocabulaire pour le commander précisément.
+Kanpai Ø est un outil que j'utilise vraiment. Chaque fois que j'ai des invités, il est ouvert sur un téléphone posé sur le comptoir. Ce feedback direct — immédiat, sans filtre — a conduit à plus de changements que je n'aurais prévu.
 
-**Signal pour recruteur :** Honnêteté sur ses limites, itération outillée sur un problème mal défini, appétence UX/design sans prétendre être designer.
+En montrant le site à des amis, j'ai observé ce qu'ils cherchaient réellement : pas un type de spiritueux — une humeur, une saveur. Cette observation a motivé le déplacement des spiritueux vers le « frigo » et la mise en avant des pills de saveurs comme premier critère de filtrage. Des ajustements cosmétiques et ergonomiques ont suivi chaque session : la taille des cards, l'ordre des sections, la lisibilité des filtres sur mobile. Rien de radical en apparence — mais rien n'était juste avant d'avoir vu de vraies personnes utiliser le produit sur un vrai écran.
 
----
+Ce que ce projet m'a rappelé, c'est quelque chose que je trouve trop rare en mission : la proximité réelle avec les utilisateurs. Pas les personas, pas les analytics — les personnes qui utilisent le produit et qui montrent, en temps réel, ce qui ne fonctionne pas encore. C'est une forme de feedback qui manque dans beaucoup d'équipes, et que je cherche activement dans les contextes où je travaille.
 
-### M — "Ce que je pense de ceux qui délèguent tout"
-
-**Angle :** Deux convictions forgées sur ce projet. La première : si vous déléguez tout à l'IA sans comprendre ce qu'elle produit, vous ne faites rien en réalité — c'est de la paresse intellectuelle et du désintérêt du métier. La validation humaine systématique n'est pas un détail : 8 images corrigées sur 24, edge cases de parsing documentés, review de chaque output de migration. L'IA démultiplie ce que vous savez faire — elle ne remplace pas le fait de savoir. La seconde : confondre vitesse et précipitation. Des sessions bornées, une spec avant de toucher un fichier, un `--dry-run` avant tout script destructif. Livrer vite ne veut pas dire livrer sans méthode.
-
-**Signal pour recruteur :** Exigence professionnelle, culture engineering, positionnement sur le rôle de l'IA en équipe.
+Le repo est privé mais partageable sur demande. Je suis disponible pour des missions freelance — et si possible dans des équipes proches de leurs utilisateurs.
 
 ---
 
-### N — "Je cherche un projet à la hauteur — accès au repo sur demande"
+## Post 7 — "Ce projet est la réponse à la question : à quoi ressemble votre travail ?"
 
-**Angle :** Ce projet est public dans ses méthodes, privé dans ses sources. Si vous êtes curieux de voir le code réel — les templates Hugo, les tests Playwright, la CI/CD, les specs ADR — envoyez-moi un message. Je partage le repo aux personnes qui veulent aller au-delà du résumé LinkedIn.
+Kanpai Ø est un site de recettes de cocktails sans alcool — 24 recettes, un système de filtres par ingrédients et saveurs, une interface en Hugo + vanilla CSS, déployé sur Cloudflare Pages. Un projet simple en apparence, mais que j'ai intentionnellement construit comme je construis du logiciel professionnel : spécifications avant code, ADR pour les décisions d'architecture, tests de régression visuelle, pipeline CI/CD qui bloque les merges en cas d'échec, release automation versionnée. Le tout en ~45h de travail effectif sur 3 semaines, pour un coût de lancement de 58€.
 
-**Signal pour recruteur :** Transparence, confiance, invitation à la vérification.
+Ce n'est pas un projet portfolio conçu pour paraître impressionnant. C'est un outil que j'utilise vraiment, dont les décisions techniques ont été prises pour de bonnes raisons documentées, et dont le code est lisible par quelqu'un qui ne l'a jamais vu.
 
----
+En route pour le prochain side project.
 
-## Format recommandé pour chaque post
-
-- Ouvrir sur le problème / la décision, pas sur la solution
-- 1 décision concrète documentée avec son contexte
-- 1 alternative explicitement rejetée et pourquoi
-- Clore sur le principe général applicable ailleurs
-
-**Longueur :** 150–300 mots. Éviter les listes à puces sur LinkedIn — les paragraphes courts performent mieux.
-
-**CTA de fin (à adapter par post) :**
-> Vous travaillez sur des défis similaires ? Je suis disponible pour en parler — un message suffit.
-
-ou pour les posts techniques :
-> Le repo est privé mais accessible sur demande — si vous voulez voir le code réel derrière ces choix.
-
-ou pour les posts convictions :
-> Pour ceux qui ne valident pas, je pense sincèrement qu'il vaut mieux changer de métier. Je suis preneur de vos arguments contraires.
+Si vous cherchez un ingénieur senior, architecte logiciel ou lead technique pour une mission freelance — quelqu'un qui livre régulièrement en production, documente ses décisions, et sait conduire une équipe vers ces standards — je suis disponible. Le repo est privé mais je le partage volontiers. Un message suffit. Profil complet sur LinkedIn.
 
 ---
 
-## Note de ton — ce que ces posts doivent refléter
+## Notes de format
 
-- **Façon de procéder** : spec avant code, `/plan` avant toute opération importante, validation humaine de chaque output IA
-- **Structuration de la pensée** : tableaux de comparaison, arbres de décision, ADR datés
-- **Qualités de code** : DRY, sémantique, zero-dependency par défaut, nommage orienté métier
-- **Convictions** : simplicité délibérée > complexité accidentelle ; OSS léger > framework lourd ; CSS d'abord > JS ensuite
-- **Introspection** : nommer ses limites (vocabulaire artistique, reflex /plan tardif) avec la même précision que ses réussites
-- **Invitation** : accès repo privé sur demande — signal de confiance et de transparence
+La première phrase de chaque post doit tenir seule, sans contexte — c'est ce qui s'affiche avant le « voir plus ».
+
+Règles structurelles :
+- Pas de liste à puces
+- Ouvre sur un fait concret ou une décision, jamais sur une question rhétorique
+- CTA final : repo sur demande + disponibilité freelance (les deux, dans cet ordre)

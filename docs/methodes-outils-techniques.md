@@ -465,20 +465,6 @@ Compétence souvent invisible mais structurante : concevoir les données avant d
 
 ## XVI. Budget & temps — évaluation et maîtrise
 
-### Budget total du projet
-
-| Poste | Type | Montant |
-|---|---|---|
-| Abonnement Claude Pro | Mensuel (1 mois) | 20 $ |
-| Génération d'images (OpenAI `gpt-image-1`) | One-shot | ~1 $ |
-| Domaine `kanpai0.com` | Annuel | 26 $ |
-| Domaine `kanpai0.co` | Annuel | 11 $ |
-| Cloudflare Pages | Gratuit | 0 $ |
-| GitHub | Gratuit | 0 $ |
-| Hugo, Playwright, git-cliff, Google Fonts | Open source | 0 $ |
-| **Total lancement** | | **~58 $** |
-| **Récurrent annuel** | (hors Claude) | **~38 $/an** |
-
 ### Temps investi
 
 | Métrique | Valeur |
@@ -488,6 +474,22 @@ Compétence souvent invisible mais structurante : concevoir les données avant d
 | Sessions | 15 demi-journées |
 | Heures effectives (3h/session, estimation haute) | ~45h |
 | Heures effectives (2h/session, estimation basse) | ~30h |
+
+### Budget total du projet
+
+| Poste                                      | Type             | Montant      |
+|--------------------------------------------|------------------|--------------|
+| Abonnement Claude Pro                      | Mensuel (1 mois) | 20 €         |
+| Génération d'images (OpenAI `gpt-image-1`) | One-shot         | ~1 €         |
+| Domaine `kanpai0.com`                      | Annuel           | 26 €         |
+| Domaine `kanpai0.co`                       | Annuel           | 11 €         |
+| Cloudflare Pages                           | Gratuit          | 0 €          |
+| GitHub                                     | Gratuit          | 0 €          |
+| Hugo, Playwright, git-cliff, Google Fonts  | Open source      | 0 €          |
+| **Total lancement**                        |                  | **~58 €**    |
+| **Récurrent annuel**                       | (hors Claude)    | **~38 €/an** |
+
++ Mon temps de freelance à 100 €/h, soit **~4500 €**
 
 ### Ce que 45h ont produit
 
