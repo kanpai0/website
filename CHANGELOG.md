@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.11.1] — 2026-04-15
+
+### Bug Fixes
+- Correct formatting issues in CHANGELOG
+
+### Refactoring
+- Standardize flavor and color naming across metadata, scripts, and UI
+
+### Documentation
+- Add retrospective on project learnings and decision-making processes
+- Reorganized the project to reduce clutter and better separate concerns
+
+---
 ## [1.11.0] — 2026-04-14
 
 ### Features
