@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <defs>
+        <path id="seg" style="fill: none; stroke: rgb(255, 0, 0); stroke-width: 12px;" d="M 222.811 238.787 C 214.968 242.373 98.664 241.091 68.604 238.739 C 55.903 237.745 49.665 225.048 50.1 215.504 C 51.148 192.488 69.834 147.695 85.212 133.711 C 91.904 127.624 103.98 123.232 113.245 130.444 C 130.51 143.884 219.079 229.769 222.811 238.787 Z"/>
+    </defs>
+    <ellipse style="stroke: rgb(0, 0, 0); fill: rgba(255, 255, 255, 0); paint-order: fill; fill-rule: nonzero; stroke-width: 20px; pointer-events: none;" cx="250.236" cy="249.67" rx="240.457" ry="239.784"/>
+    <use href="#seg" transform="rotate(0,   250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(45,  250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(90,  250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(135, 250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(180, 250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(225, 250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(270, 250.236, 249.67)"/>
+    <use href="#seg" transform="rotate(315, 250.236, 249.67)"/>
+</svg>

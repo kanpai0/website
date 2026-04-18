@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+<ellipse style="stroke: rgb(255, 0, 0); stroke-linecap: round; stroke-linejoin: round; fill: rgba(0, 0, 0, 0); stroke-width: 10px;" cx="223.863" cy="154.697" rx="18" ry="18" transform="matrix(1, 0, 0, 1, 0, -1.7763568394002505e-15)"/>
+    <ellipse style="stroke: rgb(255, 0, 0); stroke-linecap: round; stroke-linejoin: round; fill: rgba(0, 0, 0, 0); stroke-width: 10px;" cx="278.43" cy="208.964" rx="18" ry="18" transform="matrix(1, 0, 0, 1, 0, -1.7763568394002505e-15)"/>
+    <path style="fill: none; stroke: rgb(255, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 10px;" d="M 217.738 230.255 L 284.299 132.847" transform="matrix(1, 0, 0, 1, 0, -1.7763568394002505e-15)"/>
+</svg>
