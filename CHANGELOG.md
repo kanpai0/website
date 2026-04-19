@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.12.0] — 2026-04-19
+
+### Features
+- Add new SVG assets to `design/essais` and update `favicon.svg` with gradient enhancements and refined styling
+
+### Documentation
+- Update budget section and LinkedIn post content
+- Refine LinkedIn posts for clarity and added contextual improvements
+- Expand and refine README with detailed project structure, deployment pipeline, and tooling overview
+
+---
 ## [1.11.1] — 2026-04-15
 
 ### Bug Fixes
