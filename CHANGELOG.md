@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.12.1] — 2026-04-19
+
+### Bug Fixes
+- Simplify and optimize `favicon.svg` and `apple-touch-icon.png` for consistency and improved performance
+
+---
 ## [1.12.0] — 2026-04-19
 
 ### Features
