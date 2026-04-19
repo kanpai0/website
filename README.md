@@ -124,7 +124,6 @@ ingredients:
 
 ### Fonctionnalités — Backlog
 
-- [ ] **PWA / installable** : `manifest.json` + Service Worker pour "Ajouter à l'écran d'accueil" iOS/Android
 - [ ] **Recettes grisées** : cards sans ingrédients disponibles → en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : photos indépendantes de chaque ingrédient intégrées à la page recette
 - [ ] **Page 404 cocktail** : recette originale en easter egg
@@ -144,3 +143,4 @@ ingredients:
 - ~~Newsletter~~ — pas de stratégie contenu définie
 - ~~Badge compteur de recettes filtrées~~ — UX peu prioritaire
 - ~~Temps, difficulté par recette~~ — rester le plus simple possible
+- ~~PWA / installable~~ — gain offline insuffisant pour justifier la complexité d'un service worker ; support iOS PWA trop limité ([ADR](specs/2026-04-19-pwa/plan.md))
