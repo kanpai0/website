@@ -81,6 +81,10 @@
     {{ end }}
   </main>
 
+  <div class="filter-summary" id="filter-summary" aria-live="polite" hidden>
+    <span id="filter-summary-count"></span> recettes masquées par les filtres
+  </div>
+
   {{ partial "footer.html" . }}
 
   <script>
@@ -115,6 +119,10 @@
         card.classList.toggle('fridge-hidden', !visible);
         card.setAttribute('aria-hidden', String(!visible));
       });
+      const hiddenCount = document.querySelectorAll('.recipe-card.fridge-hidden').length;
+      const summary = document.getElementById('filter-summary');
+      summary.hidden = hiddenCount === 0;
+      document.getElementById('filter-summary-count').textContent = hiddenCount;
     }
 
     function saveFridge() {

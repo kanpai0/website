@@ -52,6 +52,16 @@ Then('no visible recipe requires {string}', async ({ page }, ingredient: string)
   }
 });
 
+Then('the filter summary is hidden', async ({ page }) => {
+  await expect(page.locator('#filter-summary')).toBeHidden();
+});
+
+Then('the filter summary shows the count of hidden recipes', async ({ page }) => {
+  const hiddenCount = await page.locator('.recipe-card.fridge-hidden').count();
+  await expect(page.locator('#filter-summary')).toBeVisible();
+  await expect(page.locator('#filter-summary-count')).toHaveText(String(hiddenCount));
+});
+
 Then('no visible recipe lacks the flavor {string}', async ({ page }, flavor: string) => {
   const visibleCards = page.locator('.recipe-card:not(.fridge-hidden)');
   const count = await visibleCards.count();
