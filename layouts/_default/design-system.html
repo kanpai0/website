@@ -103,6 +103,9 @@
 
     /* Recipe section wrapper */
     .ds-recipe-wrap { max-width: 420px; }
+
+    /* Show hidden components in design system */
+    [data-ds] [hidden] { display: block; }
   </style>
 {{ end }}
 {{ define "body" }}
@@ -553,6 +556,12 @@
           <h2 class="recipe-card__title">Mojito</h2>
         </a>
       </div>
+    </section>
+
+    <!-- ── Filter Summary ── -->
+    <section data-ds="filter-summary">
+      <p class="ds-section-title">Filter Summary</p>
+      {{ partial "filter-summary.html" (dict "count" 3) }}
     </section>
 
     <!-- ── Footer ── -->

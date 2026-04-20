@@ -81,9 +81,7 @@
     {{ end }}
   </main>
 
-  <div class="filter-summary" id="filter-summary" aria-live="polite" hidden>
-    <span id="filter-summary-count"></span> recettes masquées par les filtres
-  </div>
+  {{ partial "filter-summary.html" (dict) }}
 
   {{ partial "footer.html" . }}
 

@@ -1,4 +1,4 @@
-.PHONY: serve build test release release-dry doctor preflight
+.PHONY: serve build test test-update release release-dry doctor preflight
 
 serve:
 	hugo serve
@@ -8,6 +8,9 @@ build:
 
 test:
 	npm test
+
+test-update:
+	npm run test:update
 
 release:
 	bash scripts/release.sh

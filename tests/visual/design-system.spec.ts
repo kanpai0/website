@@ -13,6 +13,7 @@ const sections = [
   'buttons',
   'recipe-glass',
   'recipe-card',
+  'filter-summary',
   'footer',
   'social-links',
   'glass-icons',
