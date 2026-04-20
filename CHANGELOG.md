@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.13.0] — 2026-04-20
+
+### Features
+- Add filter summary display with hidden recipe count
+
+### Bug Fixes
+- Correct backlog header detection and section insertion logic in `release.sh`
+
+### Refactoring
+- Validate `flavors[]` frontmatter in pre-commit and modularize filter logic into `fridge.js`
+- Modularize `fridge.js` with pure logic separation and streamlined initialization
+
+### Documentation
+- Add ADR rejecting PWA implementation due to insufficient offline gains and iOS limitations
+
+### Testing
+- Add unit tests for `fridge.js` and introduce `test:unit` script to package.json
+
+---
 ## [1.12.1] — 2026-04-19
 
 ### Bug Fixes

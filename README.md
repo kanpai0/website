@@ -124,7 +124,6 @@ ingredients:
 
 ### Fonctionnalités — Backlog
 
-- [ ] **Recettes grisées** : cards sans ingrédients disponibles → en bas de liste, visuellement atténuées
 - [ ] **Custom recipe UI** : photos indépendantes de chaque ingrédient intégrées à la page recette
 - [ ] **Page 404 cocktail** : recette originale en easter egg
 - [ ] **Page storytelling** : logo et icône Kanpai Ø
