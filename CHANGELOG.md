@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.15.0] — 2026-04-20
+
+### Features
+- Add "À propos" page with storytelling and technical overview
+
+### Documentation
+- Update backlog with release notes task
+
+### Testing
+- Enable fullyParallel mode and refactor design system tests to speed up execution (won 4-5s over 17s)
+
+---
 ## [1.14.0] — 2026-04-20
 
 ### Features
