@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.13.1] — 2026-04-20
+
+### Bug Fixes
+- Simplify backlog insertion logic in `release.sh`
+
+---
 ## [1.13.0] — 2026-04-20
 
 ### Features
