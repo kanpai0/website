@@ -122,11 +122,11 @@ ingredients:
 - **Icônes réseaux sociaux**
 - **Bouton retour** : retour à la liste depuis une recette
 - **Recettes grisées** : cards sans ingrédients disponibles → en bas de liste, visuellement atténuées
+- **Page 404 cocktail** : recette originale en easter egg
 
 ### Fonctionnalités — Backlog
 
 - [ ] **Custom recipe UI** : photos indépendantes de chaque ingrédient intégrées à la page recette
-- [ ] **Page 404 cocktail** : recette originale en easter egg
 - [ ] **Page storytelling** : logo et icône Kanpai Ø
 
 ### Fonctionnalités — V2 (si le projet évolue)

@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.14.0] — 2026-04-20
+
+### Features
+- Add custom 404 page with thematic "recipe" easter eggs
+
+### Documentation
+- Update LinkedIn post with design system approach and rationale adjustments
+
+---
 ## [1.13.2] — 2026-04-20
 
 ### Testing
