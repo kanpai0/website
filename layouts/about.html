@@ -1,0 +1,71 @@
+{{ define "title" }}À propos — {{ .Site.Title }}{{ end }}
+{{ define "head-meta" }}<meta name="robots" content="noindex, nofollow">{{ end }}
+{{ define "body-attrs" }} class="about-page"{{ end }}
+{{ define "body" }}
+
+  <header class="site-header">
+    <a href="/" class="site-logo">Kanpai Ø</a>
+  </header>
+
+  <main class="about-wrap">
+
+    <img src="/favicon.svg" alt="Icône Kanpai Ø" class="about-icon" width="140" height="140">
+    <h1 class="about-title">Kanpai Ø</h1>
+    <p class="about-kana">乾杯 · Des mocktails pour tous les moments</p>
+
+    <section class="about-section" aria-labelledby="about-nom">
+      <h2 id="about-nom">Le nom</h2>
+      <p><strong>Kanpai</strong> (乾杯) signifie « santé » en japonais — un mot universel, joyeux, que tout le monde comprend. <strong>Ø</strong>, emprunté à l'esthétique scandinave, symbolise le zéro&nbsp;: pas d'alcool. Ensemble, ils forment quelque chose de simple et reconnaissable, unique sur le web.</p>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-usages">
+      <h2 id="about-usages">Deux usages, une app</h2>
+      <div class="about-duo">
+        <div class="about-card">
+          <p class="about-card-label">Pour l'invité</p>
+          <h3 class="about-card-heading">Se laisser guider par les goûts</h3>
+          <p>Les pilules de saveurs filtrent les recettes. On parcourt comme un menu de bar — fruité, épicé, herbacé — sans savoir ce qu'on cherche.</p>
+        </div>
+        <div class="about-card">
+          <p class="about-card-label">Pour l'hôte</p>
+          <h3 class="about-card-heading">Partir de son frigo</h3>
+          <p>Le panneau Mon frigo laisse décocher les ingrédients absents. On voit instantanément les recettes réalisables avec ce qu'on a.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-demarche">
+      <h2 id="about-demarche">La démarche</h2>
+      <ul class="about-tech-list">
+        <li>
+          <strong>Deploy first</strong>
+          Infrastructure validée en production avant la première feature.
+        </li>
+        <li>
+          <strong>Décisions documentées</strong>
+          20+ ADRs pour un projet solo — chaque choix de stack tracé et argumenté.
+        </li>
+        <li>
+          <strong>Qualité intégrée</strong>
+          Pre-commit hook, tests de régression visuelle (Playwright), scénarios BDD (Gherkin).
+        </li>
+        <li>
+          <strong>Sobriété technique</strong>
+          Hugo seul, zéro framework CSS, zéro npm en production.
+        </li>
+        <li>
+          <strong>CSS comme machine d'état</strong>
+          Le panneau frigo fonctionne via <code>:has()</code>, sans JavaScript.
+        </li>
+      </ul>
+      <p class="about-links">
+        <a href="/design-system/">Voir le système de design <span aria-hidden="true">→</span></a>
+        <a href="https://www.linkedin.com/in/vincent-clair" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (ouvre un nouvel onglet)">LinkedIn <span aria-hidden="true">→</span></a>
+      </p>
+    </section>
+
+  </main>
+
+  {{ partial "footer.html" . }}
+
+{{ end }}

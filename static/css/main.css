@@ -619,3 +619,138 @@ body.orange { --accent: var(--color-orange); }
   color: var(--sage);
   text-underline-offset: 2px;
 }
+
+/* ── About ── */
+body.about-page { overflow: auto; }
+
+.about-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: calc(var(--header-h) + 48px) 24px 80px;
+}
+
+.about-icon {
+  display: block;
+  width: 140px;
+  height: 140px;
+  border-radius: 22%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  margin: 0 auto 32px;
+}
+
+.about-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 3rem);
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.about-kana {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 56px;
+}
+
+.about-section {
+  margin-bottom: 48px;
+}
+
+.about-section h2 {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.about-section > p {
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.about-duo {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-card p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.about-card-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sage);
+}
+
+.about-card-heading {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.about-tech-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.about-tech-list li {
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.about-tech-list strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.about-tech-list code {
+  font-size: 0.85em;
+  background: var(--border);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.about-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.about-links a {
+  color: var(--sage);
+  font-size: 0.9rem;
+  text-underline-offset: 2px;
+}
+
+.about-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .about-duo { grid-template-columns: 1fr; }
+}

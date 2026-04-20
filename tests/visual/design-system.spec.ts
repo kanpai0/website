@@ -20,6 +20,9 @@ const sections = [
   'recipe-ingredients',
   'recipe-steps',
   'recipe-tips',
+  'app-icon',
+  'content-card',
+  'bordered-list',
 ];
 
 for (const section of sections) {

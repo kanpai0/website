@@ -717,5 +717,74 @@
       </div>
     </section>
 
+    <!-- ── App Icon ── -->
+    <section data-ds="app-icon">
+      <p class="ds-section-title">App Icon</p>
+      <div class="ds-states">
+        <div class="ds-state">
+          <span class="ds-state-label">Default (140px, border-radius 22%)</span>
+          <img src="/favicon.svg" alt="Icône Kanpai Ø" class="about-icon" width="140" height="140">
+        </div>
+        <div class="ds-state">
+          <span class="ds-state-label">Small (64px)</span>
+          <img src="/favicon.svg" alt="Icône Kanpai Ø" class="about-icon" width="64" height="64" style="width:64px;height:64px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Content Card ── -->
+    <section data-ds="content-card">
+      <p class="ds-section-title">Content Card</p>
+      <div class="ds-states">
+        <div class="ds-state">
+          <span class="ds-state-label">Default (.about-card)</span>
+          <div class="about-card" style="max-width: 240px;">
+            <p class="about-card-label">Pour l'invité</p>
+            <h3 class="about-card-heading">Se laisser guider par les goûts</h3>
+            <p>Les pilules de saveurs filtrent les recettes sans savoir ce qu'on cherche.</p>
+          </div>
+        </div>
+        <div class="ds-state">
+          <span class="ds-state-label">Grid 2 colonnes (.about-duo)</span>
+          <div class="about-duo" style="max-width: 480px;">
+            <div class="about-card">
+              <p class="about-card-label">Pour l'invité</p>
+              <h3 class="about-card-heading">Se laisser guider</h3>
+              <p>Parcourir comme un menu de bar.</p>
+            </div>
+            <div class="about-card">
+              <p class="about-card-label">Pour l'hôte</p>
+              <h3 class="about-card-heading">Partir du frigo</h3>
+              <p>Voir ce qu'on peut faire avec ce qu'on a.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Bordered List ── -->
+    <section data-ds="bordered-list">
+      <p class="ds-section-title">Bordered List</p>
+      <div class="ds-states">
+        <div class="ds-state">
+          <span class="ds-state-label">Default (.about-tech-list)</span>
+          <ul class="about-tech-list" style="max-width: 400px;">
+            <li>
+              <strong>Deploy first</strong>
+              Infrastructure validée en production avant la première feature.
+            </li>
+            <li>
+              <strong>Sobriété technique</strong>
+              Hugo seul, zéro framework CSS, zéro npm en production.
+            </li>
+            <li>
+              <strong>CSS comme machine d'état</strong>
+              Le panneau frigo fonctionne via <code>:has()</code>, sans JavaScript.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </main>
 {{ end }}
