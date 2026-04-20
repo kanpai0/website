@@ -145,7 +145,7 @@ if [[ ${#backlog_lines[@]} -gt 0 ]]; then
   if [[ ${#items_to_add[@]} -gt 0 ]]; then
     # Find the --- separator just before the backlog section (= end of Réalisées)
     backlog_header=$(grep -n "Backlog" "$REPO_ROOT/README.md" | head -1 | cut -d: -f1)
-    insert_before=$(awk -v stop="$backlog_header" 'NR < stop && /^###$/ {sep=NR} END {print sep-1}' "$REPO_ROOT/README.md")
+    insert_before=$((backlog_header - 1))
 
     # Build space-delimited set of line numbers to skip (bash 3.2 compatible)
     skip_lines=" ${lines_to_delete[*]} "
