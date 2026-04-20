@@ -10,6 +10,7 @@ defineBddConfig({
 });
 
 export default defineConfig({
+  fullyParallel: true,
   reporter: 'dot',
   snapshotDir: './tests/visual/snapshots',
   use: {

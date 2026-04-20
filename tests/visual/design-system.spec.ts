@@ -1,9 +1,4 @@
-import { test, expect } from '@playwright/test';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto('/design-system/');
-  await page.waitForLoadState('networkidle');
-});
+import { test, expect, Page } from '@playwright/test';
 
 const sections = [
   'colors',
@@ -25,9 +20,25 @@ const sections = [
   'bordered-list',
 ];
 
-for (const section of sections) {
-  test(section, async ({ page }) => {
-    const el = page.locator(`[data-ds="${section}"]`);
-    await expect(el).toHaveScreenshot(`${section}.png`);
+test.describe('design system', () => {
+  test.describe.configure({ mode: 'serial' });
+
+  let page: Page;
+
+  test.beforeAll(async ({ browser }) => {
+    page = await browser.newPage();
+    await page.goto('/design-system/');
+    await page.waitForLoadState('networkidle');
   });
-}
+
+  test.afterAll(async () => {
+    await page.close();
+  });
+
+  for (const section of sections) {
+    test(section, async () => {
+      const el = page.locator(`[data-ds="${section}"]`);
+      await expect(el).toHaveScreenshot(`${section}.png`);
+    });
+  }
+});
