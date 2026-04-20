@@ -1,0 +1,155 @@
+{{ define "title" }}404 — {{ .Site.Title }}{{ end }}
+
+{{ define "head-meta" }}
+  <meta name="version" content="{{ .Site.Params.version }}">
+{{ end }}
+
+{{ define "body-attrs" }} class="recipe-page"{{ end }}
+
+{{ define "body" }}
+
+  <header class="site-header">
+    <a href="/" class="site-back" aria-label="Retour à la liste des recettes">
+      {{ partial "icon-ui.html" "back" }}
+    </a>
+    <a href="/" class="site-logo">Kanpai Ø</a>
+  </header>
+
+  <main class="recipe" aria-labelledby="recipe-title">
+
+    <figure class="recipe__photo" aria-hidden="true">
+      <img id="r-photo" src="" alt="" width="800" height="800">
+    </figure>
+
+    <div class="recipe__body">
+
+      <div class="recipe__head">
+        <p class="recipe__subtitle" id="r-subtitle"></p>
+        <h1 class="recipe__title" id="recipe-title"></h1>
+      </div>
+
+      <section class="recipe__section" aria-labelledby="ing-heading">
+        <h2 class="recipe__section-label" id="ing-heading">Ingrédients</h2>
+        <hr class="recipe__rule">
+        <ul class="recipe__ingredients" id="r-ingredients" aria-label="Liste des ingrédients"></ul>
+      </section>
+
+      <section class="recipe__section" aria-labelledby="tools-heading">
+        <h2 class="recipe__section-label" id="tools-heading">Ustensiles</h2>
+        <hr class="recipe__rule">
+        <div class="recipe__glass" id="r-glass"></div>
+      </section>
+
+      <section class="recipe__section" aria-labelledby="steps-heading">
+        <h2 class="recipe__section-label" id="steps-heading">Préparation</h2>
+        <hr class="recipe__rule">
+        <ol class="recipe__steps" id="r-steps" aria-label="Étapes de préparation"></ol>
+      </section>
+
+      <section class="recipe__section recipe__section--tips" aria-labelledby="tips-heading">
+        <h2 class="recipe__section-label" id="tips-heading">Conseils</h2>
+        <hr class="recipe__rule">
+        <p class="recipe__tips" id="r-tips"></p>
+      </section>
+
+    </div>
+
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  <script>
+    var recipes = [
+      {
+        color: "orange",
+        slug: "404-verre-deau",
+        title: "404 · Le Verre d'Eau",
+        subtitle: "La recette la plus honnête du bar",
+        ingredients: [
+          { name: "Eau du robinet", qty: "250 ml" },
+          { name: "Verre propre", qty: "1" },
+          { name: "Bonne volonté", qty: "traces" }
+        ],
+        glass: { type: "highball", label: "Highball" },
+        steps: [
+          { num: "01", title: "Ouvrez le robinet." },
+          { num: "02", title: "Placez le verre en dessous." },
+          { num: "03", title: "Attendez." },
+          { num: "04", title: "Buvez." }
+        ],
+        tips: "Cette page n'existe pas, mais votre soif, elle, est bien réelle. Revenez à l'accueil — le bar est ouvert."
+      },
+      {
+        color: "pink",
+        slug: "404-air-de-rien",
+        title: "404 · L'Air de Rien",
+        subtitle: "Cocktail conceptuel, zéro calorie, zéro contenu",
+        ingredients: [
+          { name: "Air ambiant", qty: "150 ml" },
+          { name: "Vide existentiel", qty: "1 pincée" },
+          { name: "Néant filtré", qty: "à volonté" }
+        ],
+        glass: { type: "coupette", label: "Coupe" },
+        steps: [
+          { num: "01", title: "Regardez fixement votre écran." },
+          { num: "02", title: "Acceptez le vide." },
+          { num: "03", title: "Soufflez doucement dans le verre." },
+          { num: "04", title: "Savourez l'absence." }
+        ],
+        tips: "La recette la plus légère de notre collection. Aucun ingrédient n'a été maltraité lors de sa préparation — il n'y en avait aucun."
+      },
+      {
+        color: "gold",
+        slug: "404-reveil-brutal",
+        title: "404 · Le Réveil Brutal",
+        subtitle: "Pour explorateurs égarés",
+        ingredients: [
+          { name: "Café", qty: "double, serré" },
+          { name: "Réalité", qty: "1 dose" },
+          { name: "Ego froissé", qty: "facultatif" }
+        ],
+        glass: { type: "rocks", label: "Rocks" },
+        steps: [
+          { num: "01", title: "Prenez conscience que cette page n'existe pas." },
+          { num: "02", title: "Acceptez votre erreur avec grâce." },
+          { num: "03", title: "Faites demi-tour." },
+          { num: "04", title: "Buvez le café." }
+        ],
+        tips: "Certaines adresses mènent nulle part. C'est la vie. Revenez à l'accueil — il y a de vraies recettes qui vous attendent."
+      }
+    ];
+
+    var glassSVG = {
+      highball: '<path d="M7 3h10l-2 18H9L7 3z"/><line x1="7" y1="8" x2="17" y2="8"/>',
+      coupette: '<path d="M3 5h18l-7 8H10L3 5z"/><line x1="12" y1="13" x2="12" y2="19"/><line x1="9" y1="19" x2="15" y2="19"/>',
+      rocks:    '<path d="M5 5h14l-2 14H7L5 5z"/><line x1="5" y1="9" x2="19" y2="9"/>'
+    };
+
+    var r = recipes[Math.floor(Math.random() * recipes.length)];
+
+    document.body.classList.add(r.color);
+    document.getElementById("r-photo").src = "/images/recettes/" + r.slug + ".webp";
+    document.getElementById("recipe-title").textContent = r.title;
+    document.getElementById("r-subtitle").textContent = r.subtitle;
+    document.getElementById("r-tips").textContent = r.tips;
+
+    var ingList = document.getElementById("r-ingredients");
+    r.ingredients.forEach(function(ing) {
+      var li = document.createElement("li");
+      li.innerHTML = '<span class="recipe__ing-name">' + ing.name + '</span><span class="recipe__ing-qty">' + ing.qty + '</span>';
+      ingList.appendChild(li);
+    });
+
+    var glassEl = document.getElementById("r-glass");
+    glassEl.innerHTML = '<svg class="glass-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (glassSVG[r.glass.type] || glassSVG.rocks) + '</svg><span>' + r.glass.label + '</span>';
+
+    var stepsList = document.getElementById("r-steps");
+    r.steps.forEach(function(step) {
+      var li = document.createElement("li");
+      li.className = "recipe__step";
+      li.innerHTML = '<span class="recipe__step-num" aria-hidden="true">' + step.num + '</span><div class="recipe__step-body"><strong class="recipe__step-title">' + step.title + '</strong></div>';
+      stepsList.appendChild(li);
+    });
+  </script>
+
+{{ end }}

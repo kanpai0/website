@@ -18,6 +18,9 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 GLASS = {
+    "404-verre-deau":   "highball glass",
+    "404-air-de-rien":  "elegant coupe glass",
+    "404-reveil-brutal":"rocks glass",
     "amaretto-sour":    "coupe glass",
     "bourbon-mule":     "copper mug",
     "caipirinha":       "rocks glass",
@@ -45,6 +48,9 @@ GLASS = {
 }
 
 DRINK = {
+    "404-verre-deau":   "pure crystal clear still water",
+    "404-air-de-rien":  "absolutely nothing — the glass is completely empty, pristine and gleaming with no liquid at all",
+    "404-reveil-brutal":"very dark black espresso coffee, no ice",
     "amaretto-sour":    "pale amber liquid with a white foam cap",
     "bourbon-mule":     "iced amber drink",
     "caipirinha":       "crushed ice with pale citrus liquid",
@@ -72,6 +78,9 @@ DRINK = {
 }
 
 GARNISH = {
+    "404-verre-deau":   "",
+    "404-air-de-rien":  "",
+    "404-reveil-brutal":"three whole coffee beans resting on the rim",
     "amaretto-sour":    "a lemon peel twist",
     "bourbon-mule":     "a lime wedge and a mint sprig",
     "caipirinha":       "lime quarters on the rim",
