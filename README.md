@@ -126,8 +126,9 @@ ingredients:
 
 ### Fonctionnalités — Backlog
 
-- [ ] **Custom recipe UI** : photos indépendantes de chaque ingrédient intégrées à la page recette
 - [ ] **Page storytelling** : logo et icône Kanpai Ø
+- [ ] **Custom recipe UI** : photos indépendantes de chaque ingrédient intégrées à la page recette
+- [ ] **Release notes** : faire une version grand public sur le site
 
 ### Fonctionnalités — V2 (si le projet évolue)
 
