@@ -5,4 +5,4 @@ title = "Kanpai Ø"
 disableKinds = ["taxonomy", "term"]
 
 [params]
-  version = "1.13.1"
+  version = "1.13.2"

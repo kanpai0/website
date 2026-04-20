@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.13.2] — 2026-04-20
+
+### Testing
+- Integrate filter summary into design system and visual tests
+
+---
 ## [1.13.1] — 2026-04-20
 
 ### Bug Fixes
