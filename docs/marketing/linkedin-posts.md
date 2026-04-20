@@ -29,14 +29,16 @@ Le repo est privé mais accessible sur demande si vous voulez voir la structure 
 
 ## Post 2 - "Un design system embarqué dans le site, pas dans un Storybook"
 
-Sur Kanpai Ø, la page `/design-system/` est une vraie page du site, servie par Hugo, accessible publiquement sur kanpai0.co/design-system/. Elle liste les 13 composants du site : palette, typographie, pills de saveurs, icônes d'ingrédients, types de verres, carte de recette, footer. Chacun est annoté avec un attribut `data-ds` qui sert de cible aux tests Playwright.
+Sur Kanpai Ø, la page `/design-system/` est une vraie page du site, servie par Hugo, accessible publiquement sur kanpai0.co/design-system/. Elle liste les 14 composants du site : palette, typographie, pills de saveurs, icônes d'ingrédients, types de verres, carte de recette, footer. Chacun est annoté avec un attribut `data-ds` qui sert de cible aux tests Playwright.
+
+Pourquoi pas Storybook ? Parce qu'il aurait introduit une grosse dépendance Node.js sur un site statique Hugo qui n'en avait pas besoin. L'arbitrage serait différent avec une équipe multi-métiers, un catalogue plus large, ou un framework SPA (React, Vue, Angular). Sur Kanpai Ø, la page `/design-system/` native remplit le même rôle sans ajouter de stack.
 
 L'idée de départ était simple : si le design system est séparé du site, il va dériver. Si les composants vivent dans le site lui-même et sont testés visuellement par section (et non en full-page, plus difficile à déboguer), chaque régression est localisable immédiatement. Les snapshots sont générés localement dans un conteneur Docker officiel Playwright (même version que la CI) pour garantir que les polices rendent de façon identique sur macOS et sur Linux. La CI compare, elle ne génère jamais.
 
-Ce n'est pas une approche courante sur un site statique solo. Mais la question n'était pas « est-ce que c'est nécessaire ? », c'était « est-ce que je veux découvrir une régression visuelle deux semaines après l'avoir introduite ? ». La réponse était non. 13 sections testées, seuil à 1 % de diff pixels, bloque les merges.
+Ce n'est pas une approche courante sur un site statique solo. Mais la nécessité n'est pas le bon angle : c'est d'abord un garde-fou, notamment contre les régressions introduites par du code généré par IA. 14 sections testées, seuil à 1 % de diff pixels, bloque les merges.
 
 --  
-Le repo est privé mais partageable sur demande. Je suis disponible pour des missions freelance.
+Le repo est privé mais partageable sur demande. Je suis disponible pour des missions freelance où la sobriété technique est un critère.
 
 ---
 
