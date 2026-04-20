@@ -87,93 +87,16 @@
 
   {{ partial "footer.html" . }}
 
+  {{- $allFridge := slice }}
+  {{- range where .Site.RegularPages "Section" "recettes" }}
+    {{- range .Params.fridge }}
+      {{- $allFridge = $allFridge | append . }}
+    {{- end }}
+  {{- end }}
   <script>
-    const FRIDGE = [
-      'rhum','whisky','gin','amaretto','spritz',
-      'menthe','citron-vert','citron-jaune','basilic',
-      'ananas','framboise','mangue','passion','pomme',
-      'agave','orgeat','hibiscus','vanille','miel',
-      'cola','gingembre','tonic','petillante',
-      'oeuf','creme-coco','cannelle'
-    ];
-
+    const FRIDGE = {{ $allFridge | uniq | sort | jsonify | safeJS }};
     const FLAVORS = ['sparkling','still','fruity','tart','sweet','spicy','bitter','herbaceous','creamy'];
-
-    function getAvailable() {
-      return FRIDGE.filter(id => document.getElementById('fr-' + id)?.checked);
-    }
-
-    function getActiveFlavors() {
-      return FLAVORS.filter(f => document.getElementById('fl-' + f)?.checked);
-    }
-
-    function applyFilters() {
-      const available = getAvailable();
-      const active = getActiveFlavors();
-      document.querySelectorAll('.recipe-card').forEach(card => {
-        const needed = (card.dataset.fridge || '').split(' ').filter(Boolean);
-        const fridgeOk = needed.every(ing => available.includes(ing));
-        const cardFlavors = (card.dataset.flavors || '').split(' ').filter(Boolean);
-        const flavorOk = active.length === 0 || active.every(f => cardFlavors.includes(f));
-        const visible = fridgeOk && flavorOk;
-        card.classList.toggle('fridge-hidden', !visible);
-        card.setAttribute('aria-hidden', String(!visible));
-      });
-      const hiddenCount = document.querySelectorAll('.recipe-card.fridge-hidden').length;
-      const summary = document.getElementById('filter-summary');
-      summary.hidden = hiddenCount === 0;
-      document.getElementById('filter-summary-count').textContent = hiddenCount;
-    }
-
-    function saveFridge() {
-      localStorage.setItem('fridge', JSON.stringify(getAvailable()));
-      applyFilters();
-    }
-
-    const savedFridge = JSON.parse(localStorage.getItem('fridge') || 'null');
-
-    FRIDGE.forEach(id => {
-      const el = document.getElementById('fr-' + id);
-      if (!el) return;
-      el.checked = savedFridge === null ? true : savedFridge.includes(id);
-      el.addEventListener('change', saveFridge);
-    });
-
-    function saveFlavors() {
-      localStorage.setItem('flavors', JSON.stringify(getActiveFlavors()));
-      applyFilters();
-    }
-
-    // Restore flavor state from localStorage
-    JSON.parse(localStorage.getItem('flavors') || '[]').forEach(f => {
-      const el = document.getElementById('fl-' + f);
-      if (el) el.checked = true;
-    });
-
-    document.querySelectorAll('.flavor-cb').forEach(cb => {
-      cb.addEventListener('change', saveFlavors);
-    });
-
-    applyFilters();
-
-    // ARIA sync for fridge dialog
-    const fridgeCb = document.getElementById('fridge-open');
-    const fridgePanel = document.getElementById('fridge-panel');
-    const fridgeBtn = document.getElementById('fridge-btn');
-
-    function syncFridgeAria() {
-      const open = fridgeCb.checked;
-      fridgePanel.setAttribute('aria-hidden', String(!open));
-      fridgeBtn.setAttribute('aria-expanded', String(open));
-      if (open) {
-        const first = fridgePanel.querySelector('input:not([tabindex="-1"]), button, [href]');
-        if (first) first.focus();
-      } else {
-        fridgeBtn.focus();
-      }
-    }
-
-    fridgeCb.addEventListener('change', syncFridgeAria);
   </script>
+  <script src="/js/fridge.js"></script>
 
 {{ end }}

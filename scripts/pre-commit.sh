@@ -5,6 +5,7 @@
 # Checks:
 #   1. hugo build --quiet — fails on template/content errors
 #   2. fridge[] schema — unknown slugs in recipe frontmatter fail the commit
+#   3. flavors[] schema — all flavor slugs in frontmatter must be listed in index.html FLAVORS
 
 set -euo pipefail
 
@@ -61,4 +62,41 @@ if [[ $errors -gt 0 ]]; then
 fi
 
 echo "pre-commit: fridge schema OK"
+
+# ---------------------------------------------------------------------------
+# 3. Flavors schema check
+# ---------------------------------------------------------------------------
+# Extract FLAVORS array from index.html (manual display-order list)
+INDEX_FILE="$REPO_ROOT/layouts/index.html"
+flavors_line=$(grep -E "const FLAVORS\s*=" "$INDEX_FILE" || true)
+if [[ -z "$flavors_line" ]]; then
+  echo "ERROR: Could not find FLAVORS constant in $INDEX_FILE"
+  exit 1
+fi
+valid_flavors=$(echo "$flavors_line" | grep -oE "'[^']*'" | tr -d "'")
+
+errors=0
+while IFS= read -r recipe; do
+  flavors_line_fm=$(grep -E '^flavors:' "$recipe" || true)
+  if [[ -z "$flavors_line_fm" ]]; then
+    continue
+  fi
+  slugs_in_recipe=$(echo "$flavors_line_fm" | grep -oE '"[^"]*"' | tr -d '"')
+  for slug in $slugs_in_recipe; do
+    if ! echo "$valid_flavors" | grep -qx "$slug"; then
+      echo "ERROR: Unknown flavor slug \"$slug\" in $(basename "$recipe")"
+      echo "  Listed in FLAVORS: $(echo "$valid_flavors" | tr '\n' ' ')"
+      errors=$((errors + 1))
+    fi
+  done
+done < <(find "$REPO_ROOT/content/recettes" -name "*.md")
+
+if [[ $errors -gt 0 ]]; then
+  echo ""
+  echo "pre-commit: flavors schema check FAILED ($errors error(s))"
+  echo "  Add the missing flavor to the FLAVORS array in layouts/index.html."
+  exit 1
+fi
+
+echo "pre-commit: flavors schema OK"
 exit 0
