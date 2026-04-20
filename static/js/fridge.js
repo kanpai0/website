@@ -50,7 +50,7 @@ function applyFilters() {
   const availableIngredients = getActiveIngredients();
   const activeFlavors = getActiveFlavors();
   document.querySelectorAll('.recipe-card')
-      .forEach(card => updateCardVisibility(card, availableIngredients, activeFlavors));
+    .forEach(card => updateCardVisibility(card, availableIngredients, activeFlavors));
   updateFilterSummary();
 }
 
@@ -112,5 +112,3 @@ function init() {
 
   applyFilters();
 }
-
-init();

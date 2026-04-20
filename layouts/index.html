@@ -93,10 +93,11 @@
       {{- $allFridge = $allFridge | append . }}
     {{- end }}
   {{- end }}
+  <script src="/js/fridge.js"></script>
   <script>
     const FRIDGE = {{ $allFridge | uniq | sort | jsonify | safeJS }};
     const FLAVORS = ['sparkling','still','fruity','tart','sweet','spicy','bitter','herbaceous','creamy'];
+    init();
   </script>
-  <script src="/js/fridge.js"></script>
 
 {{ end }}
