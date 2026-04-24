@@ -8,6 +8,27 @@
 
 {{ define "body" }}
 
+  <style>
+    body.cms-honeypot main.recipe { display: none; }
+    body.cms-honeypot .site-footer { display: none; }
+    .cms-panel { max-width: 540px; margin: calc(var(--header-h) + 48px) auto 0; padding: 0 24px 48px; }
+    .cms-panel__header { display: flex; align-items: baseline; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+    .cms-logo { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink); }
+    .cms-version { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .cms-panel__alert { background: var(--border); border-left: 3px solid var(--accent); padding: 14px 16px; border-radius: 0 4px 4px 0; margin-bottom: 28px; }
+    .cms-alert__title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .cms-alert__body { font-size: 13px; line-height: 1.6; color: var(--muted); }
+    .cms-panel__stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 28px; }
+    @media (max-width: 360px) { .cms-panel__stats { grid-template-columns: repeat(2,1fr); } }
+    .cms-stat { border: 1px solid var(--border); border-radius: 6px; padding: 14px 12px; }
+    .cms-stat__value { font-family: var(--serif); font-style: italic; font-size: 28px; color: var(--sage); line-height: 1; margin-bottom: 4px; }
+    .cms-stat__label { font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .cms-panel__log { font-size: 12px; font-family: ui-monospace,'SF Mono',monospace; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+    .cms-log__entry { line-height: 1.5; }
+    .cms-log__entry--warn { color: var(--accent); }
+    .cms-log__entry--error { color: #D01860; }
+  </style>
+
   <header class="site-header">
     <a href="/" class="site-back" aria-label="Retour à la liste des recettes">
       {{ partial "icon-ui.html" "back" }}
@@ -59,6 +80,43 @@
   {{ partial "footer.html" . }}
 
   <script>
+    var ADMIN_PATTERNS = ['wp-admin','wp-login','wp-content','wp-includes',
+      'admin','cpanel','phpmyadmin','login.php','console','manager',
+      'administrator','backend','dashboard','.env','config.php','xmlrpc'];
+
+    var pathSegs = window.location.pathname.toLowerCase().split('/');
+    var isHoneypot = ADMIN_PATTERNS.some(function(p) {
+      return pathSegs.some(function(seg) { return seg === p || seg.indexOf(p) === 0; });
+    });
+
+    if (isHoneypot) {
+      document.body.classList.add('cms-honeypot', 'orange');
+      var panel = document.createElement('div');
+      panel.className = 'cms-panel';
+      panel.innerHTML =
+        '<div class="cms-panel__header">' +
+          '<span class="cms-logo">Kanpai CMS</span>' +
+          '<span class="cms-version">v0.0.0 \u2014 \u00e9dition brasserie</span>' +
+        '</div>' +
+        '<div class="cms-panel__alert">' +
+          '<p class="cms-alert__title">C\'est un bar, pas un backoffice.</p>' +
+          '<p class="cms-alert__body">Cette section n\'existe pas. Mais si elle existait, elle serait probablement tr\u00e8s bien prot\u00e9g\u00e9e. Bonne journ\u00e9e.</p>' +
+        '</div>' +
+        '<div class="cms-panel__stats">' +
+          '<div class="cms-stat"><div class="cms-stat__value">24</div><div class="cms-stat__label">Recettes publi\u00e9es</div></div>' +
+          '<div class="cms-stat"><div class="cms-stat__value">3</div><div class="cms-stat__label">Ingr\u00e9dients au frigo</div></div>' +
+          '<div class="cms-stat"><div class="cms-stat__value" style="font-size:14px;font-style:normal">En cours</div><div class="cms-stat__label">Batch de Mojito</div></div>' +
+        '</div>' +
+        '<div class="cms-panel__log">' +
+          '<div class="cms-log__entry">[INFO] Session ouverte \u2014 bonjour, curieux.</div>' +
+          '<div class="cms-log__entry cms-log__entry--warn">[WARN] Droits insuffisants\u00a0: vous avez besoin d\'un verre, pas d\'un acc\u00e8s.</div>' +
+          '<div class="cms-log__entry cms-log__entry--error">[ERROR] Backoffice introuvable\u00a0: essayez <a href="/recettes/" style="color:inherit">/recettes/</a></div>' +
+        '</div>';
+      document.body.appendChild(panel);
+    }
+
+    if (!isHoneypot) {
+
     var recipes = [
       {
         color: "orange",
@@ -150,6 +208,8 @@
       li.innerHTML = '<span class="recipe__step-num" aria-hidden="true">' + step.num + '</span><div class="recipe__step-body"><strong class="recipe__step-title">' + step.title + '</strong></div>';
       stepsList.appendChild(li);
     });
+
+    } // end if (!isHoneypot)
   </script>
 
 {{ end }}

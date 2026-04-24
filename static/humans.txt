@@ -1,0 +1,31 @@
+/* humanstxt.org */
+/* Les humains derrière ce site */
+
+# ÉQUIPE
+
+  Développeur: Vincent Clair
+  Profil: https://www.malt.fr/profile/vincentclair
+  Localisation: France
+
+# TECHNOLOGIE
+
+  Hugo       — générateur de site statique
+  CSS        — vanilla, aucun framework
+  JavaScript — vanilla, aucun framework
+  Cloudflare Pages — hébergement
+
+# EASTER EGGS
+
+  1/5 — La page 404 sert une vraie recette de bar
+  2/5 — Essayez /wp-admin (on vous attendait)
+  3/5 — View Source
+  4/5 — /robots.txt
+  5/5 — /llms.txt
+  6/5 — Il n'y a que deux problèmes difficiles en informatique :
+         nommer les choses, invalider le cache,
+         et les erreurs d'offset par un.
+
+# NOTE
+
+  Ce fichier est lui-même un easter egg.
+  Kanpai.

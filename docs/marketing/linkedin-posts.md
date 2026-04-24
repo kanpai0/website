@@ -14,7 +14,7 @@
 
 ---
 
-## Post 1 - "Mettre en prod avant d'écrire la première feature"
+## [PUBLIÉ] Post 1 - "Mettre en prod avant d'écrire la première feature"
 
 Le premier commit d'un projet n'a pas à contenir de code métier. Sur Kanpai Ø (kanpai0.co, un site de recettes de cocktails sans alcool), le premier commit installe Hugo, branche Cloudflare Pages, configure le domaine avec un 301. Build en 11 ms. Aucune recette, aucune interface. L'objectif n'était pas d'avoir un produit fonctionnel, c'était de valider l'infrastructure avant d'y investir du contenu.
 
@@ -27,7 +27,7 @@ Le repo est privé mais accessible sur demande si vous voulez voir la structure 
 
 ---
 
-## Post 2 - "Un design system embarqué dans le site, pas dans un Storybook"
+## [PUBLIÉ] Post 2 - "Un design system embarqué dans le site, pas dans un Storybook"
 
 Sur Kanpai Ø, la page `/design-system/` est une vraie page du site, servie par Hugo, accessible publiquement sur kanpai0.co/design-system/. Elle liste les 14 composants du site : palette, typographie, pills de saveurs, icônes d'ingrédients, types de verres, carte de recette, footer. Chacun est annoté avec un attribut `data-ds` qui sert de cible aux tests Playwright.
 
@@ -42,13 +42,13 @@ Le repo est privé mais partageable sur demande. Je suis disponible pour des mis
 
 ---
 
-## Post 3 - "Écrire des ADR sur un projet perso"
+## [PUBLIÉ] Post 3 - "Écrire des ADR sur un projet perso"
 
-Les ADR (Architecture Decision Records) sont souvent réservés aux grandes équipes, aux projets avec plusieurs contributeurs, aux contextes où les décisions doivent être auditables. Sur Kanpai Ø, il n'y a qu'un seul développeur. J'ai quand même 22 ADR datés.
+Les ADR (Architecture Decision Records) sont souvent réservés aux grandes équipes, aux projets avec plusieurs contributeurs, aux contextes où les décisions doivent être auditables. Sur Kanpai Ø, il n'y a qu'un seul développeur. J'ai quand même 27 ADR datés.
 
 Le format est simple : un dossier horodaté dans `specs/`, un fichier `plan.md` avec le contexte, les alternatives considérées, la décision retenue, et le rationale explicite. L'ADR sur le release tooling compare git-cliff et semantic-release avec un tableau de décision. L'ADR sur les tests visuels documente pourquoi Cypress est écarté (plugin screenshot payant), pourquoi BackstopJS est trop lourd, pourquoi Playwright est retenu. La branch `feat/semantic-release` a été créée, testée, et abandonnée, la trace reste dans le git.
 
-La valeur d'un ADR n'est pas dans la documentation pour les autres. Elle est dans la discipline qu'il impose à soi-même : formuler un problème clairement, nommer les alternatives, expliciter pourquoi on ne les a pas choisies. Cela prend 20 minutes. Cela évite de répéter les mêmes erreurs six mois plus tard.
+La valeur d'un ADR n'est pas seulement dans la documentation pour les autres. Elle est dans la discipline qu'il impose à soi-même : formuler un problème clairement, nommer les alternatives, expliciter pourquoi on ne les a pas choisies. Cela prend 20 minutes. Cela évite de répéter les mêmes erreurs six mois plus tard et la mémoire d'un développeur étant très courte, cela permet de se rappeler pourquoi on a choisi ou écarter telle solution.
 
 --  
 Le repo est privé mais accessible sur demande. Ces pratiques prennent encore plus de sens en équipe, je cherche des missions freelance en ingénierie, architecture, ou lead technique.
