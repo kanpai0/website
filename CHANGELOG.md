@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.15.1] — 2026-04-24
+
+### Documentation
+- Overhaul README with detailed project overview, workflow explanation, and technical highlights
+
+---
 ## [1.15.0] — 2026-04-20
 
 ### Features
