@@ -13,3 +13,11 @@ Feature: Navigation
     Given I am on a recipe detail page
     When I click the logo "Kanpai Ø"
     Then I should be on the homepage
+
+  Scenario: GitHub source link is exposed in the header
+    Given I am on the homepage
+    Then the GitHub source link points to "https://github.com/kanpai0/website"
+
+  Scenario: GitHub source link is also exposed on recipe pages
+    Given I am on a recipe detail page
+    Then the GitHub source link points to "https://github.com/kanpai0/website"

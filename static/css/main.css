@@ -98,6 +98,36 @@ body.orange { --accent: var(--color-orange); }
 
 .site-back:hover { background: var(--border); }
 
+.site-github {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.15s, color 0.15s;
+}
+
+.fridge-btn + .site-github { margin-left: 8px; }
+
+.site-github:hover,
+.site-github:focus-visible { background: var(--border); color: var(--ink); }
+
+.site-github svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+}
+
+.recipe-page .site-github {
+  position: absolute;
+  right: calc(var(--inset) + 16px);
+  margin-left: 0;
+}
+
 /* ── Recipe page ── */
 .recipe {
   padding-top: var(--header-h);

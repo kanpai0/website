@@ -26,3 +26,10 @@ When('I click the logo {string}', async ({ page }, _text: string) => {
 Then('I should be on the homepage', async ({ page }) => {
   await expect(page).toHaveURL(/^http:\/\/localhost:1313\/?$/);
 });
+
+Then('the GitHub source link points to {string}', async ({ page }, href: string) => {
+  const link = page.locator('.site-github');
+  await expect(link).toHaveAttribute('href', href);
+  await expect(link).toHaveAttribute('target', '_blank');
+  await expect(link).toHaveAttribute('rel', /noopener/);
+});
