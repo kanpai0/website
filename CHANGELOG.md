@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.16.0] — 2026-04-26
+
+### Features
+- Add GitHub source link to site header and improve design consistency across pages
+
+---
 ## [1.15.1] — 2026-04-24
 
 ### Documentation
