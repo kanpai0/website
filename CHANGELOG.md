@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.16.1] — 2026-04-28
+
+### Documentation
+- Update LinkedIn posts to include public GitHub repo link and refine post 4
+
+### Testing
+- Refactor BDD steps for fridge and flavor interactions to improve user simulation and clarity
+
+---
 ## [1.16.0] — 2026-04-26
 
 ### Features
