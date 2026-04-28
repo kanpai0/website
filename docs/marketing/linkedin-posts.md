@@ -57,14 +57,16 @@ Le repo est privé mais accessible sur demande. Ces pratiques prennent encore pl
 
 ## Post 4 - "Release automation sans npm dans un repo Hugo"
 
-Hugo n'a pas de `package.json`. Ajouter semantic-release pour automatiser les releases aurait introduit 329 packages npm et un `package-lock.json` de 6122 lignes dans un projet qui n'en a délibérément aucun. J'ai créé la branch, installé le package, et observé le résultat. Puis j'ai supprimé la branch. En attendant que quelqu'un réécrive Playwright en Rust (je vais peut-être m'y coller), j'assume les 60 packages npm que les tests visuels ont quand même introduits. Toute philosophie a ses exceptions.
+Hugo n'a pas de `package.json`. Ajouter semantic-release pour automatiser les releases aurait introduit 329 packages npm et un `package-lock.json` de 6122 lignes dans un projet qui n'en a délibérément aucun. J'ai créé la branche, installé le package, et observé le résultat. Puis j'ai supprimé la branche.
 
 À la place : git-cliff (binaire Go, installé via Homebrew) et 157 lignes de bash. `make release-dry` affiche le prochain numéro de version et le changelog prévu. `make release` demande une confirmation interactive avant d'écrire quoi que ce soit. La commande bumpe la version dans `hugo.toml`, génère le CHANGELOG, crée le commit et le tag. L'override `--bump minor` est disponible quand les commits ne reflètent pas l'intention réelle.
 
-La décision n'était pas de fuir la complexité, c'était de refuser d'introduire un outil dont la philosophie de stack est orthogonale au projet. Un bon outil s'adapte à la stack existante. Un outil qui redéfinit la stack pour exister n'est pas le bon outil.
+La règle que j'applique n'est pas « pas de npm ». Elle est plus précise : un outil qui redéfinit la stack doit passer trois filtres. Existe-t-il une alternative qui s'inscrit dans la stack existante ? Apporte-t-il une valeur que rien d'autre ne couvre ? Le ratio entre son coût en dépendances et sa valeur réelle est-il favorable ? semantic-release échoue sur les trois : git-cliff fait le travail, le besoin est trivial, et 329 packages pour générer un changelog est un mauvais ratio.
+
+Playwright, lui, passe les trois filtres. Pas d'équivalent Go/Rust mature pour piloter un vrai navigateur. La valeur est unique : bloquer les régressions visuelles, y compris celles introduites par du code généré par IA. Et 60 packages pour cette garantie sur l'ensemble du site, c'est un ratio que j'assume. Une philosophie de stack n'a pas besoin d'exceptions tant qu'elle a des critères clairs.
 
 --  
-Repo accessible sur demande. Je suis ouvert à des missions freelance : ingénierie logicielle, architecture, outillage de delivery.
+Repo public : github.com/kanpai0/website. Je suis ouvert à des missions freelance : ingénierie logicielle, architecture, outillage de delivery.
 
 ---
 
@@ -77,7 +79,7 @@ La couche locale est en dessous : un hook pre-commit exécute `hugo build` et va
 Sur un projet solo, l'absence de code review rend simplement le besoin de CI plus lisible. Ce n'est pas une question d'effectif : en équipe, la relecture humaine et les tests automatisés sont deux couches distinctes, chacune rattrape ce que l'autre ne voit pas systématiquement. La réponse n'était pas d'accepter ce risque, c'était de le compenser par une chaîne de gardes fous qui s'activent en couches successives : hook local, tests visuels sur PR, Lighthouse sur push, deploy conditionnel. Chaque couche rattrape ce que la précédente peut rater.
 
 --  
-Le repo est privé mais accessible sur demande. Je cherche des missions où cette rigueur est partagée : ingénieur senior, architecte, ou lead technique selon le contexte.
+Repo public : github.com/kanpai0/website. Je cherche des missions où cette rigueur est partagée : ingénieur senior, architecte, ou lead technique selon le contexte.
 
 ---
 
@@ -90,7 +92,7 @@ En montrant le site à des amis, j'ai observé ce qu'ils cherchaient réellement
 Ce projet m'a aussi permis de faire quelque chose que j'aime : être au contact des utilisateurs, comprendre leurs attentes, construire une réponse qui s'affine au fil des échanges. Pas les personas, pas les analytics, mais les personnes qui utilisent le produit et montrent, en temps réel, ce qui peut encore s'améliorer. C'est quelque chose que je trouve trop rare en mission, et que j'aimerais voir plus souvent dans les contextes où je travaille.
 
 --  
-Le repo est privé mais partageable sur demande. Je suis disponible pour des missions freelance, et si possible dans des équipes proches de leurs utilisateurs.
+Repo public : github.com/kanpai0/website. Je suis disponible pour des missions freelance, et si possible dans des équipes proches de leurs utilisateurs.
 
 ---
 
@@ -103,7 +105,7 @@ Ce n'est pas un projet portfolio conçu pour paraître impressionnant. C'est un 
 En route pour le prochain side project !
 
 --  
-Si vous cherchez un ingénieur senior, architecte logiciel ou lead technique pour une mission freelance, quelqu'un qui livre régulièrement en production, documente ses décisions, et sait conduire une équipe vers ces standards, je suis disponible. Le repo est privé mais je le partage volontiers. Un message suffit. Profil complet sur LinkedIn.
+Si vous cherchez un ingénieur senior, architecte logiciel ou lead technique pour une mission freelance, quelqu'un qui livre régulièrement en production, documente ses décisions, et sait conduire une équipe vers ces standards, je suis disponible. Repo public : github.com/kanpai0/website. Un message suffit. Profil complet sur LinkedIn.
 
 ---
 
