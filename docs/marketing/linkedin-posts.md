@@ -55,7 +55,7 @@ Le repo est privé mais accessible sur demande. Ces pratiques prennent encore pl
 
 ---
 
-## Post 4 - "Release automation sans npm dans un repo Hugo"
+## [PUBLIÉ] Post 4 - "Release automation sans npm dans un repo Hugo"
 
 Hugo n'a pas de `package.json`. Ajouter semantic-release pour automatiser les releases aurait introduit 329 packages npm et un `package-lock.json` de 6122 lignes dans un projet qui n'en a délibérément aucun. J'ai créé la branche, installé le package, et observé le résultat. Puis j'ai supprimé la branche.
 
@@ -70,20 +70,20 @@ Repo public : github.com/kanpai0/website. Je suis ouvert à des missions freelan
 
 ---
 
-## Post 5 - "Le deploy ne se déclenche pas sans que les tests aient passé"
+## [PUBLIÉ] Post 5 - "Le deploy ne se déclenche pas sans que les tests aient passé"
 
 Sur Kanpai Ø, la ligne `needs: [lighthouse, visual-regression]` dans le workflow GitHub Actions dit une chose simple : le deploy ne se déclenche pas sans que les tests de régression visuelle et l'audit Lighthouse aient passé. Pas une convention, une contrainte mécanique.
 
 La couche locale est en dessous : un hook pre-commit exécute `hugo build` et valide le schéma des données frontmatter à chaque commit. `make preflight` joue le rôle d'un second avis avant push : build complet, validation de schéma, tests Playwright dans le même conteneur Docker que la CI. L'idée était simple : une régression détectée en commit local coûte 30 secondes. Détectée en prod, elle coûte un rollback et une investigation.
 
-Sur un projet solo, l'absence de code review rend simplement le besoin de CI plus lisible. Ce n'est pas une question d'effectif : en équipe, la relecture humaine et les tests automatisés sont deux couches distinctes, chacune rattrape ce que l'autre ne voit pas systématiquement. La réponse n'était pas d'accepter ce risque, c'était de le compenser par une chaîne de gardes fous qui s'activent en couches successives : hook local, tests visuels sur PR, Lighthouse sur push, deploy conditionnel. Chaque couche rattrape ce que la précédente peut rater.
+Sur un projet solo, l'absence de code review rend simplement le besoin de CI plus lisible. Ce n'est pas une question d'effectif : en équipe, la relecture humaine (même à l'heure de l'IA !!) et les tests automatisés sont deux couches distinctes, chacune rattrape ce que l'autre ne voit pas systématiquement. La réponse n'était pas d'accepter ce risque, c'était de le compenser par une chaîne de gardes fous qui s'activent en couches successives : hook local, tests visuels sur PR, Lighthouse sur push, deploy conditionnel. Chaque couche rattrape ce que la précédente peut rater.
 
 --  
 Repo public : github.com/kanpai0/website. Je cherche des missions où cette rigueur est partagée : ingénieur senior, architecte, ou lead technique selon le contexte.
 
 ---
 
-## Post 6 - "La proximité avec les utilisateurs, ça ne se simule pas"
+## [PUBLIÉ] Post 6 - "La proximité avec les utilisateurs, ça ne se simule pas"
 
 Kanpai Ø (kanpai0.co) est un outil que j'utilise vraiment. Chaque fois que j'ai des invités, il est ouvert sur un téléphone posé sur le comptoir. Le plaisir a été de les voir palper le produit, de vérifier si l'objectif est rempli, d'ajuster le tir en direct.
 
