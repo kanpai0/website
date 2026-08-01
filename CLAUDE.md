@@ -5,6 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
+make bootstrap      # fresh clone: mise install + npm ci + git hooks
+make install-hooks  # (re)install .git/hooks/pre-commit from scripts/pre-commit.sh
+
 hugo serve          # Local dev server with hot reload
 hugo build          # Generate static site to public/
 
@@ -12,8 +15,24 @@ make serve          # alias → hugo serve
 make build          # alias → hugo build
 make release        # bump version, generate CHANGELOG, commit, tag, push
 make release-dry    # preview release without writing anything
-make doctor         # show installed versions + latest available Hugo
+make doctor         # show pinned versions + latest available Hugo
 ```
+
+## Toolchain
+
+Tool versions are pinned in [`.mise.toml`](.mise.toml) and installed with
+[`mise`](https://mise.jdx.dev/): `hugo-extended`, `node`, `python`, `git-cliff`,
+`shellcheck`, `jq`. The same file drives CI (`jdx/mise-action` in
+`.github/workflows/ci.yml`), so local and CI cannot drift — bumping Hugo means
+editing `.mise.toml` only.
+
+Prerequisites on a new machine: `brew install mise` (plus `make`, and Docker for
+`npm test`), then `make bootstrap`. Activate mise in the shell
+(`eval "$(mise activate zsh)"`) so pinned binaries land in `PATH`; otherwise
+prefix commands with `mise exec --`.
+
+Out of mise scope: Docker (Playwright image pinned in `package.json`) and the
+Python dependencies of `scripts/*.py` (still managed by pip in `.venv`).
 
 ## Release workflow
 
@@ -23,7 +42,7 @@ bash scripts/release.sh --bump minor # override bump type
 bash scripts/release.sh --dry-run    # preview only
 ```
 
-Requires `git-cliff` (`brew install git-cliff`). Script requires a clean working tree.
+Requires `git-cliff` (pinned in `.mise.toml` — run `make bootstrap`). Script requires a clean working tree.
 Updates `hugo.toml`, `CHANGELOG.md`, `README.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
 then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
 
@@ -104,7 +123,7 @@ Fonts: Playfair Display (headings, italic), Inter (body). Mobile-first with `cla
 
 ## Deployment
 
-Push to `main` → Cloudflare Pages auto-builds with `HUGO_VERSION=0.159.1`. No CI/CD config needed. Domain: kanpai0.co (301 from kanpai0.com).
+Push to `main` → GitHub Actions builds with the Hugo version pinned in `.mise.toml`, then deploys `public/` to Cloudflare Pages via `wrangler`. Domain: kanpai0.co (301 from kanpai0.com).
 
 ## Quality Gates
 
@@ -123,7 +142,7 @@ Run `make preflight` before pushing — validates schema, build, and all tests.
 Run `npm run test:update` when visual baselines need updating after intentional design changes.
 
 **Pre-commit hook** — runs `hugo build` + fridge schema check on every commit.
-Reinstall after fresh clone: `cp scripts/pre-commit.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`
+Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 
 **Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`.
 Adding a new ingredient requires 3 steps: (1) `<symbol>` in `fridge-icons.html`, (2) `<label>` in `fridge-panel-body.html`, (3) update recipes using it.

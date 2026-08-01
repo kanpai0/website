@@ -72,6 +72,7 @@ Ce cadre est transposable sur une plateforme B2B en équipe. C'est le genre de c
 | Tests | **Playwright + playwright-bdd** | Visual regression + BDD, 12 dépendances vs 414 pour `@cucumber` |
 | Release | **bash + git-cliff** | 157 lignes de bash, 0 dépendance Node (vs `semantic-release` = 8 263 fichiers npm) |
 | Images | **gpt-image-1** | `background: "transparent"` natif — le seul modèle fiable sur verres |
+| Toolchain | **mise** | Versions d'outils épinglées dans `.mise.toml` — les mêmes binaires en local et en CI |
 
 → Détail des méthodes, outils et techniques : [docs/methodes-outils-techniques.md](docs/methodes-outils-techniques.md)  
 → Rétrospective des manques et apprentissages : [docs/retrospective-manques.md](docs/retrospective-manques.md)
@@ -115,6 +116,8 @@ Deux jobs tournent en parallèle avant tout déploiement :
 | `visual-regression` | Build Hugo local → Playwright : snapshots visuels + BDD fonctionnels (filtrage frigo/saveurs, navigation, responsive) |
 | `lighthouse` | Audit post-deploy sur `kanpai0.co` et une page recette — seuils Performance, Accessibilité, SEO dans `budget.json` |
 
+Les jobs qui buildent le site (`visual-regression` et `deploy`) installent le toolchain épinglé via `jdx/mise-action` : la version de Hugo utilisée en CI vient de `.mise.toml`, pas d'un numéro recopié dans le workflow.
+
 Le job `deploy` est bloqué si l'un des deux échoue. Les diffs Playwright sont uploadés comme artefacts GitHub (rétention 7 jours) en cas d'échec.
 
 Détail : [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
@@ -122,6 +125,34 @@ Détail : [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 ---
 
 ## Pour aller plus loin
+
+### Développer en local
+
+Le toolchain est épinglé dans [`.mise.toml`](.mise.toml) — Hugo, Node, Python, `git-cliff`, `shellcheck`, `jq`. La CI installe ce même fichier via `jdx/mise-action` : pas de version d'outil écrite en double.
+
+Deux prérequis sur la machine (plus Docker pour les tests Playwright) :
+
+| Outil  | Rôle                        | Installation                                                |
+|--------|-----------------------------|-------------------------------------------------------------|
+| `mise` | Gère les versions d'outils  | `brew install mise` — voir [mise.jdx.dev](https://mise.jdx.dev/) |
+| `make` | Task runner                 | macOS : `xcode-select --install`                            |
+
+```sh
+git clone https://github.com/kanpai0/website.git
+cd website
+make bootstrap   # mise install + npm ci + hook pre-commit
+make serve       # hugo serve
+make preflight   # build + tests Playwright avant push
+```
+
+Activer mise dans le shell pour que les binaires épinglés arrivent dans le `PATH` :
+
+```sh
+echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
+exec $SHELL -l
+```
+
+Sans activation, préfixer les commandes par `mise exec --` (ex. `mise exec -- make preflight`).
 
 ### Structure Hugo
 

@@ -1,0 +1,17 @@
+# .mise.toml — versions d'outils épinglées pour Kanpai Ø.
+# Bootstrap sur une machine neuve : `make bootstrap` (qui appelle `mise install`).
+# Source unique de vérité : la CI (.github/workflows/ci.yml) installe ce même
+# fichier via jdx/mise-action, donc local et CI ne peuvent plus diverger.
+
+[tools]
+# Build extended (mêmes binaires que la CI et Cloudflare Pages).
+"aqua:gohugoio/hugo/hugo-extended" = "0.159.1"
+node                              = "26"     # tests unitaires `node --test`, bddgen, npx
+python                            = "3.14"   # scripts/*.py (contenu, images)
+"aqua:orhun/git-cliff"            = "2"      # scripts/release.sh
+"aqua:koalaman/shellcheck"        = "0.11.0" # lint des scripts bash
+"aqua:jqlang/jq"                  = "1.8"    # parsing JSON dans les scripts / make doctor
+
+# Hors périmètre mise :
+#   docker  : requis par `npm test` (image Playwright épinglée dans package.json).
+#   .venv   : les dépendances Python des scripts restent gérées par pip dans .venv.

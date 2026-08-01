@@ -28,7 +28,7 @@ done
 # 2. Assert dependencies
 # ---------------------------------------------------------------------------
 if ! command -v git-cliff &>/dev/null; then
-  echo "ERROR: git-cliff not found. Install with: brew install git-cliff"
+  echo "ERROR: git-cliff not found. Run 'mise install' (pinned in .mise.toml)."
   exit 1
 fi
 
