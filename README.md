@@ -109,16 +109,19 @@ Les choix écartés et leur rationale sont documentés dans [docs/retrospective-
 
 Push `main` → pipeline GitHub Actions → Cloudflare Pages. Domaine `kanpai0.co` (301 depuis `kanpai0.com`).
 
-Deux jobs tournent en parallèle avant tout déploiement :
+Le site est buildé une seule fois (`build`), publié comme artefact GitHub, puis consommé par les jobs suivants — plus aucun autre job ne relance `hugo build` :
 
 | Job | Ce qu'il fait |
 |-----|---------------|
-| `visual-regression` | Build Hugo local → Playwright : snapshots visuels + BDD fonctionnels (filtrage frigo/saveurs, navigation, responsive) |
+| `build` | `hugo build` → artefact `public` |
+| `validate` | `make validate-ci` : schéma frigo/saveurs, lint shell, version Playwright, tests unitaires |
+| `visual-regression` | Playwright sur l'artefact `public` : snapshots visuels + BDD fonctionnels (filtrage frigo/saveurs, navigation, responsive) |
+| `deploy` | Déploie l'artefact `public` sur Cloudflare Pages — push `main` uniquement, et seulement si `validate` et `visual-regression` sont verts |
 | `lighthouse` | Audit post-deploy sur `kanpai0.co` et une page recette — seuils Performance, Accessibilité, SEO dans `budget.json` |
 
-Les jobs qui buildent le site (`visual-regression` et `deploy`) installent le toolchain épinglé via `jdx/mise-action` : la version de Hugo utilisée en CI vient de `.mise.toml`, pas d'un numéro recopié dans le workflow.
+`validate` et `visual-regression` tournent en parallèle dès l'artefact disponible ; `deploy` est bloqué si l'un des deux échoue ; `lighthouse` audite le site une fois déployé, donc après `deploy` — pas avant, sinon on auditerait la version précédente. Les diffs Playwright sont uploadés comme artefacts GitHub (rétention 7 jours) en cas d'échec.
 
-Le job `deploy` est bloqué si l'un des deux échoue. Les diffs Playwright sont uploadés comme artefacts GitHub (rétention 7 jours) en cas d'échec.
+`build` et `validate` installent le toolchain épinglé via `jdx/mise-action` : la version de Hugo (et de shellcheck, jq, etc.) utilisée en CI vient de `.mise.toml`, pas d'un numéro recopié dans le workflow.
 
 Détail : [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 

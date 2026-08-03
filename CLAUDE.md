@@ -17,6 +17,7 @@ make release        # bump version, generate CHANGELOG, commit, tag, push
 make release-dry    # preview release without writing anything
 make preflight      # full local quality gate before pushing (npm test)
 make validate       # pre-commit gate: hugo build + check-sh/lint-sh/check-pw-version/check-fridge/check-flavors/test-unit
+make validate-ci    # CI fan-out of the same checks, no hugo build (public/ comes from the build job's artifact)
 make check-sh       # syntax-check all shell scripts (bash -n)
 make lint-sh        # lint all shell scripts (shellcheck)
 make check-pw-version # verify Playwright version pinned consistently (package.json + CI)

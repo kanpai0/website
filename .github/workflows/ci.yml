@@ -1,17 +1,117 @@
-name: CI
+# .github/workflows/ci.yml — single CI workflow for Kanpai Ø.
+# Job graph: build (once) → artifact `public` → validate + visual-regression
+# run in parallel from that artifact → deploy (gated by both, main push only)
+# → lighthouse audits the freshly deployed site post-deploy.
+
+name: ci
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  lighthouse:
-    if: github.event_name == 'push'
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pinned toolchain (mise)
+        uses: jdx/mise-action@v4
+        with:
+          install: true
+          cache: true
+
+      - name: Build static site
+        run: hugo build
+
+      - name: Upload public artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public
+          path: public
+          retention-days: 1
+
+  validate:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pinned toolchain (mise)
+        uses: jdx/mise-action@v4
+        with:
+          install: true
+          cache: true
+
+      - name: make validate-ci
+        run: make validate-ci
+
+  visual-regression:
+    needs: build
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.62.1-jammy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install devDependencies
+        run: npm ci
+
+      - name: Download public artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
+      - name: Run BDD + visual regression
+        run: npx bddgen && npx playwright test
+
+      - name: Upload diffs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-diffs
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+
+  deploy:
+    needs: [validate, visual-regression]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-pages
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Download public artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy public --project-name=kanpai0
+
+  lighthouse:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
       - name: Lighthouse CI
         uses: treosh/lighthouse-ci-action@v12
@@ -21,47 +121,3 @@ jobs:
             https://kanpai0.co/recettes/mojito/
           uploadArtifacts: true
           temporaryPublicStorage: true
-
-  deploy:
-    needs: [lighthouse, visual-regression]
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: jdx/mise-action@v4
-        with:
-          install: true
-          cache: true
-
-      - run: hugo build
-
-      - uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=kanpai0
-
-  visual-regression:
-    runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.62.1-jammy
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: jdx/mise-action@v4
-        with:
-          install: true
-          cache: true
-
-      - run: hugo build
-
-      - run: npm ci
-
-      - run: npx playwright test
-
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: playwright-diffs
-          path: test-results/
-          retention-days: 7

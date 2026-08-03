@@ -13,7 +13,7 @@ SHELL := /usr/bin/env bash
 
 .PHONY: bootstrap install-hooks serve build test test-update release release-dry \
 	preflight check-sh lint-sh check-pw-version check-fridge check-flavors \
-	test-unit validate doctor help
+	test-unit validate validate-ci doctor help
 
 # --- Bootstrap (une seule fois après git clone) ---
 
@@ -89,6 +89,10 @@ VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-fridge check-flavors 
 validate: ## Pipeline complet : hugo build puis fan-out parallèle des checks (requiert gmake 4+)
 	@hugo build --quiet
 	@QUIET=1 gmake -j$$(sysctl -n hw.logicalcpu 2>/dev/null || nproc 2>/dev/null || echo 4) --output-sync=target --no-print-directory \
+		$(VALIDATE_CHECKS)
+
+validate-ci: ## Pipeline CI — fan-out parallèle sans build (public/ fourni par l'artefact CI)
+	@QUIET=1 gmake -j$$(nproc 2>/dev/null || echo 4) --output-sync=target --no-print-directory \
 		$(VALIDATE_CHECKS)
 
 doctor: ## Affiche les versions épinglées + dernière version Hugo disponible
