@@ -3,8 +3,8 @@
 # Usage: bash scripts/preflight.sh
 #        make preflight
 #
-# Note: fridge schema (A) and hugo build (B) are already guaranteed by the
-# pre-commit hook on every commit. This script covers what the hook skips:
+# Note: fridge/flavors schema (A) and hugo build (B) are already guaranteed by
+# `make validate` (the pre-commit hook) on every commit. This script covers what that skips:
 #
 #   E. npm test — visual regression + BDD suite (requires Docker, ~60s)
 #

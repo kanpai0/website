@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 make bootstrap      # fresh clone: mise install + npm ci + git hooks
-make install-hooks  # (re)install .git/hooks/pre-commit from scripts/pre-commit.sh
+make install-hooks  # (re)install git hooks from scripts/git-hooks/
 
 hugo serve          # Local dev server with hot reload
 hugo build          # Generate static site to public/
@@ -16,6 +16,7 @@ make build          # alias → hugo build
 make release        # bump version, generate CHANGELOG, commit, tag, push
 make release-dry    # preview release without writing anything
 make preflight      # full local quality gate before pushing (npm test)
+make validate       # pre-commit gate: hugo build + check-sh/lint-sh/check-pw-version/check-fridge/check-flavors/test-unit
 make check-sh       # syntax-check all shell scripts (bash -n)
 make lint-sh        # lint all shell scripts (shellcheck)
 make check-pw-version # verify Playwright version pinned consistently (package.json + CI)
@@ -50,26 +51,12 @@ Requires `git-cliff` (pinned in `.mise.toml` — run `make bootstrap`). Script r
 Updates `hugo.toml`, `CHANGELOG.md`, `README.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
 then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
 
-### Conventional commits hook (local only, not version-controlled)
+### Git hooks
 
-The hook is already installed at `.git/hooks/commit-msg`. On a fresh clone, re-install with:
-
-```bash
-cp scripts/release.sh /dev/null   # (hook is .git/hooks/commit-msg — reinstall manually)
-# or simply:
-cat > .git/hooks/commit-msg << 'EOF'
-#!/bin/sh
-pattern="^(feat|fix|docs|chore|refactor|perf|test|style|ci|build)(\(.+\))?(!)?:.+"
-msg=$(head -1 "$1")
-if ! echo "$msg" | grep -qE "$pattern"; then
-  echo "ERROR: Commit message must follow Conventional Commits format."
-  echo "  Expected: <type>[optional scope][optional !]: <description>"
-  echo "  Got: $msg"
-  exit 1
-fi
-EOF
-chmod +x .git/hooks/commit-msg
-```
+Both `pre-commit` and `commit-msg` are versioned in `scripts/git-hooks/` and
+installed into `.git/hooks/` by `make install-hooks` (also run by `make bootstrap`).
+`pre-commit` runs `make validate`; `commit-msg` enforces Conventional Commits
+(required by `git-cliff` to compute the next version).
 
 ## Architecture
 
@@ -145,7 +132,8 @@ After completing any modification, check the relevant sections of `docs/QUALITY_
 Run `make preflight` before pushing — validates schema, build, and all tests.
 Run `npm run test:update` when visual baselines need updating after intentional design changes.
 
-**Pre-commit hook** — runs `hugo build` + fridge schema check on every commit.
+**Pre-commit hook** — runs `make validate` (hugo build + shell/Playwright checks +
+fridge/flavors schema + unit tests) on every commit.
 Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 
 **Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`.

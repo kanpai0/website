@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Versioned pre-commit hook for Kanpai Ø.
+# Installed into .git/hooks/pre-commit by `make install-hooks` (also by
+# `make bootstrap`). Source of truth: scripts/git-hooks/pre-commit.
+#
+# IDE-launched hooks (WebStorm, IntelliJ, VS Code, ...) run with a
+# minimal PATH that doesn't include Homebrew or mise. We bootstrap both
+# below so `make validate` finds the pinned hugo / node / shellcheck / jq.
+
+set -e
+
+# Bootstrap Homebrew PATH if available (macOS Apple Silicon, then Intel).
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if ! command -v mise >/dev/null 2>&1; then
+  echo "pre-commit: 'mise' not found in PATH. Install via 'brew install mise'." >&2
+  exit 1
+fi
+
+# `mise exec --` pushes pinned tools onto PATH for this subprocess only.
+exec mise exec -- make validate

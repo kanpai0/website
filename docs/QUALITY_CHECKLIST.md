@@ -9,7 +9,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 - [ ] All `fridge[]` values in recipe frontmatter match a `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`
 - [ ] No unknown or misspelled ingredient slugs introduced
 
-> Checked by: `scripts/pre-commit.sh` (pre-commit hook — runs on every commit)
+> Checked by: `make validate` (pre-commit hook) — `scripts/check-fridge.sh`
 
 ---
 
@@ -18,7 +18,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 - [ ] `hugo build` exits 0 with no warnings or errors
 - [ ] No broken template references, missing partials, or invalid frontmatter
 
-> Checked by: `scripts/pre-commit.sh` (pre-commit hook — runs on every commit)
+> Checked by: `make validate` (pre-commit hook) — `hugo build --quiet`
 
 ---
 

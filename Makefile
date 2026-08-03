@@ -3,13 +3,17 @@
 # Point d'entrée unique des tâches de dev. Les outils sous-jacents (hugo, node,
 # python, git-cliff, shellcheck, jq) sont épinglés dans .mise.toml.
 # Machine neuve : `brew install mise`, puis `make bootstrap`.
+#
+# `make validate` requiert GNU Make 4+ (fan-out parallèle via --output-sync) :
+# macOS livre make 3.81, installer `brew install make` (fournit `gmake`).
 
 .DEFAULT_GOAL := help
 SHELL := /usr/bin/env bash
 .SHELLFLAGS := -ec
 
 .PHONY: bootstrap install-hooks serve build test test-update release release-dry \
-	preflight check-sh lint-sh check-pw-version doctor help
+	preflight check-sh lint-sh check-pw-version check-fridge check-flavors \
+	test-unit validate doctor help
 
 # --- Bootstrap (une seule fois après git clone) ---
 
@@ -18,11 +22,12 @@ bootstrap: ## Installation initiale : mise install + npm ci + hooks git
 	npm ci
 	$(MAKE) install-hooks
 
-install-hooks: ## (Ré)installe .git/hooks/pre-commit depuis scripts/pre-commit.sh
+install-hooks: ## (Ré)installe les hooks git versionnés depuis scripts/git-hooks/
 	@mkdir -p .git/hooks
-	@cp scripts/pre-commit.sh .git/hooks/pre-commit
-	@chmod +x .git/hooks/pre-commit
-	@echo "git hooks installed (pre-commit)"
+	@cp scripts/git-hooks/pre-commit .git/hooks/pre-commit
+	@cp scripts/git-hooks/commit-msg .git/hooks/commit-msg
+	@chmod +x .git/hooks/pre-commit .git/hooks/commit-msg
+	@echo "git hooks installed (pre-commit, commit-msg)"
 
 # --- Dev loop ---
 
@@ -57,6 +62,34 @@ lint-sh: ## Lint des scripts shell (shellcheck)
 
 check-pw-version: ## Vérifie l'alignement de la version Playwright (3 points d'épinglage)
 	@bash scripts/check-pw-version.sh
+
+check-fridge: ## Vérifie le schéma fridge[] des recettes vs fridge-icons.html
+	@bash scripts/check-fridge.sh
+
+check-flavors: ## Vérifie le schéma flavors[] des recettes vs FLAVORS (index.html)
+	@bash scripts/check-flavors.sh
+
+test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
+	@if [ "$${QUIET:-}" = "1" ]; then \
+		_t=$$(node -p "Date.now()"); \
+		out=$$(node --test --test-reporter=spec tests/unit/*.test.mjs 2>&1) && rc=0 || rc=$$?; \
+		if [ $$rc -eq 0 ]; then \
+			printf '\033[32m✓\033[0m tests \033[90m%dms\033[0m\n' "$$(( $$(node -p "Date.now()") - $$_t ))"; \
+		else \
+			printf '%s\n' "$$out" >&2; exit $$rc; \
+		fi; \
+	else \
+		node --test --test-reporter=dot tests/unit/*.test.mjs; \
+	fi
+
+# --- Validation (pipeline pré-merge) ---
+
+VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-fridge check-flavors test-unit
+
+validate: ## Pipeline complet : hugo build puis fan-out parallèle des checks (requiert gmake 4+)
+	@hugo build --quiet
+	@QUIET=1 gmake -j$$(sysctl -n hw.logicalcpu 2>/dev/null || nproc 2>/dev/null || echo 4) --output-sync=target --no-print-directory \
+		$(VALIDATE_CHECKS)
 
 doctor: ## Affiche les versions épinglées + dernière version Hugo disponible
 	@echo "=== Épinglé (.mise.toml) ==="

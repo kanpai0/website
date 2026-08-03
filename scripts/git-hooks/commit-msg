@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Versioned commit-msg hook for Kanpai Ø.
+# Installed into .git/hooks/commit-msg by `make install-hooks` (also by
+# `make bootstrap`). Source of truth: scripts/git-hooks/commit-msg.
+# Enforces Conventional Commits — required for `git-cliff` to compute
+# the next version (see scripts/release.sh).
+#
+# Allowed: feat, fix, docs, chore, refactor, perf, test, style, ci, build.
+# Optional scope: feat(editor): ...
+# Breaking change marker: feat!: ... or feat(editor)!: ...
+
+set -e
+
+pattern='^(feat|fix|docs|chore|refactor|perf|test|style|ci|build)(\([^)]+\))?(!)?: .+'
+first_line="$(head -n 1 "$1")"
+
+# Allow merge / fixup / revert / WIP commits without enforcement.
+case "$first_line" in
+  "Merge "*|"Revert "*|"fixup! "*|"squash! "*|"WIP"*) exit 0 ;;
+esac
+
+if ! printf '%s' "$first_line" | grep -Eq "$pattern"; then
+  cat >&2 <<EOF
+ERROR: Commit message must follow Conventional Commits.
+  Expected: <type>[optional scope][optional !]: <description>
+  Types   : feat, fix, docs, chore, refactor, perf, test, style, ci, build
+  Got     : $first_line
+EOF
+  exit 1
+fi

@@ -135,7 +135,7 @@ Deux prérequis sur la machine (plus Docker pour les tests Playwright) :
 | Outil  | Rôle                        | Installation                                                |
 |--------|-----------------------------|-------------------------------------------------------------|
 | `mise` | Gère les versions d'outils  | `brew install mise` — voir [mise.jdx.dev](https://mise.jdx.dev/) |
-| `make` | Task runner                 | macOS : `xcode-select --install`                            |
+| `make` | Task runner (GNU Make 4+ requis par `make validate`) | macOS : `brew install make` — le `make` 3.81 de `xcode-select` ne suffit pas |
 
 ```sh
 git clone https://github.com/kanpai0/website.git
