@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
-new vm.Script(readFileSync('static/js/fridge.js', 'utf8')).runInThisContext();
+new vm.Script(readFileSync('src/static/js/fridge.js', 'utf8')).runInThisContext();
 const {
   parseDataList,
   hasRequiredIngredients,

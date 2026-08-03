@@ -22,10 +22,10 @@ bootstrap: ## Installation initiale : mise install + npm ci + hooks git
 	npm ci
 	$(MAKE) install-hooks
 
-install-hooks: ## (Ré)installe les hooks git versionnés depuis scripts/git-hooks/
+install-hooks: ## (Ré)installe les hooks git versionnés depuis tools/git-hooks/
 	@mkdir -p .git/hooks
-	@cp scripts/git-hooks/pre-commit .git/hooks/pre-commit
-	@cp scripts/git-hooks/commit-msg .git/hooks/commit-msg
+	@cp tools/git-hooks/pre-commit .git/hooks/pre-commit
+	@cp tools/git-hooks/commit-msg .git/hooks/commit-msg
 	@chmod +x .git/hooks/pre-commit .git/hooks/commit-msg
 	@echo "git hooks installed (pre-commit, commit-msg)"
 
@@ -43,34 +43,34 @@ test: ## Lance la suite de tests npm (unit + visual + BDD)
 test-update: ## Régénère les baselines visuelles (npm run test:update)
 	npm run test:update
 
-release: ## Bump de version, changelog, commit + tag (scripts/release.sh)
-	bash scripts/release.sh
+release: ## Bump de version, changelog, commit + tag (tools/release.sh)
+	bash tools/release.sh
 
 release-dry: ## Prévisualise la release sans rien écrire
-	bash scripts/release.sh --dry-run
+	bash tools/release.sh --dry-run
 
-preflight: ## Contrôle qualité complet avant push (scripts/preflight.sh)
-	bash scripts/preflight.sh
+preflight: ## Contrôle qualité complet avant push (tools/preflight.sh)
+	bash tools/preflight.sh
 
 # --- Outillage shell ---
 
 check-sh: ## Vérifie la syntaxe des scripts shell (bash -n)
-	@bash scripts/check-sh.sh
+	@bash tools/check-sh.sh
 
 lint-sh: ## Lint des scripts shell (shellcheck)
-	@bash scripts/lint-sh.sh
+	@bash tools/lint-sh.sh
 
 check-pw-version: ## Vérifie l'alignement de la version Playwright (3 points d'épinglage)
-	@bash scripts/check-pw-version.sh
+	@bash tools/check-pw-version.sh
 
-check-content: ## Valide le frontmatter des recettes (parseur strict + règles fridge/flavors/glass/color)
-	@node scripts/check-content.mjs
+check-content: ## Valide le frontmatter des recettes (extraction yq + règles fridge/flavors/glass/color)
+	@node tools/check-content.mjs
 
 check-dom: ## Vérifie que public/ contient tous les sélecteurs consommés par fridge.js
-	@bash scripts/check-dom.sh
+	@bash tools/check-dom.sh
 
 check-design-system: ## Vérifie que chaque partial a sa section dans design-system.html
-	@bash scripts/check-design-system.sh
+	@bash tools/check-design-system.sh
 
 test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
 	@if [ "$${QUIET:-}" = "1" ]; then \

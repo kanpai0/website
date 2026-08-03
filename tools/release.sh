@@ -2,9 +2,9 @@
 # Semantic release using git-cliff for changelog + version bump detection.
 #
 # Usage:
-#   bash scripts/release.sh              # auto-determine bump via git-cliff
-#   bash scripts/release.sh --bump minor # override bump (major|minor|patch)
-#   bash scripts/release.sh --dry-run    # preview, write nothing
+#   bash tools/release.sh              # auto-determine bump via git-cliff
+#   bash tools/release.sh --bump minor # override bump (major|minor|patch)
+#   bash tools/release.sh --dry-run    # preview, write nothing
 
 set -euo pipefail
 
@@ -107,7 +107,7 @@ fi
 echo ""
 read -r -p "Run preflight checks (npm test + manual checklist)? [Y/n] " _run_preflight
 if [[ ! "$_run_preflight" =~ ^[Nn] ]]; then
-  bash "$REPO_ROOT/scripts/preflight.sh" || { echo "Aborted: fix preflight failures first."; exit 1; }
+  bash "$REPO_ROOT/tools/preflight.sh" || { echo "Aborted: fix preflight failures first."; exit 1; }
   read -r -p "Manual checklist complete? [Y/n] " _quality_ok
   [[ ! "$_quality_ok" =~ ^[Nn] ]] || { echo "Aborted."; exit 0; }
 fi

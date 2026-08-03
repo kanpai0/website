@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Versioned commit-msg hook for Kanpai Ø.
 # Installed into .git/hooks/commit-msg by `make install-hooks` (also by
-# `make bootstrap`). Source of truth: scripts/git-hooks/commit-msg.
+# `make bootstrap`). Source of truth: tools/git-hooks/commit-msg.
 # Enforces Conventional Commits — required for `git-cliff` to compute
-# the next version (see scripts/release.sh).
+# the next version (see tools/release.sh).
 #
 # Allowed: feat, fix, docs, chore, refactor, perf, test, style, ci, build.
 # Optional scope: feat(editor): ...

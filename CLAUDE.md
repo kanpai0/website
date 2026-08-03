@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 make bootstrap      # fresh clone: mise install + npm ci + git hooks
-make install-hooks  # (re)install git hooks from scripts/git-hooks/
+make install-hooks  # (re)install git hooks from tools/git-hooks/
 
 hugo serve          # Local dev server with hot reload
 hugo build          # Generate static site to public/
@@ -38,14 +38,14 @@ Prerequisites on a new machine: `brew install mise` (plus `make`, and Docker for
 prefix commands with `mise exec --`.
 
 Out of mise scope: Docker (Playwright image pinned in `package.json`) and the
-Python dependencies of `scripts/*.py` (still managed by pip in `.venv`).
+Python dependencies of `scripts/*.py` (content pipelines — still managed by pip in `.venv`).
 
 ## Release workflow
 
 ```bash
-bash scripts/release.sh              # auto bump (breaking→major, feat→minor, else patch)
-bash scripts/release.sh --bump minor # override bump type
-bash scripts/release.sh --dry-run    # preview only
+bash tools/release.sh              # auto bump (breaking→major, feat→minor, else patch)
+bash tools/release.sh --bump minor # override bump type
+bash tools/release.sh --dry-run    # preview only
 ```
 
 Requires `git-cliff` (pinned in `.mise.toml` — run `make bootstrap`). Script requires a clean working tree.
@@ -54,7 +54,7 @@ then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
 
 ### Git hooks
 
-Both `pre-commit` and `commit-msg` are versioned in `scripts/git-hooks/` and
+Both `pre-commit` and `commit-msg` are versioned in `tools/git-hooks/` and
 installed into `.git/hooks/` by `make install-hooks` (also run by `make bootstrap`).
 `pre-commit` runs `make validate`; `commit-msg` enforces Conventional Commits
 (required by `git-cliff` to compute the next version).
@@ -64,20 +64,21 @@ installed into `.git/hooks/` by `make install-hooks` (also run by `make bootstra
 **Hugo static site** — no Node.js, no build pipeline beyond `hugo`. Deploys automatically to Cloudflare Pages on push to main.
 
 ```
-content/recettes/    # 24 recipe markdown files (source of truth)
-layouts/             # Hugo templates
-  index.html         # Homepage: recipe grid + fridge panel + filtering JS
-  recettes/
-    single.html      # Individual recipe page
-  partials/
-    fridge-icons.html        # SVG sprite (~25 ingredient/spirit icons)
-    fridge-panel-body.html   # Fridge filter panel component
-static/css/main.css  # All styles (~350 lines, no framework)
-static/images/recettes/  # WebP cocktail images
-scripts/             # Python/bash utilities for content & image generation
+src/
+  content/recettes/  # 24 recipe markdown files (source of truth)
+  layouts/            # Hugo templates
+    index.html        # Homepage: recipe grid + fridge panel + filtering JS
+    recettes/
+      single.html     # Individual recipe page
+    partials/
+      fridge-icons.html        # SVG sprite (~25 ingredient/spirit icons)
+      fridge-panel-body.html   # Fridge filter panel component
+  static/css/main.css # All styles (~350 lines, no framework)
+  static/images/recettes/  # WebP cocktail images
+tools/               # Repo process: check-*, lib/, git-hooks/, release.sh, preflight.sh
+scripts/             # Content pipelines: Python + download-recipe-images.sh
 specs/               # Timestamped planning docs (ADRs)
-design/              # Design file (kanpai0.pen) + mockups
-docs/                # Reference docs, quality checklist, marketing
+docs/                # Reference docs, quality checklist, marketing, design/, sources/
 ```
 
 ## Recipe Content Structure
@@ -138,6 +139,6 @@ Run `npm run test:update` when visual baselines need updating after intentional 
 on every commit.
 Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 
-**Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`
-AND `id="fr-<slug>"` in `layouts/partials/fridge-panel-body.html` — both enforced by `check-content`.
+**Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `src/layouts/partials/fridge-icons.html`
+AND `id="fr-<slug>"` in `src/layouts/partials/fridge-panel-body.html` — both enforced by `check-content`.
 Adding a new ingredient requires 3 steps: (1) `<symbol>` in `fridge-icons.html`, (2) `<label>` in `fridge-panel-body.html`, (3) update recipes using it.

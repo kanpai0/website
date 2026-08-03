@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# scripts/check-design-system.sh — Every layouts/partials/*.html must be
-# referenced in layouts/_default/design-system.html.
+# tools/check-design-system.sh — Every src/layouts/partials/*.html must be
+# referenced in src/layouts/_default/design-system.html.
 #
 # Called by `make check-design-system`. Exits non-zero on violation.
 #
@@ -17,8 +17,8 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-partials_dir="$REPO_ROOT/layouts/partials"
-ds_file="$REPO_ROOT/layouts/_default/design-system.html"
+partials_dir="$REPO_ROOT/src/layouts/partials"
+ds_file="$REPO_ROOT/src/layouts/_default/design-system.html"
 
 if [[ ! -d "$partials_dir" ]]; then
   echo "check-design-system OK (no $partials_dir yet)"

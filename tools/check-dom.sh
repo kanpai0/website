@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# scripts/check-dom.sh — Every DOM selector static/js/fridge.js (and the
-# inline bootstrap script in layouts/index.html) reads or writes at runtime
-# must exist in the built public/*.html. Checked against the build output,
-# not the Hugo templates, so the guarantee also covers whatever a partial
-# nesting/whitespace change might do at build time.
+# tools/check-dom.sh — Every DOM selector src/static/js/fridge.js (and the
+# inline bootstrap script in src/layouts/index.html) reads or writes at
+# runtime must exist in the built public/*.html. Checked against the build
+# output, not the Hugo templates, so the guarantee also covers whatever a
+# partial nesting/whitespace change might do at build time.
 #
 # Why at build and not at run: the guarantee is static, so fridge.js doesn't
 # have to carry defensive "element not found" branches everywhere. A break
@@ -46,7 +46,7 @@ check_file_has() {
   done
 }
 
-# static/js/fridge.js — filter bootstrap (init/applyFilters/getActive*):
+# src/static/js/fridge.js — filter bootstrap (init/applyFilters/getActive*):
 # - #fridge-open / #fridge-panel / #fridge-btn : checkbox-driven panel,
 #   toggled + aria-synced by the change listener installed in init().
 # - .recipe-card + data-fridge / data-flavors   : read by updateCardVisibility
@@ -57,7 +57,7 @@ check_file_has() {
 # - #fl-<flavor> for each of the 9 FLAVORS      : read by getActiveFlavors()
 #   via getElementById('fl-' + f), and by init() when restoring a selection.
 # - `const FRIDGE` / `const FLAVORS`            : globals fridge.js depends
-#   on, injected inline by layouts/index.html — must survive the build
+#   on, injected inline by src/layouts/index.html — must survive the build
 #   unexpanded (fridge.js itself declares neither).
 check_file_has public/index.html \
   'id="fridge-open"' \
@@ -82,8 +82,8 @@ check_file_has public/index.html \
   'const FLAVORS'
 
 # Dynamic invariant: `const FRIDGE` is generated from recipe data (Hugo
-# ranges over content/recettes/*.md — see layouts/index.html), not from
-# fridge-icons.html. A slug with an icon but no `fr-<slug>` checkbox in
+# ranges over src/content/recettes/*.md — see src/layouts/index.html), not
+# from fridge-icons.html. A slug with an icon but no `fr-<slug>` checkbox in
 # fridge-panel-body.html would compile fine and pass check-content, yet
 # getActiveIngredients() would never find it checked — filtering silently
 # breaks for that one ingredient. Re-derive FRIDGE from the built page and

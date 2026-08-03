@@ -8,10 +8,10 @@
 "aqua:gohugoio/hugo/hugo-extended" = "0.159.1"
 node                              = "26"     # tests unitaires `node --test`, bddgen, npx
 python                            = "3.14"   # scripts/*.py (contenu, images)
-"aqua:orhun/git-cliff"            = "2"      # scripts/release.sh
+"aqua:orhun/git-cliff"            = "2"      # tools/release.sh
 "aqua:koalaman/shellcheck"        = "0.11.0" # lint des scripts bash
 "aqua:jqlang/jq"                  = "1.8"    # parsing JSON dans les scripts / make doctor
-"aqua:mikefarah/yq"               = "4"     # extraction du frontmatter dans scripts/check-content.mjs
+"aqua:mikefarah/yq"               = "4"     # extraction du frontmatter dans tools/check-content.mjs
 
 # Hors périmètre mise :
 #   docker  : requis par `npm test` (image Playwright épinglée dans package.json).

@@ -1,22 +1,23 @@
 #!/usr/bin/env node
-// scripts/check-content.mjs — CLI (thin IO shell) over scripts/lib/frontmatter.mjs.
+// tools/check-content.mjs — CLI (thin IO shell) over tools/lib/frontmatter.mjs.
 // Called by `make check-content`. Exits 1 on any extraction, shape or
-// validation error. Replaces scripts/check-fridge.sh + scripts/check-flavors.sh.
+// validation error. Replaces the historical scripts/check-fridge.sh +
+// scripts/check-flavors.sh (retired — see git history).
 //
 // Front-matter extraction is delegated to yq (mikefarah, pinned in
 // .mise.toml as "aqua:mikefarah/yq") — a real YAML parser, invoked once per
 // recipe via `yq -o=json --front-matter=extract`. This file owns IO and
 // process invocation only; shape + semantic validation lives in
-// scripts/lib/frontmatter.mjs (pure, yq-free).
+// tools/lib/frontmatter.mjs (pure, yq-free).
 //
 // Cross-reference sets are extracted straight from the templates/styles
 // that actually define them, never hardcoded here, so a rename shows up
 // without a second edit:
-//   iconSlugs   <- layouts/partials/fridge-icons.html      id="fi-<slug>"
-//   panelSlugs  <- layouts/partials/fridge-panel-body.html id="fr-<slug>"
-//   flavorSlugs <- layouts/index.html                      const FLAVORS = [...]
-//   glassIds    <- layouts/partials/glass-icon.html        {{ eq $type "…" }}
-//   colorNames  <- static/css/main.css                     body.<name> { --accent
+//   iconSlugs   <- src/layouts/partials/fridge-icons.html      id="fi-<slug>"
+//   panelSlugs  <- src/layouts/partials/fridge-panel-body.html id="fr-<slug>"
+//   flavorSlugs <- src/layouts/index.html                      const FLAVORS = [...]
+//   glassIds    <- src/layouts/partials/glass-icon.html        {{ eq $type "…" }}
+//   colorNames  <- src/static/css/main.css                     body.<name> { --accent
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -82,23 +83,26 @@ function fieldLineNumbers(content) {
 }
 
 function buildRefs() {
-  const iconSlugs = extractAll(readText('layouts/partials/fridge-icons.html'), /id="fi-([a-z0-9-]+)"/g);
+  const iconSlugs = extractAll(
+    readText('src/layouts/partials/fridge-icons.html'),
+    /id="fi-([a-z0-9-]+)"/g,
+  );
   const panelSlugs = extractAll(
-    readText('layouts/partials/fridge-panel-body.html'),
+    readText('src/layouts/partials/fridge-panel-body.html'),
     /id="fr-([a-z0-9-]+)"/g,
   );
 
-  const indexHtml = readText('layouts/index.html');
+  const indexHtml = readText('src/layouts/index.html');
   const flavorsLine = indexHtml.split('\n').find((l) => /const FLAVORS\s*=/.test(l)) ?? '';
   const flavorSlugs = extractAll(flavorsLine, /'([^']+)'/g);
 
   // Deduped: `{{- else if or (eq $type "highball") (eq $type "collins") -}}`
   // yields two matches on one line.
   const glassIds = [
-    ...new Set(extractAll(readText('layouts/partials/glass-icon.html'), /eq \$type "([a-z0-9_-]+)"/g)),
+    ...new Set(extractAll(readText('src/layouts/partials/glass-icon.html'), /eq \$type "([a-z0-9_-]+)"/g)),
   ];
 
-  const colorNames = extractAll(readText('static/css/main.css'), /^body\.([a-z]+)\s*\{\s*--accent/gm);
+  const colorNames = extractAll(readText('src/static/css/main.css'), /^body\.([a-z]+)\s*\{\s*--accent/gm);
 
   return { iconSlugs, panelSlugs, flavorSlugs, glassIds, colorNames };
 }
@@ -108,7 +112,7 @@ function main() {
 
   const start = Date.now();
   const refs = buildRefs();
-  const recipesDir = path.join(REPO_ROOT, 'content/recettes');
+  const recipesDir = path.join(REPO_ROOT, 'src/content/recettes');
   const files = readdirSync(recipesDir)
     .filter((f) => f.endsWith('.md'))
     .sort();
@@ -116,7 +120,7 @@ function main() {
   let hasErrors = false;
 
   for (const file of files) {
-    const relFile = `content/recettes/${file}`;
+    const relFile = `src/content/recettes/${file}`;
     const absFile = path.join(recipesDir, file);
 
     const extracted = extractFrontmatter(absFile);

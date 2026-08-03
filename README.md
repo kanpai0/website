@@ -43,7 +43,7 @@ Chaque contribution, qu'elle vienne de l'IA ou de moi, passe par trois filtres :
 
 - **Hook pre-commit** : build Hugo + validation de schéma des données frontmatter.
 - **`make preflight` avant push** : build complet + tests Playwright dans le même conteneur Docker que la CI (même version des navigateurs, rendu identique macOS / Linux).
-- **CI bloquante** : régression visuelle (14 sections, seuil 1 % diff pixels) + audit Lighthouse sur seuils définis dans `budget.json`. Pas de merge si rouge.
+- **CI bloquante** : régression visuelle (14 sections, seuil 0,1 % diff pixels) + audit Lighthouse sur seuils définis dans `budget.json`. Pas de merge si rouge.
 
 Ce cadre est transposable sur une plateforme B2B en équipe. C'est le genre de construction que je cherche à mettre en place en mission.
 
@@ -80,7 +80,7 @@ Ce cadre est transposable sur une plateforme B2B en équipe. C'est le genre de c
 ### Chiffres
 
 - **27 ADR** horodatés dans `specs/`, du premier commit à la v1
-- **14 sections** testées en régression visuelle, seuil 1 % diff pixels, blocage des merges
+- **14 sections** testées en régression visuelle, seuil 0,1 % diff pixels, blocage des merges
 - **~45 h** de travail effectif sur 3 semaines
 - **58 €** de coût de lancement
 - **Sobriété de dépendances** : là où une stack classique en aurait des centaines, ce repo en a 2 publiques de poids (Playwright, git-cliff) et aucune au runtime du site
@@ -160,17 +160,18 @@ Sans activation, préfixer les commandes par `mise exec --` (ex. `mise exec -- m
 ### Structure Hugo
 
 ```
-content/recettes/        # 24 recettes markdown (source de vérité)
-layouts/                 # Templates Hugo
-  index.html             # Homepage : grille + panel frigo + filtering JS
-  recettes/single.html   # Page recette individuelle
-  partials/              # fridge-icons, fridge-panel-body, …
-static/css/main.css      # Tous les styles (~350 lignes)
-static/images/recettes/  # Images WebP optimisées
-scripts/                 # Utilitaires Python/bash
+src/
+  content/recettes/      # 24 recettes markdown (source de vérité)
+  layouts/               # Templates Hugo
+    index.html           # Homepage : grille + panel frigo + filtering JS
+    recettes/single.html # Page recette individuelle
+    partials/            # fridge-icons, fridge-panel-body, …
+  static/css/main.css    # Tous les styles (~350 lignes)
+  static/images/recettes/  # Images WebP optimisées
+tools/                   # Process repo : check-*, lib/, git-hooks/, release.sh, preflight.sh
+scripts/                 # Pipelines de contenu : Python + download-recipe-images.sh
 specs/                   # ADR horodatés
-design/                  # Fichiers .pen + maquettes
-docs/                    # Références, qualité, marketing
+docs/                    # Références, qualité, marketing, design/, sources/
 ```
 
 ### Frontmatter d'une recette

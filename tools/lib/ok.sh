@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/lib/ok.sh — Sourced by scripts/check-*.sh and scripts/lint-sh.sh.
+# tools/lib/ok.sh — Sourced by tools/check-*.sh and tools/lint-sh.sh.
 # Sets _OK_START at source time and exposes ok() to print a timed success line.
 #
 # Usage:

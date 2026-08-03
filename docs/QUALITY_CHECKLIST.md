@@ -6,10 +6,10 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 ## A — Content schema [auto]
 
-- [ ] All `fridge[]` values in recipe frontmatter match a `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`
+- [ ] All `fridge[]` values in recipe frontmatter match a `id="fi-<slug>"` in `src/layouts/partials/fridge-icons.html`
 - [ ] No unknown or misspelled ingredient slugs introduced
 
-> Checked by: `make validate` (pre-commit hook) — `scripts/check-content.mjs` (extraction `yq` + `validateRecipe`, `scripts/lib/frontmatter.mjs`)
+> Checked by: `make validate` (pre-commit hook) — `tools/check-content.mjs` (extraction `yq` + `validateRecipe`, `tools/lib/frontmatter.mjs`)
 
 ---
 
@@ -33,7 +33,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 ## D — Design system [manual]
 
-- [ ] New CSS custom property → added to `:root` block in `static/css/main.css`
+- [ ] New CSS custom property → added to `:root` block in `src/static/css/main.css`
 - [ ] New reusable component → documented on `/design-system/` page (if it exists)
 - [ ] Intentional visual change → run `npm run test:update` to update baselines and commit them
 
@@ -45,7 +45,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 - [ ] New user-facing behavior → new `.feature` scenario added in `features/`
 - [ ] Visual baseline snapshots committed if updated
 
-> Automated portion checked by: `scripts/preflight.sh` (called automatically by `release.sh`)
+> Automated portion checked by: `tools/preflight.sh` (called automatically by `release.sh`)
 
 ---
 
@@ -63,7 +63,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 - [ ] External images or assets: license verified before use
 - [ ] No unlicensed third-party content introduced
 
-> Automated portion checked by: `make validate` (pre-commit hook) — `scripts/check-content.mjs` fails if `source_image` or `source_url` is missing or empty. License verification stays manual.
+> Automated portion checked by: `make validate` (pre-commit hook) — `tools/check-content.mjs` fails if `source_image` or `source_url` is missing or empty. License verification stays manual.
 
 ---
 

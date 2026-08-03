@@ -22,7 +22,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
   expect: {
-    toHaveScreenshot: { maxDiffPixelRatio: 0.01 },
+    toHaveScreenshot: { maxDiffPixelRatio: 0.001 },
   },
   projects: [
     {

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Full local quality gate — run before pushing or releasing.
-# Usage: bash scripts/preflight.sh
+# Usage: bash tools/preflight.sh
 #        make preflight
 #
 # Note: fridge/flavors schema (A) and hugo build (B) are already guaranteed by

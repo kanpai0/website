@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 const { Given, When, Then } = createBdd();
 
 // Corrupted-localStorage fixtures — parse-at-the-frontier hardening of
-// static/js/fridge.js (see tests/unit/fridge-logic.test.mjs for the
+// src/static/js/fridge.js (see tests/unit/fridge-logic.test.mjs for the
 // unit-level coverage of parseStoredFridge). Seeded via page.evaluate then
 // a reload, same idiom as "all filters are reset" in shared.steps.ts, so
 // the corrupted value is already in place when init() runs on load.

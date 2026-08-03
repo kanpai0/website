@@ -9,10 +9,12 @@ Effort indicatif : (S) < 1 h, (M) demi-journée, (L) plusieurs sessions.
 Les items ~~barrés~~ sont faits.
 
 **État au 2026-08-03** : A.1–A.6 (lot 1), B.7 + extraction de B.8,
-C.16–C.18 (lot 2), D.19–D.20 (lot 3), B.10–B.13 (lot 4) livrés.
-`make validate` = 7 checks ; la CI builde une fois et gate le deploy.
-D.21 et D.23 écartés (décision Vincent) ; D.22 vérifié (pas de
-deploy CF doublon). Restent : B.9, B.14, B.15, E, F, G.
+C.16–C.18 (lot 2), D.19–D.20 (lot 3), B.10–B.13 (lot 4, révisé yq
+lot 5), G.37–G.40 (lot 6) livrés. `make validate` = 7 checks ; CI
+build unique + deploy gated ; arbo `src/` + `tools/` + `scripts/`
+(pipelines contenu). D.21/D.23 écartés, D.22 vérifié.
+Restent : B.9, B.14, B.15, E (release), F (ADR/RFC — inclut le
+triage de `specs/`).
 
 ---
 
@@ -72,10 +74,10 @@ deploy CF doublon). Restent : B.9, B.14, B.15, E, F, G.
 
 ## G. Arborescence & configs
 
-37. **`scripts/` → `tools/`** avec la même séparation qu'Ikima : gates (`check-*`), `git-hooks/`, `lib/` — et décider où vivent les pipelines de contenu Python (scrape, images), d'une autre nature. (M)
-38. **Consolidation `docs/`** : specs/, design/, sources/ et docs/ actuels → une arbo unique (adr, rfc, dev-process, research, marketing). (M)
-39. **`src/` avec Hugo** : possible via `contentDir`/`layoutDir`/`staticDir`/`assetDir` dans hugo.toml — à tester contre la CI et le deploy avant de s'engager. (M)
-40. Divers : tsconfig modernisé (ES2022, bundler — actuellement ES2020/commonjs), `maxDiffPixelRatio` 0.01 → 0.001 ?, hygiène .gitignore (public/, test-results/). Biome sur tests/*.ts et *.mjs = palier T2, seulement si irritant mesuré. (S)
+37. ~~**`scripts/` → `tools/`** avec la séparation Ikima : gates (`check-*`), `git-hooks/`, `lib/`, release, preflight. (M)~~ — `scripts/` ne garde que les pipelines de contenu (python + download-recipe-images.sh).
+38. ~~**Consolidation `docs/`** partielle : design/ → docs/design, sources/ → docs/sources. (M)~~ — **`specs/` ne bouge pas** : son triage (F.29) décidera des destinations.
+39. ~~**`src/` avec Hugo** via `contentDir`/`layoutDir`/`staticDir`. (M)~~ — vérifié `public/` byte-identique. Piège : les clés doivent être **au top-level du TOML, avant `[params]`** (sinon capturées par la table et silencieusement ignorées).
+40. ~~Divers : tsconfig ES2022/bundler/noEmit, `maxDiffPixelRatio` 0.01 → 0.001, `.gitignore` + playwright-report/. (S)~~ — Biome **écarté** (frugalité, pas d'irritant mesuré).
 
 ## Sens inverse (Kanpai → Ikima), pour la méthode commune
 

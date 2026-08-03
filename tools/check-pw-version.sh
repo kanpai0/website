@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/check-pw-version.sh — Fail if the pinned Playwright version drifts.
+# tools/check-pw-version.sh — Fail if the pinned Playwright version drifts.
 #
 # Compares the version declared in three places:
 #   1. package.json        → .devDependencies["@playwright/test"]

@@ -1,10 +1,10 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { assertRecipeShape, validateRecipe } from '../../scripts/lib/frontmatter.mjs';
+import { assertRecipeShape, validateRecipe } from '../../tools/lib/frontmatter.mjs';
 
 // Pure functions only — this file has no external front-matter-extraction
 // tool dependency. That extraction step is exercised only through
-// scripts/check-content.mjs, against the real content/recettes/*.md files,
+// tools/check-content.mjs, against the real src/content/recettes/*.md files,
 // as part of `make validate`.
 
 const REFS = {

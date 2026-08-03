@@ -4,5 +4,9 @@ title = "Kanpai Ø"
 
 disableKinds = ["taxonomy", "term"]
 
+contentDir = "src/content"
+layoutDir = "src/layouts"
+staticDir = "src/static"
+
 [params]
   version = "1.16.1"

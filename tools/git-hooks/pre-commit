@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Versioned pre-commit hook for Kanpai Ø.
 # Installed into .git/hooks/pre-commit by `make install-hooks` (also by
-# `make bootstrap`). Source of truth: scripts/git-hooks/pre-commit.
+# `make bootstrap`). Source of truth: tools/git-hooks/pre-commit.
 #
 # IDE-launched hooks (WebStorm, IntelliJ, VS Code, ...) run with a
 # minimal PATH that doesn't include Homebrew or mise. We bootstrap both

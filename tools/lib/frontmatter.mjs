@@ -1,4 +1,4 @@
-// scripts/lib/frontmatter.mjs — PURE library, no IO, no yq dependency. Owns
+// tools/lib/frontmatter.mjs — PURE library, no IO, no yq dependency. Owns
 // recipe *shape* and *semantic* validation only. YAML front-matter
 // extraction is yq's job (tier-2 pinned binary — see .mise.toml), invoked by
 // the check-content.mjs CLI (the IO shell) which then hands the parsed
