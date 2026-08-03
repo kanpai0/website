@@ -12,8 +12,8 @@ SHELL := /usr/bin/env bash
 .SHELLFLAGS := -ec
 
 .PHONY: bootstrap install-hooks serve build test test-update release release-dry \
-	preflight check-sh lint-sh check-pw-version check-fridge check-flavors \
-	test-unit validate validate-ci doctor help
+	preflight check-sh lint-sh check-pw-version check-content check-dom \
+	check-design-system test-unit validate validate-ci doctor help
 
 # --- Bootstrap (une seule fois après git clone) ---
 
@@ -63,11 +63,14 @@ lint-sh: ## Lint des scripts shell (shellcheck)
 check-pw-version: ## Vérifie l'alignement de la version Playwright (3 points d'épinglage)
 	@bash scripts/check-pw-version.sh
 
-check-fridge: ## Vérifie le schéma fridge[] des recettes vs fridge-icons.html
-	@bash scripts/check-fridge.sh
+check-content: ## Valide le frontmatter des recettes (parseur strict + règles fridge/flavors/glass/color)
+	@node scripts/check-content.mjs
 
-check-flavors: ## Vérifie le schéma flavors[] des recettes vs FLAVORS (index.html)
-	@bash scripts/check-flavors.sh
+check-dom: ## Vérifie que public/ contient tous les sélecteurs consommés par fridge.js
+	@bash scripts/check-dom.sh
+
+check-design-system: ## Vérifie que chaque partial a sa section dans design-system.html
+	@bash scripts/check-design-system.sh
 
 test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
 	@if [ "$${QUIET:-}" = "1" ]; then \
@@ -84,7 +87,7 @@ test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
 
 # --- Validation (pipeline pré-merge) ---
 
-VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-fridge check-flavors test-unit
+VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-content check-dom check-design-system test-unit
 
 validate: ## Pipeline complet : hugo build puis fan-out parallèle des checks (requiert gmake 4+)
 	@hugo build --quiet

@@ -49,6 +49,12 @@ jobs:
           install: true
           cache: true
 
+      - name: Download public artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public
+          path: public
+
       - name: make validate-ci
         run: make validate-ci
 

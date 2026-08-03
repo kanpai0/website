@@ -9,7 +9,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 - [ ] All `fridge[]` values in recipe frontmatter match a `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`
 - [ ] No unknown or misspelled ingredient slugs introduced
 
-> Checked by: `make validate` (pre-commit hook) — `scripts/check-fridge.sh`
+> Checked by: `make validate` (pre-commit hook) — `scripts/check-content.mjs` (extraction `yq` + `validateRecipe`, `scripts/lib/frontmatter.mjs`)
 
 ---
 
@@ -57,11 +57,13 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 ---
 
-## G — Legal attribution [manual]
+## G — Legal attribution [auto + manual]
 
 - [ ] New recipes: `source_image` and `source_url` frontmatter fields are set
 - [ ] External images or assets: license verified before use
 - [ ] No unlicensed third-party content introduced
+
+> Automated portion checked by: `make validate` (pre-commit hook) — `scripts/check-content.mjs` fails if `source_image` or `source_url` is missing or empty. License verification stays manual.
 
 ---
 

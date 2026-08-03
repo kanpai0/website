@@ -131,7 +131,7 @@ Détail : [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 
 ### Développer en local
 
-Le toolchain est épinglé dans [`.mise.toml`](.mise.toml) — Hugo, Node, Python, `git-cliff`, `shellcheck`, `jq`. La CI installe ce même fichier via `jdx/mise-action` : pas de version d'outil écrite en double.
+Le toolchain est épinglé dans [`.mise.toml`](.mise.toml) — Hugo, Node, Python, `git-cliff`, `shellcheck`, `jq`, `yq`. La CI installe ce même fichier via `jdx/mise-action` : pas de version d'outil écrite en double.
 
 Deux prérequis sur la machine (plus Docker pour les tests Playwright) :
 

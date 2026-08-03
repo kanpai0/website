@@ -16,7 +16,7 @@ make build          # alias → hugo build
 make release        # bump version, generate CHANGELOG, commit, tag, push
 make release-dry    # preview release without writing anything
 make preflight      # full local quality gate before pushing (npm test)
-make validate       # pre-commit gate: hugo build + check-sh/lint-sh/check-pw-version/check-fridge/check-flavors/test-unit
+make validate       # pre-commit gate: hugo build + check-sh/lint-sh/check-pw-version/check-content/check-dom/check-design-system/test-unit
 make validate-ci    # CI fan-out of the same checks, no hugo build (public/ comes from the build job's artifact)
 make check-sh       # syntax-check all shell scripts (bash -n)
 make lint-sh        # lint all shell scripts (shellcheck)
@@ -28,7 +28,7 @@ make doctor         # show pinned versions + latest available Hugo
 
 Tool versions are pinned in [`.mise.toml`](.mise.toml) and installed with
 [`mise`](https://mise.jdx.dev/): `hugo-extended`, `node`, `python`, `git-cliff`,
-`shellcheck`, `jq`. The same file drives CI (`jdx/mise-action` in
+`shellcheck`, `jq`, `yq`. The same file drives CI (`jdx/mise-action` in
 `.github/workflows/ci.yml`), so local and CI cannot drift — bumping Hugo means
 editing `.mise.toml` only.
 
@@ -133,9 +133,11 @@ After completing any modification, check the relevant sections of `docs/QUALITY_
 Run `make preflight` before pushing — validates schema, build, and all tests.
 Run `npm run test:update` when visual baselines need updating after intentional design changes.
 
-**Pre-commit hook** — runs `make validate` (hugo build + shell/Playwright checks +
-fridge/flavors schema + unit tests) on every commit.
+**Pre-commit hook** — runs `make validate` (hugo build + `check-sh`, `lint-sh`,
+`check-pw-version`, `check-content`, `check-dom`, `check-design-system`, `test-unit`)
+on every commit.
 Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 
-**Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`.
+**Schema invariant:** `fridge[]` values MUST match `id="fi-<slug>"` in `layouts/partials/fridge-icons.html`
+AND `id="fr-<slug>"` in `layouts/partials/fridge-panel-body.html` — both enforced by `check-content`.
 Adding a new ingredient requires 3 steps: (1) `<symbol>` in `fridge-icons.html`, (2) `<label>` in `fridge-panel-body.html`, (3) update recipes using it.
