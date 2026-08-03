@@ -15,6 +15,10 @@ make serve          # alias → hugo serve
 make build          # alias → hugo build
 make release        # bump version, generate CHANGELOG, commit, tag, push
 make release-dry    # preview release without writing anything
+make preflight      # full local quality gate before pushing (npm test)
+make check-sh       # syntax-check all shell scripts (bash -n)
+make lint-sh        # lint all shell scripts (shellcheck)
+make check-pw-version # verify Playwright version pinned consistently (package.json + CI)
 make doctor         # show pinned versions + latest available Hugo
 ```
 

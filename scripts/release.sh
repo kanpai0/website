@@ -124,6 +124,7 @@ done < <(grep -n '\- \[ \]' "$REPO_ROOT/README.md" 2>/dev/null || true)
 if [[ ${#backlog_lines[@]} -gt 0 ]]; then
   echo "Backlog items — move to Réalisées? (space-separated numbers, or Enter to skip)"
   for i in "${!backlog_lines[@]}"; do
+    # shellcheck disable=SC2001 # regex ([0-9]* quantifier) has no simple ${var//} equivalent
     label=$(echo "${backlog_lines[$i]}" | sed 's/^[0-9]*:- \[ \] //')
     printf "  %d. %s\n" $((i + 1)) "$label"
   done
@@ -135,6 +136,7 @@ if [[ ${#backlog_lines[@]} -gt 0 ]]; then
     idx=$((pick - 1))
     if [[ $idx -ge 0 && $idx -lt ${#backlog_lines[@]} ]]; then
       lineno=$(echo "${backlog_lines[$idx]}" | cut -d: -f1)
+      # shellcheck disable=SC2001 # regex ([0-9]* quantifier) has no simple ${var//} equivalent
       text=$(echo "${backlog_lines[$idx]}" | sed 's/^[0-9]*:- \[ \] //')
       items_to_add+=("$text")
       lines_to_delete+=("$lineno")
