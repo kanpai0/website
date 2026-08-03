@@ -4,7 +4,14 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 new vm.Script(readFileSync('static/js/fridge.js', 'utf8')).runInThisContext();
-const { parseDataList, hasRequiredIngredients, matchesActiveFlavors, isCardVisible } = globalThis;
+const {
+  parseDataList,
+  hasRequiredIngredients,
+  matchesActiveFlavors,
+  isCardVisible,
+  parseStoredFridge,
+  parseStoredFlavors,
+} = globalThis;
 
 describe('parseDataList', () => {
   it('splits a space-separated string into an array', () => {
@@ -66,5 +73,76 @@ describe('isCardVisible', () => {
   });
   it('returns true when fridgeNeeded is empty and no flavor filter', () => {
     assert.equal(isCardVisible([], [], [], []), true);
+  });
+});
+
+// Parse-at-the-frontier hardening: localStorage is user-writable and can be
+// corrupted (manual edit, old app version, extension interference). Neither
+// function may ever throw — a `JSON.parse` on invalid data used to crash
+// init() outright (uncaught exception on page load = no filtering at all,
+// not even the default state).
+describe('parseStoredFridge', () => {
+  const validIds = ['rhum', 'menthe', 'citron-vert'];
+
+  it('defaults when raw is null (first visit / absent key)', () => {
+    assert.deepEqual(parseStoredFridge(null, validIds), { kind: 'default' });
+  });
+
+  it('defaults on invalid JSON instead of throwing', () => {
+    assert.deepEqual(parseStoredFridge('{not valid json', validIds), { kind: 'default' });
+  });
+
+  it('defaults when the parsed value is valid JSON but not an array ("{}")', () => {
+    assert.deepEqual(parseStoredFridge('{}', validIds), { kind: 'default' });
+  });
+
+  it('defaults when the array contains non-string entries ("[1,2]")', () => {
+    assert.deepEqual(parseStoredFridge('[1,2]', validIds), { kind: 'default' });
+  });
+
+  it('drops stale slugs no longer in validIds', () => {
+    assert.deepEqual(parseStoredFridge('["rhum", "licorne", "menthe"]', validIds), {
+      kind: 'selection',
+      ids: ['rhum', 'menthe'],
+    });
+  });
+
+  it('returns a selection unchanged when every slug is valid', () => {
+    assert.deepEqual(parseStoredFridge('["rhum", "menthe"]', validIds), {
+      kind: 'selection',
+      ids: ['rhum', 'menthe'],
+    });
+  });
+
+  it('returns an empty selection (not default) when every slug was stale', () => {
+    assert.deepEqual(parseStoredFridge('["licorne"]', validIds), { kind: 'selection', ids: [] });
+  });
+});
+
+describe('parseStoredFlavors', () => {
+  const validIds = ['sparkling', 'tart', 'sweet'];
+
+  it('returns [] when raw is null (first visit / absent key)', () => {
+    assert.deepEqual(parseStoredFlavors(null, validIds), []);
+  });
+
+  it('returns [] on invalid JSON instead of throwing', () => {
+    assert.deepEqual(parseStoredFlavors('{not valid json', validIds), []);
+  });
+
+  it('returns [] when the parsed value is valid JSON but not an array ("{}")', () => {
+    assert.deepEqual(parseStoredFlavors('{}', validIds), []);
+  });
+
+  it('returns [] when the array contains non-string entries ("[1,2]")', () => {
+    assert.deepEqual(parseStoredFlavors('[1,2]', validIds), []);
+  });
+
+  it('drops stale flavors no longer in validIds', () => {
+    assert.deepEqual(parseStoredFlavors('["tart", "umami"]', validIds), ['tart']);
+  });
+
+  it('returns the selection unchanged when every flavor is valid', () => {
+    assert.deepEqual(parseStoredFlavors('["sparkling", "tart"]', validIds), ['sparkling', 'tart']);
   });
 });

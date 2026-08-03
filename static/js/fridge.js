@@ -17,6 +17,42 @@ function isCardVisible(fridgeNeeded, cardFlavors, availableIngredients, activeFl
     && matchesActiveFlavors(cardFlavors, activeFlavors);
 }
 
+// Parse the raw localStorage.fridge value ONCE, at the frontier (called
+// from init(), below). NEVER throws: anything that isn't "a JSON array of
+// strings" — absent, invalid JSON, not an array, non-string entries — is
+// the 'default' case (all ingredients checked), same as a first visit.
+// Stale slugs (no longer in validIds) are dropped from a valid selection.
+function parseStoredFridge(raw, validIds) {
+  if (typeof raw !== 'string') return { kind: 'default' };
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return { kind: 'default' };
+  }
+  if (!Array.isArray(parsed) || !parsed.every(id => typeof id === 'string')) {
+    return { kind: 'default' };
+  }
+  return { kind: 'selection', ids: parsed.filter(id => validIds.includes(id)) };
+}
+
+// Parse the raw localStorage.flavors value ONCE, at the frontier. NEVER
+// throws: anything that isn't "a JSON array of strings" defaults to no
+// active flavors (same as a first visit). Stale flavors are dropped.
+function parseStoredFlavors(raw, validIds) {
+  if (typeof raw !== 'string') return [];
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return [];
+  }
+  if (!Array.isArray(parsed) || !parsed.every(f => typeof f === 'string')) {
+    return [];
+  }
+  return parsed.filter(f => validIds.includes(f));
+}
+
 
 // — DOM queries — read only
 
@@ -56,9 +92,13 @@ function applyFilters() {
 
 
 // — Persistence
+//
+// loadFridge/loadFlavors are pure IO: they hand back whatever raw string
+// (or null) is in localStorage, unparsed. Parsing happens once, at the
+// frontier, in init() below — see parseStoredFridge/parseStoredFlavors.
 
 function loadFridge() {
-  return JSON.parse(localStorage.getItem('fridge') || 'null');
+  return localStorage.getItem('fridge');
 }
 
 function saveFridge() {
@@ -67,7 +107,7 @@ function saveFridge() {
 }
 
 function loadFlavors() {
-  return JSON.parse(localStorage.getItem('flavors') || '[]');
+  return localStorage.getItem('flavors');
 }
 
 function saveFlavors() {
@@ -79,15 +119,15 @@ function saveFlavors() {
 // — Init
 
 function init() {
-  const savedFridge = loadFridge();
+  const fridgeResult = parseStoredFridge(loadFridge(), FRIDGE);
   FRIDGE.forEach(id => {
     const el = document.getElementById('fr-' + id);
     if (!el) return;
-    el.checked = savedFridge === null ? true : savedFridge.includes(id);
+    el.checked = fridgeResult.kind === 'default' ? true : fridgeResult.ids.includes(id);
     el.addEventListener('change', saveFridge);
   });
 
-  loadFlavors().forEach(f => {
+  parseStoredFlavors(loadFlavors(), FLAVORS).forEach(f => {
     const el = document.getElementById('fl-' + f);
     if (el) el.checked = true;
   });

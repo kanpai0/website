@@ -1,7 +1,26 @@
 import { createBdd } from 'playwright-bdd';
 import { expect } from '@playwright/test';
 
-const { When, Then } = createBdd();
+const { Given, When, Then } = createBdd();
+
+// Corrupted-localStorage fixtures — parse-at-the-frontier hardening of
+// static/js/fridge.js (see tests/unit/fridge-logic.test.mjs for the
+// unit-level coverage of parseStoredFridge). Seeded via page.evaluate then
+// a reload, same idiom as "all filters are reset" in shared.steps.ts, so
+// the corrupted value is already in place when init() runs on load.
+Given('the fridge localStorage contains invalid JSON', async ({ page }) => {
+  await page.evaluate(() => localStorage.setItem('fridge', '{not valid json'));
+  await page.reload();
+  await page.waitForLoadState('networkidle');
+});
+
+Given('the fridge localStorage contains stale slugs', async ({ page }) => {
+  await page.evaluate(() =>
+    localStorage.setItem('fridge', JSON.stringify(['rhum', 'citron-vert', 'agave', 'licorne'])),
+  );
+  await page.reload();
+  await page.waitForLoadState('networkidle');
+});
 
 When('I open the fridge panel', async ({ page }) => {
   await page.locator('.fridge-btn').click();
@@ -53,4 +72,14 @@ Then('no visible recipe lacks the flavor {string}', async ({ page }, flavor: str
   await expect(
     page.locator(`.recipe-card:not(.fridge-hidden):not([data-flavors~="${flavor}"])`),
   ).toHaveCount(0);
+});
+
+Then('the recipe {string} is visible', async ({ page }, slug: string) => {
+  await expect(page.locator(`.recipe-card[href="/recettes/${slug}/"]`)).not.toHaveClass(
+    /fridge-hidden/,
+  );
+});
+
+Then('the recipe {string} is hidden', async ({ page }, slug: string) => {
+  await expect(page.locator(`.recipe-card[href="/recettes/${slug}/"]`)).toHaveClass(/fridge-hidden/);
 });
