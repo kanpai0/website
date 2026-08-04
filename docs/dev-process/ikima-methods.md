@@ -8,13 +8,14 @@ configs, docs). Non priorisée — on planifie lot par lot.
 Effort indicatif : (S) < 1 h, (M) demi-journée, (L) plusieurs sessions.
 Les items ~~barrés~~ sont faits.
 
-**État au 2026-08-03** : A (lot 1), B.7–8 + C (lot 2), D.19–20
+**État au 2026-08-04** : A (lot 1), B.7–8 + C (lot 2), D.19–20
 (lot 3), B.10–13 (lot 4, révisé yq lot 5), G (lot 6), F.29–31 +
-E.28 (lot 7) livrés. `make validate` = 10 checks ; CI build unique
-+ deploy gated ; arbo `src/` + `tools/` + `docs/{adr,ddr,specs}`.
+E.28 (lot 7) livrés, F.32–36 (lot 10) livrés. `make validate` = 10
+checks ; CI build unique + deploy gated ; arbo `src/` + `tools/` +
+`docs/{adr,ddr,specs}`.
 **ADR-001…005 rétroactifs en attente de signature Vincent.**
 D.21/D.23 écartés, D.22 vérifié.
-Restent : B.9, B.14, B.15, E.24–27 (release), F.32–36.
+Restent : B.9, B.14, B.15, E.24–27 (release).
 
 ---
 
@@ -66,11 +67,11 @@ Restent : B.9, B.14, B.15, E.24–27 (release), F.32–36.
 29. ~~**Extraire les vrais ADR de `specs/`** → `docs/adr/ADR-NNN` avec statut + déclencheur d'irréversibilité. (L)~~ — **5 ADR** rétroactifs (à signer), avec en-tête doctrine dans `docs/adr/README.md` (ship-by-default, > 1 j, 3 paliers) et ligne « Palier d'outillage » par ADR. Sources primaires retrouvées dans le git (BRIEF jour 1, commit `4597ac9`).
 30. ~~**`docs/ddr/` parking lot avec déclencheurs**. (M)~~ — DDR-001 SEO/schema.org, 002 Pagefind, 003 monitoring JS, 004 PWA, 005 monétisation. Structure plate, sourcées README + rétro + BRIEF jour 1 (renommées DDR le 2026-08-04).
 31. ~~**`check-adr-trigger` / `check-ddr-trigger` / `check-scorecard`**. (S)~~ — câblés dans validate (10 checks).
-32. **`docs/MAP.md`** — flowchart Mermaid des décisions/liens. (S)
-33. **`docs/dev-process/memory/*.md` versionnées** — la rétrospective note une mémoire Claude stale ; le pattern Ikima (mémoire durable dans le repo) règle ça. (S)
-34. **CLAUDE.md refondu style Ikima** : court, principes, refus automatiques, checklist fin de tâche. (M)
-35. **PROCESS.md + les trois principes ancrés** (ship-by-default, architect sous condition, DDR parking lot) adaptés au périmètre Kanpai. (M)
-36. **Trancher la convention bilingue** — Kanpai mélange (CLAUDE.md en anglais, README en français) ; attention au README-vitrine Malt qui a ses propres contraintes. (S)
+32. ~~**`docs/MAP.md`** — flowchart Mermaid des décisions/liens. (S)~~ — 5 ADR + 5 DDR, liens sourcés (zéro-Node, runner Playwright, plan PWA refusé, README V2, rétrospective §1).
+33. ~~**`docs/dev-process/memory/*.md` versionnées** — la rétrospective note une mémoire Claude stale ; le pattern Ikima (mémoire durable dans le repo) règle ça. (S)~~ — 3 fiches seed (bash 3.2, paliers d'outillage, logique en modules), format Ikima name/description/type.
+34. ~~**CLAUDE.md refondu style Ikima** : court, principes, refus automatiques, checklist fin de tâche. (M)~~ — réécriture complète en français, 3 principes ancrés (dont architect sous condition, conservé).
+35. ~~**PROCESS.md + les trois principes ancrés** (ship-by-default, architect sous condition, DDR parking lot) adaptés au périmètre Kanpai. (M)~~ — nouveau fichier, grille de triage + paliers + table des 10 checks.
+36. ~~**Trancher la convention bilingue** — Kanpai mélange (CLAUDE.md en anglais, README en français) ; attention au README-vitrine Malt qui a ses propres contraintes. (S)~~ — **tranché 2026-08-04 : doc projet FR / code EN**, décidé avec F.34.
 
 ## G. Arborescence & configs
 

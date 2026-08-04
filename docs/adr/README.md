@@ -5,6 +5,8 @@ horodatés sous `docs/specs/` (triage F.29) et, quand ils sont plus riches, de
 l'historique git (commits cités par leur sha). Chaque ADR est signée par
 Vincent avant de perdre la mention « à signer » dans son statut.
 
+Version détaillée de la doctrine ci-dessous : [`docs/dev-process/PROCESS.md`](../dev-process/PROCESS.md).
+
 ## Doctrine
 
 Le défaut est de coder et de livrer : une ADR n'existe que si le retour en

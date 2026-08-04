@@ -72,7 +72,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 ## H — Release readiness [manual]
 
 - [ ] Version bump type is correct (breaking → major, new feature → minor, fix → patch)
-- [ ] Release notes are `CHANGELOG.md`'s job (via `git-cliff`) — no dedicated `specs/<date>-release-vX.Y.Z/` file is written per release (see `CLAUDE.md` § Release workflow)
+- [ ] Release notes are `CHANGELOG.md`'s job (via `git-cliff`) — no dedicated `specs/<date>-release-vX.Y.Z/` file is written per release (see `CLAUDE.md` § Commandes)
 - [ ] CHANGELOG preview reviewed before tagging
 
 ---
