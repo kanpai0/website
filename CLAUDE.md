@@ -13,10 +13,10 @@ hugo build          # Generate static site to public/
 
 make serve          # alias → hugo serve
 make build          # alias → hugo build
-make release        # bump version, generate CHANGELOG, commit, tag, push
+make release        # bump version, generate CHANGELOG, commit + tag (no push — printed to run manually)
 make release-dry    # preview release without writing anything
 make preflight      # full local quality gate before pushing (npm test)
-make validate       # pre-commit gate: hugo build + check-sh/lint-sh/check-pw-version/check-content/check-dom/check-design-system/test-unit
+make validate       # pre-commit gate: hugo build + 10 checks (shell, Playwright pin, content schema, DOM, design system, ADR/RFC/scorecard gates, unit tests)
 make validate-ci    # CI fan-out of the same checks, no hugo build (public/ comes from the build job's artifact)
 make check-sh       # syntax-check all shell scripts (bash -n)
 make lint-sh        # lint all shell scripts (shellcheck)
@@ -49,8 +49,11 @@ bash tools/release.sh --dry-run    # preview only
 ```
 
 Requires `git-cliff` (pinned in `.mise.toml` — run `make bootstrap`). Script requires a clean working tree.
-Updates `hugo.toml`, `CHANGELOG.md`, `README.md`, writes `specs/<date>-release-vX.Y.Z/release-notes.md`,
-then commits, tags, and pushes. Changelog format is defined in `cliff.toml`.
+Updates `hugo.toml`, `CHANGELOG.md`, `README.md`, then commits and tags locally — no automatic push,
+the script prints the `git push` command to run manually. Changelog format is defined in `cliff.toml`.
+Release notes are `CHANGELOG.md`'s job, not a separate per-release file — an earlier version of the
+script wrote `specs/<date>-release-vX.Y.Z/release-notes.md` on every release; that was removed as
+clutter (see `docs/specs/2026-03-31-1825-responsive-grid-release-script/plan.md`) and never reintroduced.
 
 ### Git hooks
 
@@ -77,8 +80,11 @@ src/
   static/images/recettes/  # WebP cocktail images
 tools/               # Repo process: check-*, lib/, git-hooks/, release.sh, preflight.sh
 scripts/             # Content pipelines: Python + download-recipe-images.sh
-specs/               # Timestamped planning docs (ADRs)
-docs/                # Reference docs, quality checklist, marketing, design/, sources/
+docs/
+  adr/               # 5 decided ADRs (irreversibility trigger required)
+  rfc/               # 5 parked RFCs (reopening trigger required)
+  specs/             # 28 timestamped implementation plans (build history)
+  design/, sources/  # Pencil mockups, scraped source HTML
 ```
 
 ## Recipe Content Structure
@@ -135,7 +141,8 @@ Run `make preflight` before pushing — validates schema, build, and all tests.
 Run `npm run test:update` when visual baselines need updating after intentional design changes.
 
 **Pre-commit hook** — runs `make validate` (hugo build + `check-sh`, `lint-sh`,
-`check-pw-version`, `check-content`, `check-dom`, `check-design-system`, `test-unit`)
+`check-pw-version`, `check-content`, `check-dom`, `check-design-system`,
+`check-adr-trigger`, `check-rfc-trigger`, `check-scorecard`, `test-unit`)
 on every commit.
 Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 

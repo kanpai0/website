@@ -49,11 +49,13 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 ---
 
-## F — Docs [manual]
+## F — Docs [auto + manual]
 
 - [ ] `CLAUDE.md` updated if architecture, commands, design tokens, or file structure changed
 - [ ] README backlog current (items completed → moved to Réalisées)
-- [ ] `specs/` ADR written for significant features or architectural decisions
+- [ ] Décision irréversible → `docs/adr/` (avec déclencheur d'irréversibilité) ; question parquée → `docs/rfc/` (avec déclencheur de réouverture) ; plan de feature → `docs/specs/`
+
+> Automated portion checked by: `make validate` (pre-commit hook) — `tools/check-adr-trigger.sh` and `tools/check-rfc-trigger.sh` refuse a new ADR/RFC file that is missing its trigger field. Whether a given change *deserves* an ADR/RFC in the first place stays a manual call.
 
 ---
 
@@ -70,7 +72,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 ## H — Release readiness [manual]
 
 - [ ] Version bump type is correct (breaking → major, new feature → minor, fix → patch)
-- [ ] `specs/<date>-release-vX.Y.Z/` ADR written for significant releases
+- [ ] Release notes are `CHANGELOG.md`'s job (via `git-cliff`) — no dedicated `specs/<date>-release-vX.Y.Z/` file is written per release (see `CLAUDE.md` § Release workflow)
 - [ ] CHANGELOG preview reviewed before tagging
 
 ---
