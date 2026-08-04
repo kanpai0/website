@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.17.0] — 2026-08-04
+
+### Features
+- Parse localStorage at the frontier, survive corrupted state
+
+### Refactoring
+- Reorganize into src/, tools/ and docs/ buckets
+
+### Documentation
+- Mark LinkedIn posts 4, 5, and 6 as published; minor tone adjustment in post 5
+- Mark LinkedIn post 7 as published and add corresponding URLs to earlier posts
+- Triage specs into signed ADRs, parked RFCs and build plans
+- Rename RFC to DDR (Deferred Decision Record) across docs and tooling
+- Anchor process doctrine — CLAUDE.md refonte, PROCESS.md, decision map, versioned memory
+
+### Build
+- Pin the toolchain with mise
+- Bump Playwright to 1.62.1 and playwright-bdd to 9.2.0
+- Add shell and Playwright pin checks, self-documented Makefile
+- Gate commits through make validate (extracted checks, versioned hooks)
+- Strict content schema gate, DOM and design-system checks
+
+### CI
+- Build once, gate deploy on validate and visual regression
+
+---
 ## [1.16.1] — 2026-04-28
 
 ### Documentation
