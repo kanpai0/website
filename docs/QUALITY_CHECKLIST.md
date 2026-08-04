@@ -53,9 +53,9 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 - [ ] `CLAUDE.md` updated if architecture, commands, design tokens, or file structure changed
 - [ ] README backlog current (items completed → moved to Réalisées)
-- [ ] Décision irréversible → `docs/adr/` (avec déclencheur d'irréversibilité) ; question parquée → `docs/rfc/` (avec déclencheur de réouverture) ; plan de feature → `docs/specs/`
+- [ ] Décision irréversible → `docs/adr/` (avec déclencheur d'irréversibilité) ; décision différée → `docs/ddr/` (avec déclencheur de réouverture) ; plan de feature → `docs/specs/`
 
-> Automated portion checked by: `make validate` (pre-commit hook) — `tools/check-adr-trigger.sh` and `tools/check-rfc-trigger.sh` refuse a new ADR/RFC file that is missing its trigger field. Whether a given change *deserves* an ADR/RFC in the first place stays a manual call.
+> Automated portion checked by: `make validate` (pre-commit hook) — `tools/check-adr-trigger.sh` and `tools/check-ddr-trigger.sh` refuse a new ADR/DDR file that is missing its trigger field. Whether a given change *deserves* an ADR/DDR in the first place stays a manual call.
 
 ---
 

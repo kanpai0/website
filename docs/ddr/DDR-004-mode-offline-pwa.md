@@ -1,4 +1,4 @@
-# RFC-004 — Mode hors-ligne / PWA
+# DDR-004 — Mode hors-ligne / PWA
 
 **Statut** : Ouverte
 
@@ -9,7 +9,7 @@ Le sujet a été évalué le 2026-04-19 (`docs/specs/2026-04-19-1543-pwa/plan.md
 cache offline en cuisine, wifi instable — a été jugé insuffisant. Ce n'est
 pas une décision d'architecture verrouillée (rien n'a été codé, rien n'est
 irréversible) : c'est un arbitrage produit réversible à faible coût, qui
-n'a donc pas sa place en ADR. Cette RFC est la seule trace de cet arbitrage
+n'a donc pas sa place en ADR. Cette DDR est la seule trace de cet arbitrage
 et de sa réouverture éventuelle.
 
 ## Pistes envisagées (non tranchées)

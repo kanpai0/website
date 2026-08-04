@@ -1,4 +1,4 @@
-# RFC-005 — Monétisation légère (liens d'achat affiliés)
+# DDR-005 — Monétisation légère (liens d'achat affiliés)
 
 **Statut** : Ouverte
 

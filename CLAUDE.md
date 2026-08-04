@@ -16,7 +16,7 @@ make build          # alias → hugo build
 make release        # bump version, generate CHANGELOG, commit + tag (no push — printed to run manually)
 make release-dry    # preview release without writing anything
 make preflight      # full local quality gate before pushing (npm test)
-make validate       # pre-commit gate: hugo build + 10 checks (shell, Playwright pin, content schema, DOM, design system, ADR/RFC/scorecard gates, unit tests)
+make validate       # pre-commit gate: hugo build + 10 checks (shell, Playwright pin, content schema, DOM, design system, ADR/DDR/scorecard gates, unit tests)
 make validate-ci    # CI fan-out of the same checks, no hugo build (public/ comes from the build job's artifact)
 make check-sh       # syntax-check all shell scripts (bash -n)
 make lint-sh        # lint all shell scripts (shellcheck)
@@ -82,7 +82,7 @@ tools/               # Repo process: check-*, lib/, git-hooks/, release.sh, pref
 scripts/             # Content pipelines: Python + download-recipe-images.sh
 docs/
   adr/               # 5 decided ADRs (irreversibility trigger required)
-  rfc/               # 5 parked RFCs (reopening trigger required)
+  ddr/               # 5 parked DDRs (reopening trigger required)
   specs/             # 28 timestamped implementation plans (build history)
   design/, sources/  # Pencil mockups, scraped source HTML
 ```
@@ -142,7 +142,7 @@ Run `npm run test:update` when visual baselines need updating after intentional 
 
 **Pre-commit hook** — runs `make validate` (hugo build + `check-sh`, `lint-sh`,
 `check-pw-version`, `check-content`, `check-dom`, `check-design-system`,
-`check-adr-trigger`, `check-rfc-trigger`, `check-scorecard`, `test-unit`)
+`check-adr-trigger`, `check-ddr-trigger`, `check-scorecard`, `test-unit`)
 on every commit.
 Reinstall after fresh clone: `make install-hooks` (also done by `make bootstrap`).
 

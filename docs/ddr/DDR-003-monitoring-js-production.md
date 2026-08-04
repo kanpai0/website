@@ -1,4 +1,4 @@
-# RFC-003 — Monitoring JS en production
+# DDR-003 — Monitoring JS en production
 
 **Statut** : Ouverte
 

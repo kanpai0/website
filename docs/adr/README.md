@@ -21,8 +21,8 @@ concernée (**Palier d'outillage**) :
 3. **Écosystème de paquets** — `node_modules` ou équivalent. Exige une justification explicite : pourquoi les paliers 1 et 2 ne suffisent pas.
 
 Une question identifiée mais pas encore tranchée n'est pas une ADR « au cas
-où » : elle part en RFC (`docs/rfc/`), avec un **déclencheur de réouverture**
-explicite, contrôlé par `make check-rfc-trigger`.
+où » : elle part en DDR (`docs/ddr/`), avec un **déclencheur de réouverture**
+explicite, contrôlé par `make check-ddr-trigger`.
 
 Refus type rencontrés en triant les 28 specs (F.29) — restent des plans, pas
 des ADR : la structure d'un répertoire, la forme d'une donnée locale (un
@@ -39,5 +39,5 @@ de détail se décide, et se change, en message de commit.
 | [ADR-004](ADR-004-outillage-visual-regression-playwright.md) | Outillage de régression visuelle : Playwright | 2026-04-02 | Accepté (rétroactif — à signer) |
 | [ADR-005](ADR-005-bdd-playwright-bdd.md) | Tests fonctionnels BDD : playwright-bdd | 2026-04-02 | Accepté (rétroactif — à signer) |
 
-Voir aussi `docs/rfc/` (questions parquées, pas encore tranchées) et
+Voir aussi `docs/ddr/` (décisions différées, pas encore tranchées) et
 `docs/specs/` (l'historique de fabrication complet, 28 dossiers horodatés).

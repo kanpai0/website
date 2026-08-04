@@ -14,7 +14,7 @@ Ce projet est un side product personnel **et** une vitrine technique assumée. A
 
 Trois choses à regarder en priorité si vous arrivez depuis ma fiche Malt :
 
-- [**docs/adr/**](docs/adr/) — 5 décisions tranchées, avec contexte, alternatives considérées et rationale explicite. [**docs/rfc/**](docs/rfc/) parque les 5 questions pas encore tranchées, chacune avec son déclencheur de réouverture. [**docs/specs/**](docs/specs/) garde l'historique complet : 28 plans horodatés, la fabrication au jour le jour. Un projet perso, un seul développeur, discipline ADR/RFC quand même — et un triage assumé entre décision et plan, pas 28 dossiers jetés dans le même panier.
+- [**docs/adr/**](docs/adr/) — 5 décisions tranchées, avec contexte, alternatives considérées et rationale explicite. [**docs/ddr/**](docs/ddr/) parque les 5 décisions différées, chacune avec son déclencheur de réouverture. [**docs/specs/**](docs/specs/) garde l'historique complet : 28 plans horodatés, la fabrication au jour le jour. Un projet perso, un seul développeur, discipline ADR/DDR quand même — et un triage assumé entre décision et plan, pas 28 dossiers jetés dans le même panier.
 - La section **« Processus de développement assisté par IA »** plus bas — comment l'IA est utilisée et où elle est délibérément refusée.
 - [**docs/retrospective-manques.md**](docs/retrospective-manques.md) — ce qui a été écarté, ce qui manque, ce qui a été appris en route.
 
@@ -79,7 +79,7 @@ Ce cadre est transposable sur une plateforme B2B en équipe. C'est le genre de c
 
 ### Chiffres
 
-- **5 ADR** (décisions tranchées) + **5 RFC** (questions parquées, déclencheur explicite) + **28 plans** horodatés dans `docs/specs/`, du premier commit à la v1
+- **5 ADR** (décisions tranchées) + **5 DDR** (décisions différées, déclencheur explicite) + **28 plans** horodatés dans `docs/specs/`, du premier commit à la v1
 - **14 sections** testées en régression visuelle, seuil 0,1 % diff pixels, blocage des merges
 - **~45 h** de travail effectif sur 3 semaines
 - **58 €** de coût de lancement
@@ -101,7 +101,7 @@ Fonctionnalités principales :
 - Accessibilité ARIA complète (rôles, labels, live regions sur les filtres)
 - Mentions légales, page 404 en easter egg (recette originale)
 
-Les choix écartés et leur rationale sont documentés dans [docs/retrospective-manques.md](docs/retrospective-manques.md) — notamment l'abandon de la PWA ([RFC-004](docs/rfc/RFC-004-mode-offline-pwa.md), à partir de [ce plan](docs/specs/2026-04-19-1543-pwa/plan.md)).
+Les choix écartés et leur rationale sont documentés dans [docs/retrospective-manques.md](docs/retrospective-manques.md) — notamment l'abandon de la PWA ([DDR-004](docs/ddr/DDR-004-mode-offline-pwa.md), à partir de [ce plan](docs/specs/2026-04-19-1543-pwa/plan.md)).
 
 ---
 

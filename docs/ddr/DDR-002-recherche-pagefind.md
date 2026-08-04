@@ -1,4 +1,4 @@
-# RFC-002 — Recherche Pagefind
+# DDR-002 — Recherche Pagefind
 
 **Statut** : Ouverte
 

@@ -1,4 +1,4 @@
-# RFC-001 — SEO & données structurées
+# DDR-001 — SEO & données structurées
 
 **Statut** : Ouverte
 

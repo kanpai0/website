@@ -13,7 +13,8 @@ SHELL := /usr/bin/env bash
 
 .PHONY: bootstrap install-hooks serve build test test-update release release-dry \
 	preflight check-sh lint-sh check-pw-version check-content check-dom \
-	check-design-system test-unit validate validate-ci doctor help
+	check-design-system check-adr-trigger check-ddr-trigger check-scorecard \
+	test-unit validate validate-ci doctor help
 
 # --- Bootstrap (une seule fois après git clone) ---
 
@@ -72,6 +73,15 @@ check-dom: ## Vérifie que public/ contient tous les sélecteurs consommés par 
 check-design-system: ## Vérifie que chaque partial a sa section dans design-system.html
 	@bash tools/check-design-system.sh
 
+check-adr-trigger: ## Vérifie que chaque ADR déclare son déclencheur d'irréversibilité
+	@bash tools/check-adr-trigger.sh
+
+check-ddr-trigger: ## Vérifie que chaque DDR Ouverte déclare son déclencheur de réouverture
+	@bash tools/check-ddr-trigger.sh
+
+check-scorecard: ## Vérifie que toute scorecard (Score pondéré) a une colonne Critère
+	@bash tools/check-scorecard.sh
+
 test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
 	@if [ "$${QUIET:-}" = "1" ]; then \
 		_t=$$(node -p "Date.now()"); \
@@ -87,7 +97,8 @@ test-unit: ## Tests unitaires node --test (dot ; ligne ✓ résumée si QUIET=1)
 
 # --- Validation (pipeline pré-merge) ---
 
-VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-content check-dom check-design-system test-unit
+VALIDATE_CHECKS := check-sh lint-sh check-pw-version check-content check-dom check-design-system \
+	check-adr-trigger check-ddr-trigger check-scorecard test-unit
 
 validate: ## Pipeline complet : hugo build puis fan-out parallèle des checks (requiert gmake 4+)
 	@hugo build --quiet
