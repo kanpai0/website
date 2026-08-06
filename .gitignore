@@ -7,3 +7,4 @@ node_modules/
 test-results/
 tests/.generated/
 playwright-report/
+.obsidian
