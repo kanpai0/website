@@ -74,7 +74,6 @@ Ce cadre est transposable sur une plateforme B2B en équipe. C'est le genre de c
 | Images | **gpt-image-1** | `background: "transparent"` natif — le seul modèle fiable sur verres |
 | Toolchain | **mise** | Versions d'outils épinglées dans `.mise.toml` — les mêmes binaires en local et en CI |
 
-→ Détail des méthodes, outils et techniques : [docs/methodes-outils-techniques.md](docs/methodes-outils-techniques.md)  
 → Rétrospective des manques et apprentissages : [docs/retrospective-manques.md](docs/retrospective-manques.md)
 
 ### Chiffres
