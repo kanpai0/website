@@ -18,7 +18,9 @@ Sources de vérité : `README.md`, `docs/adr/`, `docs/ddr/`, `docs/dev-process/`
 
 ## Trois principes ancrés
 
-Détail complet : [`docs/dev-process/PROCESS.md`](docs/dev-process/PROCESS.md).
+Détail complet : [`docs/dev-process/PROCESS.md`](docs/dev-process/PROCESS.md). Étude,
+justification et sources de ces principes : projet Architecte Logiciel (hors
+repo) ; ce repo n'en dépend pas et ne garde que les règles synthétiques.
 
 ### 1. Ship-by-default
 
@@ -152,7 +154,8 @@ Domaine `kanpai0.co` (301 depuis `kanpai0.com`).
 3. Sections pertinentes de `docs/QUALITY_CHECKLIST.md` relues ?
 4. Changement visuel intentionnel → `npm run test:update` + baselines committées ?
 5. Décision prise → ADR, DDR ou message de commit, selon la grille (PROCESS.md §Triage) ?
-6. `docs/dev-process/memory/` à jour si une préférence dev a émergé ?
+6. Règle de dev transposable apparue → la synthétiser ici (Refus automatiques ou
+   PROCESS), son étude va dans le projet Architecte Logiciel ?
 
 ## Refus automatiques
 
@@ -169,8 +172,8 @@ Domaine `kanpai0.co` (301 depuis `kanpai0.com`).
 - Décision tranchée et irréversible → `docs/adr/ADR-NNN-titre.md`.
 - Question différée → `docs/ddr/DDR-NNN-titre.md`.
 - Plan de feature → `docs/specs/<date>-<slug>/plan.md`.
-- Conventions / préférences dev versionnées → `docs/dev-process/memory/*.md` —
-  **à lire en début de session**.
+- Règles de dev : synthétiques dans ce fichier et `PROCESS.md` ; leur étude et
+  leurs précédents détaillés → projet Architecte Logiciel (hors repo).
 - Suivi du transfert de méthode Ikima → Kanpai → `docs/dev-process/ikima-methods.md`.
 
 ## Communication
