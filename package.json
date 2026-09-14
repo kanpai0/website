@@ -2,13 +2,13 @@
   "name": "kanpai0-tests",
   "private": true,
   "devDependencies": {
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^26.2.0",
     "playwright-bdd": "^9.2.0"
   },
   "scripts": {
     "build": "hugo build",
-    "pw": "docker run --rm --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.62.1-jammy",
+    "pw": "docker run --rm --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.63.0-jammy",
     "test": "npm run test:unit && npm run build && npm run pw -- sh -c 'npx bddgen && npx playwright test'",
     "test:unit": "node --test --test-reporter=dot tests/unit/*.test.mjs",
     "test:visual": "npm run build && npm run pw -- npx playwright test --project=visual",

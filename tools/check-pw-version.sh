@@ -2,11 +2,15 @@
 # tools/check-pw-version.sh — Fail if the pinned Playwright version drifts.
 #
 # Compares the version declared in three places:
-#   1. package.json        → .devDependencies["@playwright/test"]
+#   1. package-lock.json   → version actually installed for @playwright/test
 #   2. package.json        → .scripts.pw image tag
 #   3. .github/workflows/ci.yml → container image tag
 #
-# Source of truth: package.json devDependencies. All three must match.
+# Source of truth: package-lock.json, i.e. the version actually installed —
+# not the semver range in package.json devDependencies. A caret range (e.g.
+# "^1.62.1") can resolve to a newer installed version without package.json
+# itself changing, so checking package.json alone can pass while the install
+# has drifted.
 # Requirements: jq.
 
 set -euo pipefail
@@ -16,9 +20,19 @@ set -euo pipefail
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
 
-# 1. package.json devDependencies — strip leading ^ or ~
+# 1. package-lock.json — resolved/installed version (lockfileVersion 2/3 uses
+#    .packages, lockfileVersion 1 uses .dependencies; try both)
 v_pkg=""
-v_pkg="$( jq -r '.devDependencies["@playwright/test"]' "$REPO_ROOT/package.json" | sed 's/^[~^]//' )"
+v_pkg="$( jq -r '
+    .packages["node_modules/@playwright/test"].version
+    // .dependencies["@playwright/test"].version
+    // empty
+  ' "$REPO_ROOT/package-lock.json" )"
+
+if [[ -z "$v_pkg" ]]; then
+  echo "check-pw-version: could not find @playwright/test in package-lock.json" >&2
+  exit 1
+fi
 
 # 2. package.json scripts.pw — extract X.Y.Z from the playwright:vX.Y.Z-jammy image tag
 v_pw=""
@@ -35,9 +49,9 @@ fi
 
 {
   echo "FAIL: Playwright version drift detected"
-  echo "  package.json devDependencies : $v_pkg"
-  echo "  package.json scripts.pw      : $v_pw"
-  echo "  .github/workflows/ci.yml     : $v_ci"
-  echo "Source of truth is package.json devDependencies. Align scripts.pw and ci.yml to v${v_pkg}."
+  echo "  package-lock.json (installed) : $v_pkg"
+  echo "  package.json scripts.pw       : $v_pw"
+  echo "  .github/workflows/ci.yml      : $v_ci"
+  echo "Source of truth is the installed version (package-lock.json). Align scripts.pw and ci.yml to v${v_pkg}."
 } >&2
 exit 1

@@ -61,7 +61,7 @@ jobs:
   visual-regression:
     needs: build
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/playwright:v1.62.1-jammy
+    container: mcr.microsoft.com/playwright:v1.63.0-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v6
