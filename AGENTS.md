@@ -1,6 +1,7 @@
-# CLAUDE.md — Kanpai Ø
+# AGENTS.md — Kanpai Ø
 
-Lue à chaque session. Garder court.
+Lue à chaque session par tout agent de code (Claude Code ou un autre) ;
+anciennement `CLAUDE.md`. Garder court.
 
 1. Ne suppose pas. Ne cache pas ta confusion. Expose les tradeoffs.
 2. Le minimum de code qui résout le problème. Rien de spéculatif.
@@ -14,7 +15,7 @@ Site de recettes de mocktails (cocktails sans alcool) — Hugo statique, déploy
 `README.md`) : décisions tracées, tests de régression visuelle bloquants, release
 sans dépendance superflue.
 
-Sources de vérité : `README.md`, `docs/adr/`, `docs/ddr/`, `docs/dev-process/`, `docs/specs/`.
+Sources de vérité : `README.md`, `docs/adr/`, `docs/ddr/`, `docs/dev-process/`, `specs/`.
 
 ## Trois principes ancrés
 
@@ -30,7 +31,7 @@ Le défaut, c'est **coder et livrer**. Un ADR n'est écrit que si la décision e
 
 ### 2. Architect sous condition
 
-Un modèle costaud (Opus) n'est convoqué **qu'en exception, jamais en réflexe** —
+Un modèle costaud (le plus fort disponible ; Claude : Opus) n'est convoqué **qu'en exception, jamais en réflexe** —
 seulement si la décision est irréversible (principe 1) ET que des options sont
 réellement contestées. Sinon : décision dans le fil, en 3 lignes. Pas de fiche
 agent dédiée sur ce repo (solo, pas d'équipe à outiller). Sortie max 1 page,
@@ -95,8 +96,8 @@ scripts/             # Pipelines de contenu : Python + download-recipe-images.sh
 docs/
   adr/               # 5 ADR tranchées (déclencheur d'irréversibilité)
   ddr/               # 5 DDR différées (déclencheur de réouverture)
-  specs/             # 28 plans d'implémentation horodatés (historique de fabrication)
-  design/, sources/  # Maquettes Pencil, HTML sources scrapés
+  design/            # Maquettes Pencil
+specs/               # 28 plans d'implémentation horodatés (historique de fabrication)
 ```
 
 Frontmatter d'une recette :
@@ -171,10 +172,9 @@ Domaine `kanpai0.co` (301 depuis `kanpai0.com`).
 
 - Décision tranchée et irréversible → `docs/adr/ADR-NNN-titre.md`.
 - Question différée → `docs/ddr/DDR-NNN-titre.md`.
-- Plan de feature → `docs/specs/<date>-<slug>/plan.md`.
+- Plan de feature → `specs/<date>-<slug>/plan.md`.
 - Règles de dev : synthétiques dans ce fichier et `PROCESS.md` ; leur étude et
   leurs précédents détaillés → projet Architecte Logiciel (hors repo).
-- Suivi du transfert de méthode Ikima → Kanpai → `docs/dev-process/ikima-methods.md`.
 
 ## Communication
 

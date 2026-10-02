@@ -51,7 +51,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 
 ## F — Docs [auto + manual]
 
-- [ ] `CLAUDE.md` updated if architecture, commands, design tokens, or file structure changed
+- [ ] `AGENTS.md` updated if architecture, commands, design tokens, or file structure changed
 - [ ] README backlog current (items completed → moved to Réalisées)
 - [ ] Décision irréversible → `docs/adr/` (avec déclencheur d'irréversibilité) ; décision différée → `docs/ddr/` (avec déclencheur de réouverture) ; plan de feature → `docs/specs/`
 
@@ -72,7 +72,7 @@ Reference for post-modification quality review. Items marked **[auto]** are chec
 ## H — Release readiness [manual]
 
 - [ ] Version bump type is correct (breaking → major, new feature → minor, fix → patch)
-- [ ] Release notes are `CHANGELOG.md`'s job (via `git-cliff`) — no dedicated `specs/<date>-release-vX.Y.Z/` file is written per release (see `CLAUDE.md` § Commandes)
+- [ ] Release notes are `CHANGELOG.md`'s job (via `git-cliff`) — no dedicated `specs/<date>-release-vX.Y.Z/` file is written per release (see `AGENTS.md` § Commandes)
 - [ ] CHANGELOG preview reviewed before tagging
 
 ---

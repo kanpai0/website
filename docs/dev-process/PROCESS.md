@@ -3,8 +3,8 @@
 Comment ce repo est développé. Décrit ce qui **est**, pas un process
 aspirationnel — pas d'étape inventée qui n'a jamais eu lieu.
 
-Les **trois principes ancrés** sont dans `CLAUDE.md`. Ce document en
-donne la version détaillée. En cas de contradiction, `CLAUDE.md` prime.
+Les **trois principes ancrés** sont dans `AGENTS.md`. Ce document en
+donne la version détaillée. En cas de contradiction, `AGENTS.md` prime.
 
 ---
 
