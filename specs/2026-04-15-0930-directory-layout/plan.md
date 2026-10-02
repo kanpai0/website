@@ -16,7 +16,7 @@ Moved 5 markdown files out of root:
 | `SOCIAL.md` | root | `docs/marketing/` |
 | `linkedin-posts.md` | root | `docs/marketing/` |
 
-Kept at root: `README.md` (GitHub visibility), `CLAUDE.md` (Claude Code requirement), `CHANGELOG.md` (git-cliff convention).
+Kept at root: `README.md` (GitHub visibility), `AGENTS.md` (read by coding agents), `CHANGELOG.md` (git-cliff convention).
 
 ### 2. `design/` — new directory for design artifacts
 
@@ -55,5 +55,5 @@ Root had accumulated 8 markdown files alongside config files, making it hard to 
 
 ## Files updated
 
-- `CLAUDE.md` — updated `QUALITY_CHECKLIST.md` path reference and architecture directory listing
+- `AGENTS.md` — updated `QUALITY_CHECKLIST.md` path reference and architecture directory listing
 - `scripts/download-recipe-images.sh` — updated `_sources/` → `sources/` in 2 path constants

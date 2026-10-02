@@ -1,7 +1,7 @@
 # AGENTS.md — Kanpai Ø
 
-Lue à chaque session par tout agent de code (Claude Code ou un autre) ;
-anciennement `CLAUDE.md`. Garder court.
+Lue à chaque session par tout agent de code (Claude Code ou un autre).
+Garder court.
 
 1. Ne suppose pas. Ne cache pas ta confusion. Expose les tradeoffs.
 2. Le minimum de code qui résout le problème. Rien de spéculatif.

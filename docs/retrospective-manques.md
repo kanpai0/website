@@ -134,11 +134,11 @@ Pour les opérations importantes (migration de frontmatter, restructuration de t
 
 ### 11. Trop de custom vs configuration globale
 
-Tendance à reconfigurer des comportements déjà définis globalement — par exemple, des instructions passées à Claude en session qui auraient pu être dans un `CLAUDE.md` global à la machine.
+Tendance à reconfigurer des comportements déjà définis globalement — par exemple, des instructions passées à Claude en session qui auraient pu être dans un fichier d'instructions global à la machine.
 
 **Symptôme :** Les préférences (style de réponse, conventions de nommage, philosophie de stack) sont redécouvertes ou réintroduites à chaque conversation.
 
-**Solution identifiée :** Créer un `CLAUDE.md` global (`~/.claude/CLAUDE.md`) avec les convictions et conventions transverses. Ce projet a bien un `CLAUDE.md` local — mais le niveau machine manque encore.
+**Solution identifiée :** Créer un fichier d'instructions global à la machine, avec les convictions et conventions transverses. Ce projet a bien un `AGENTS.md` local — mais le niveau machine manque encore.
 
 ---
 

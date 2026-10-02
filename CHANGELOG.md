@@ -13,7 +13,7 @@
 - Mark LinkedIn post 7 as published and add corresponding URLs to earlier posts
 - Triage specs into signed ADRs, parked RFCs and build plans
 - Rename RFC to DDR (Deferred Decision Record) across docs and tooling
-- Anchor process doctrine — CLAUDE.md refonte, PROCESS.md, decision map, versioned memory
+- Anchor process doctrine — AGENTS.md refonte, PROCESS.md, decision map, versioned memory
 
 ### Build
 - Pin the toolchain with mise
@@ -305,7 +305,7 @@
 - Add flavor filter pills to homepage
 
 ### Documentation
-- Add CLAUDE.md with repository guidance and architecture overview
+- Add AGENTS.md with repository guidance and architecture overview
 
 ---
 ## [0.7.0] — 2026-03-30
