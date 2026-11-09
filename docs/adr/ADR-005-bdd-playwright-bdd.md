@@ -1,7 +1,8 @@
 # ADR-005 — Tests fonctionnels BDD : playwright-bdd plutôt que @cucumber/cucumber
 
 **Date** : 2026-04-02
-**Statut** : Accepté (rétroactif, 2026-04-02 — à signer)
+**Statut** : Accepté (rétroactif, 2026-04-02)
+**Décideur** : Vincent Clair
 **Sujets liés** : ADR-004 (runner Playwright, réutilisé ici)
 **Palier d'outillage** : 3 — écosystème de paquets, assumé et minimisé : `playwright-bdd` (12 dépendances transitives) choisi précisément contre `@cucumber/cucumber` (414 dépendances) pour rester au plus près du palier 2 tout en gardant Gherkin. La comparaison chiffrée est la justification explicite qu'exige ce palier.
 **Déclencheur d'irréversibilité** : une fois des scénarios `.feature` écrits en Gherkin et les step definitions codées contre `playwright-bdd`, migrer vers `@cucumber/cucumber` (runner séparé, fixtures incompatibles avec Playwright Test) impose de réécrire l'intégration complète et de dupliquer la configuration CI. Coût > 1 jour dès que plusieurs features existent (3 features / ~11 scénarios dès cette spec, ~30 après la spec du 2026-04-28).

@@ -1,7 +1,8 @@
 # ADR-001 — Générateur de site : Hugo
 
 **Date** : 2026-03-23
-**Statut** : Accepté (rétroactif, 2026-03-23 — à signer)
+**Statut** : Accepté (rétroactif, 2026-03-23)
+**Décideur** : Vincent Clair
 **Palier d'outillage** : 2 — binaire autonome (Hugo, un seul exécutable Go), contre les générateurs à écosystème Node (Eleventy, Astro…) qui imposeraient `node_modules` pour un site sans besoin de build applicatif.
 **Déclencheur d'irréversibilité** : le contenu est structuré en frontmatter Hugo dès la première fiche recette (commit `10cae5a`, 2026-03-24), et les templates ainsi que les URLs publiées (`/recettes/<slug>/`) en découlent directement. Changer de générateur de site statique impose de réécrire tous les templates, de migrer le frontmatter des 24 recettes vers le nouveau moteur, et risque de casser des URLs déjà publiées. Coût déjà > 1 jour dès l'import du catalogue complet (commit `3c1ba56`, le soir même).
 

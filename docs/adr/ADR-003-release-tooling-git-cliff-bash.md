@@ -1,7 +1,8 @@
 # ADR-003 — Outillage de release : git-cliff + bash plutôt que semantic-release
 
 **Date** : 2026-03-31
-**Statut** : Accepté (rétroactif, 2026-03-31 — à signer)
+**Statut** : Accepté (rétroactif, 2026-03-31)
+**Décideur** : Vincent Clair
 **Sujets liés** : le schéma de version lui-même (SemVer, tags git comme source de vérité) est un standard d'industrie appliqué par défaut — pas un arbitrage, donc pas d'ADR dédiée. La décision porte uniquement sur l'outillage qui le consomme.
 **Palier d'outillage** : 2 — binaire autonome (`git-cliff`), retenu explicitement contre le palier 3 (`semantic-release`, 329 paquets npm) après un test réel de l'alternative (branche `feat/semantic-release`).
 **Déclencheur d'irréversibilité** : une fois `tools/release.sh` (157 lignes bash) + `cliff.toml` en place comme mécanisme de release et qu'un historique de tags/CHANGELOG existe déjà sous ce format, migrer vers `semantic-release` impose d'introduire un `node_modules` de 329 paquets, de réécrire le pipeline de hooks (`commit-msg`), et de réconcilier le format du changelog existant avec celui du nouvel outil. Coût > 1 jour dès la première release automatisée (déjà taguée en v1.x).

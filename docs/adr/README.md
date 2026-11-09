@@ -1,9 +1,9 @@
 # ADR — Kanpai Ø
 
 Décisions d'architecture, formalisées **rétroactivement** à partir des `plan.md`
-horodatés sous `docs/specs/` (triage F.29) et, quand ils sont plus riches, de
-l'historique git (commits cités par leur sha). Chaque ADR est signée par
-Vincent avant de perdre la mention « à signer » dans son statut.
+horodatés sous `specs/` (triage F.29) et, quand ils sont plus riches, de
+l'historique git (commits cités par leur sha). Vincent, décideur de chaque ADR,
+la valide dans un commit signé par sa clé, marqué « Verified » sur GitHub.
 
 Version détaillée de la doctrine ci-dessous : [`docs/dev-process/PROCESS.md`](../dev-process/PROCESS.md).
 
@@ -35,11 +35,11 @@ de détail se décide, et se change, en message de commit.
 
 | N° | Titre | Date | Statut |
 |---|---|---|---|
-| [ADR-001](ADR-001-stack-hugo-cloudflare-pages.md) | Générateur de site : Hugo | 2026-03-23 | Accepté (rétroactif — à signer) |
-| [ADR-002](ADR-002-css-custom-vs-framework.md) | CSS custom plutôt qu'un framework (PicoCSS) | 2026-03-24 | Accepté (rétroactif — à signer) |
-| [ADR-003](ADR-003-release-tooling-git-cliff-bash.md) | Outillage de release : git-cliff + bash | 2026-03-31 | Accepté (rétroactif — à signer) |
-| [ADR-004](ADR-004-outillage-visual-regression-playwright.md) | Outillage de régression visuelle : Playwright | 2026-04-02 | Accepté (rétroactif — à signer) |
-| [ADR-005](ADR-005-bdd-playwright-bdd.md) | Tests fonctionnels BDD : playwright-bdd | 2026-04-02 | Accepté (rétroactif — à signer) |
+| [ADR-001](ADR-001-stack-hugo-cloudflare-pages.md) | Générateur de site : Hugo | 2026-03-23 | Accepté (rétroactif) |
+| [ADR-002](ADR-002-css-custom-vs-framework.md) | CSS custom plutôt qu'un framework (PicoCSS) | 2026-03-24 | Accepté (rétroactif) |
+| [ADR-003](ADR-003-release-tooling-git-cliff-bash.md) | Outillage de release : git-cliff + bash | 2026-03-31 | Accepté (rétroactif) |
+| [ADR-004](ADR-004-outillage-visual-regression-playwright.md) | Outillage de régression visuelle : Playwright | 2026-04-02 | Accepté (rétroactif) |
+| [ADR-005](ADR-005-bdd-playwright-bdd.md) | Tests fonctionnels BDD : playwright-bdd | 2026-04-02 | Accepté (rétroactif) |
 
 Voir aussi `docs/ddr/` (décisions différées, pas encore tranchées) et
-`docs/specs/` (l'historique de fabrication complet, 28 dossiers horodatés).
+`specs/` (l'historique de fabrication, un plan daté par session).

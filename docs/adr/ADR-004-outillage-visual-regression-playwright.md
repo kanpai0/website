@@ -1,7 +1,8 @@
 # ADR-004 — Outillage de régression visuelle : Playwright
 
 **Date** : 2026-04-02
-**Statut** : Accepté (rétroactif, 2026-04-02 — à signer)
+**Statut** : Accepté (rétroactif, 2026-04-02)
+**Décideur** : Vincent Clair
 **Sujets liés** : ADR-005 (BDD fonctionnel, même runner Playwright)
 **Palier d'outillage** : 3 — écosystème de paquets, assumé et borné : première et seule devDependency de test du repo à cette date, aucune dépendance runtime ajoutée au site. Le palier 3 se justifie ici par l'absence d'équivalent palier 1/2 pour la régression visuelle par capture d'écran.
 **Déclencheur d'irréversibilité** : une fois ~6 baselines PNG committées (`tests/visual/snapshots/`) et le job CI `visual-regression` bloquant configuré, changer de runner impose de régénérer toutes les baselines sous un autre moteur de rendu (fonts différentes), de réécrire la configuration CI et les scripts npm. Coût > 1 jour dès la première PR bloquée par ce gate (déjà le cas).

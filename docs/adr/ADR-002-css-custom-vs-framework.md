@@ -1,7 +1,8 @@
 # ADR-002 — CSS custom plutôt qu'un framework (PicoCSS)
 
 **Date** : 2026-03-24
-**Statut** : Accepté (rétroactif, 2026-03-24 — à signer)
+**Statut** : Accepté (rétroactif, 2026-03-24)
+**Décideur** : Vincent Clair
 **Palier d'outillage** : 0/1 — plateforme native (CSS custom, aucun framework, aucun paquet). Cohérent avec « Pas de framework JS. » déjà écrit dans le BRIEF jour 1 (`4597ac9`) — le même principe de sobriété s'applique ici au CSS.
 **Déclencheur d'irréversibilité** : une fois la charte graphique (couleurs, typographies Playfair/Inter, layout non-scrollable `100dvh`) codée en CSS custom et appliquée à la home puis à chaque page ajoutée (recette, design system, 404, about), migrer vers un framework CSS impose de réécrire toutes les classes et de résoudre les conflits de reset avec l'existant. Coût déjà > 1 jour dès que plusieurs pages/composants partagent la même base de tokens (le cas dès la 2ᵉ page).
 
